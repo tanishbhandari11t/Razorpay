@@ -1,0 +1,20 @@
+# Python
+backend/.venv/
+backend/.pytest_cache/
+backend/data/
+**/__pycache__/
+*.py[cod]
+
+# Node
+dashboard/node_modules/
+dashboard/dist/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.vscode/
+.DS_Store
+Thumbs.db
