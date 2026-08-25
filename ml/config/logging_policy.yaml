@@ -1,0 +1,31 @@
+version: 1
+seed: 42
+exploration_rate: 0.10
+
+eligible_interventions:
+  - retry_payment
+  - payment_link
+  - whatsapp_reminder
+  - escalate_to_merchant
+
+fraud_action: no_action
+
+# Ordered, deliberately limited historical-policy rules.
+rules:
+  recent_reliable_retry:
+    minimum_historical_success_rate: 0.85
+    maximum_days_since_previous_success: 7.0
+
+  strong_customer_payment_link:
+    minimum_historical_success_rate: 0.75
+    minimum_amount_vs_previous_avg: 1.50
+
+  active_customer_whatsapp:
+    minimum_transactions_last_30d: 3
+
+  fallback_action: escalate_to_merchant
+
+temporal_split:
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  test_fraction: 0.15

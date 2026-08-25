@@ -99,6 +99,8 @@ def _allocate_customers(
     stratum_counts: pd.Series,
     config: AssignmentConfig,
 ) -> pd.Series:
+    if config.customer_count <= 0 or config.minimum_transactions <= 0:
+        raise ValueError("Customer and minimum transaction counts must be positive")
     capacities = (stratum_counts // config.minimum_transactions).clip(lower=1)
     if int(capacities.sum()) < config.customer_count:
         raise ValueError(
@@ -333,6 +335,8 @@ def validate_assignment(
         raise ValueError("A transaction was assigned more than once")
     if assigned["transaction_id"].nunique() != source["transaction_id"].nunique():
         raise ValueError("Assignment lost source transactions")
+    if set(assigned["transaction_id"]) != set(source["transaction_id"]):
+        raise ValueError("Assigned transaction IDs differ from the source")
     if len(customers) != config.customer_count:
         raise ValueError("Unexpected synthetic customer count")
     if customers["transaction_count"].lt(config.minimum_transactions).any():
@@ -415,6 +419,8 @@ def run(
         index=False,
         date_format="%Y-%m-%d %H:%M:%S",
     )
+    summary["input_sha256"] = _sha256(input_path)
+    summary["methodology"] = "stable-profile-strata-with-controlled-archetypes"
     summary["customers_sha256"] = _sha256(customers_path)
     summary["transactions_sha256"] = _sha256(transactions_path)
     summary_path.write_text(

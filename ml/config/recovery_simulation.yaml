@@ -1,0 +1,108 @@
+version: 1
+seed: 42
+
+# These are experimental assumptions, not measured Razorpay prices or SLAs.
+intervention_costs:
+  retry_payment: 0.0
+  payment_link: 0.0
+  whatsapp_reminder: 0.0
+  escalate_to_merchant: 0.0
+
+scenario_probabilities:
+  temporary_failure: 0.40
+  authentication_issue: 0.30
+  customer_decline: 0.22
+  merchant_configuration: 0.08
+
+probability:
+  minimum: 0.02
+  maximum: 0.95
+  base_score: -1.10
+
+  observable_coefficients:
+    historical_success_rate:
+      coefficient: 1.60
+      center: 0.50
+    log_previous_transaction_count: 0.10
+    previous_failure_streak: -0.32
+    failures_last_7d: -0.22
+    failures_last_30d: -0.08
+    log_transactions_last_30d: 0.08
+    log_amount_vs_previous_avg: -0.18
+    device_matches_primary: 0.12
+    network_matches_primary: 0.06
+    has_prior_history: 0.10
+    no_previous_success_adjustment: -0.40
+    recent_success_strength: 0.35
+    recent_success_decay_days: 30.0
+
+  hidden_variation:
+    customer_responsiveness_std: 0.55
+    customer_intervention_preference_std: 0.35
+    payment_specific_shock_std: 0.20
+
+interventions:
+  retry_payment:
+    base_score: 0.00
+    scenario_adjustments:
+      temporary_failure: 0.65
+      authentication_issue: -0.25
+      customer_decline: -0.55
+      merchant_configuration: -1.50
+    interactions:
+      recent_success_strength: 0.25
+      recent_success_decay_days: 14.0
+      previous_failure_streak: -0.18
+    recovery_time_hours:
+      minimum: 0.10
+      maximum: 4.0
+      shape: 1.70
+
+  payment_link:
+    base_score: 0.10
+    scenario_adjustments:
+      temporary_failure: 0.15
+      authentication_issue: 0.65
+      customer_decline: 0.10
+      merchant_configuration: -1.30
+    interactions:
+      historical_success_rate: 0.25
+      log_amount_vs_previous_avg: -0.08
+    recovery_time_hours:
+      minimum: 0.50
+      maximum: 24.0
+      shape: 1.45
+
+  whatsapp_reminder:
+    base_score: 0.00
+    scenario_adjustments:
+      temporary_failure: -0.10
+      authentication_issue: 0.10
+      customer_decline: 0.70
+      merchant_configuration: -1.00
+    interactions:
+      log_transactions_last_30d: 0.12
+      has_prior_history: 0.15
+    recovery_time_hours:
+      minimum: 2.0
+      maximum: 48.0
+      shape: 1.30
+
+  escalate_to_merchant:
+    base_score: -0.30
+    scenario_adjustments:
+      temporary_failure: -0.75
+      authentication_issue: -0.45
+      customer_decline: -0.35
+      merchant_configuration: 1.35
+    interactions: {}
+    recovery_time_hours:
+      minimum: 4.0
+      maximum: 72.0
+      shape: 1.15
+
+policy:
+  fraud_flag_blocks:
+    - retry_payment
+    - payment_link
+    - whatsapp_reminder

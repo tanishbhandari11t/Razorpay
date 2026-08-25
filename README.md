@@ -134,6 +134,61 @@ Restart FastAPI. `GET /health` reports the active database dialect. Tables for
 customers, payments, interventions, promises, webhook events, and recovery
 cases are created automatically.
 
+## ML data foundation
+
+The Kaggle UPI data provides transaction behavior, not customer identities or
+recovery outcomes. The current pipeline deliberately stops before labels and
+model training:
+
+```powershell
+.\ml\.venv\Scripts\python.exe -m ml.src.clean
+.\ml\.venv\Scripts\python.exe -m ml.src.assign_customers
+.\ml\.venv\Scripts\python.exe -m ml.src.build_features
+.\ml\.venv\Scripts\python.exe -m ml.src.simulate_recovery
+.\ml\.venv\Scripts\python.exe -m ml.src.create_logging_policy
+```
+
+Phase 1 validates and cleans all 250,000 transactions. Phase 2 assigns them to
+10,000 synthetic customers using a fixed seed. Sender age group, state, and bank
+are stable profile strata; activity archetypes and device/network preferences
+are documented synthetic assumptions.
+
+Generated files under `ml/data/processed/` include `customers.csv`,
+`transactions_with_customers.csv`, and a validation summary with SHA-256
+hashes. They are ignored by Git. No recovery label has been generated and the
+synthetic archetype must not be used as a model feature.
+
+Phase 3 produces one leakage-safe feature row for each failed payment. History
+uses only transactions with timestamps strictly earlier than the prediction
+time; same-timestamp transactions and the current failure are excluded. The
+pipeline uses explicit no-history indicators, `-1` for unavailable recency, and
+`UNKNOWN` for unavailable historical modes. See
+`ml/notebooks/03_temporal_features.ipynb` for the audit workflow.
+
+Phase 4 creates four deterministic potential outcomes per failed payment using
+the versioned assumptions in `ml/config/recovery_simulation.yaml`. Observable
+history, intervention/scenario interactions, hidden customer responsiveness,
+and stable hash-based random draws create a probabilistic experimental world.
+Fraud blocks automated actions as a policy rule.
+
+`simulated_recovery_probability` exists only for environment calibration and is
+forbidden as a model input. The four counterfactual outcomes also cannot be
+treated as four observed real-world outcomes; the next data step must simulate
+a historical logging policy that reveals one intervention and one outcome per
+payment.
+
+Phase 5 applies the versioned policy in `ml/config/logging_policy.yaml`. Ninety
+percent of eligible payments follow a simple ordered ruleset; ten percent
+explore uniformly among the other three actions. The resulting propensity is
+therefore `0.90` for the baseline action and `0.10 / 3` for an explored
+alternative. Fraud cases deterministically receive `no_action` with propensity
+`1.0`.
+
+`logging_policy_dataset.csv` contains exactly one chosen intervention and one
+observed outcome per failed payment. It excludes simulator probabilities,
+synthetic scenarios, and all unchosen outcomes. Its train, validation, and test
+partitions are strictly chronological.
+
 ## Test
 
 ```powershell
@@ -166,13 +221,14 @@ XGBoost/LightGBM model, and compare it against this baseline on a held-out set.
 
 ## Next milestones
 
-1. Connect a hosted PostgreSQL `DATABASE_URL` and run the live event pipeline.
-2. Add a dataset generator and held-out evaluation report.
-3. Replace the baseline score with a calibrated recovery model.
-4. Add payment-link recovery, outbound idempotency keys, and retry queues.
-5. Add multilingual message generation with deterministic templates as a
+1. Train XGBoost on the predefined temporal split and calibrate probabilities.
+2. Evaluate discrimination, calibration, and support by intervention.
+3. Compare learned policy value against always-retry and historical baselines.
+4. Connect model inference to PostgreSQL recovery cases.
+5. Add payment-link recovery, outbound idempotency keys, and retry queues.
+6. Add multilingual message generation with deterministic templates as a
    fallback.
-6. Add voice and promise-to-pay only after the payment recovery loop is stable.
+7. Add voice and promise-to-pay only after the payment recovery loop is stable.
 
 ## Safety boundary
 
