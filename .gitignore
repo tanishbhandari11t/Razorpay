@@ -2,6 +2,11 @@
 backend/.venv/
 backend/.pytest_cache/
 backend/data/
+ml/.venv/
+ml/data/raw/
+ml/data/processed/
+ml/data/evaluation/
+ml/models/
 **/__pycache__/
 *.py[cod]
 
