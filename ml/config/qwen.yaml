@@ -1,0 +1,46 @@
+version: 1
+schema_id: recoverai_qwen_v1
+purpose: communication_preview_only
+
+model:
+  provider: huggingface
+  model_id: Qwen/Qwen2.5-3B-Instruct
+  local_only: true
+  download_weights: false
+  enabled: false
+
+runtime:
+  mode: template_fallback
+  allow_live_inference: false
+  max_new_tokens: 180
+  temperature: 0.2
+
+authority:
+  financial_decisions: false
+  can_select_action: false
+  can_execute_provider_actions: false
+  tools_enabled: false
+
+communication:
+  default_language: english
+  supported_languages:
+    - english
+    - hinglish
+    - hindi
+    - tamil
+    - telugu
+    - marathi
+    - bengali
+    - gujarati
+    - kannada
+    - malayalam
+    - punjabi
+  preview_only: true
+  send_to_customer: false
+
+safety:
+  qwen_tools_enabled: false
+  controlled_execution_authorized: false
+  fail_closed: true
+  require_schema_validation: true
+  require_policy_action: true

@@ -1,0 +1,86 @@
+{
+  "always_retry": {
+    "intervention_cost": 1857.0,
+    "intervention_count": 1857,
+    "net_recovered_value": 1409505.0,
+    "recovered_amount": 1411362,
+    "recovered_payments": 1094,
+    "recovery_rate": 0.58912224,
+    "recovery_roi": 760.0226,
+    "selected_action_counts": {
+      "retry_payment": 1857
+    }
+  },
+  "cost_disclosure": "All action costs are synthetic estimates, not measured Razorpay or provider pricing.",
+  "frozen_phase8_v3": {
+    "actions_per_case": 0.85029618,
+    "blocked_decisions": 39,
+    "fallback_decisions": 1281,
+    "fraud_automated_actions": 0,
+    "fraud_cases": 4,
+    "intervention_cost": 10179.75,
+    "intervention_count": 1579,
+    "policy_violations": 0,
+    "recovered_amount": 1526714,
+    "recovered_amount_per_intervention": 966.89,
+    "recovered_payments": 1099,
+    "recovery_rate": 0.59181475,
+    "recovery_roi": 149.9756,
+    "revenue_at_risk": 2456791,
+    "selected_action_counts": {
+      "escalate_to_merchant": 157,
+      "no_action": 722,
+      "payment_link": 548,
+      "retry_payment": 477,
+      "whatsapp_reminder": 397
+    },
+    "stop_decisions": 683,
+    "stop_rate": 0.38879914,
+    "terminal_state_counts": {
+      "escalated": 36,
+      "recovered": 1099,
+      "stopped": 722
+    }
+  },
+  "frozen_test_rows": 1857,
+  "policy_v3_one_step": {
+    "intervention_cost": 9247.0,
+    "intervention_count": 1351,
+    "net_recovered_value": 1202656.0,
+    "recovered_amount": 1211903,
+    "recovered_payments": 947,
+    "recovery_rate": 0.5099623,
+    "recovery_roi": 131.059,
+    "selected_action_counts": {
+      "escalate_to_merchant": 157,
+      "no_action": 506,
+      "payment_link": 468,
+      "retry_payment": 390,
+      "whatsapp_reminder": 336
+    }
+  },
+  "policy_v4": {
+    "intervention_cost": 9122.0,
+    "intervention_count": 1346,
+    "net_recovered_value": 1202313.0,
+    "recovered_amount": 1211435,
+    "recovered_payments": 942,
+    "recovery_rate": 0.50726979,
+    "recovery_roi": 132.8037,
+    "selected_action_counts": {
+      "escalate_to_merchant": 152,
+      "no_action": 511,
+      "payment_link": 468,
+      "retry_payment": 390,
+      "whatsapp_reminder": 336
+    }
+  },
+  "policy_v4_safety": {
+    "execution_authorized": false,
+    "policy_violations": 0,
+    "provider_calls": 0,
+    "qwen_used": false
+  },
+  "scope": "One-step synthetic comparison on the frozen Phase 6 test set; no-action is conservatively assigned zero realized recovery because no counterfactual no-action outcome exists",
+  "version": 1
+}

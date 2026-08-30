@@ -1,0 +1,95 @@
+version: 1
+schema_id: recoverai_outcome_observation_v1
+purpose: certify_outcome_plumbing_without_enabling_execution
+
+safety:
+  controlled_execution_authorized: false
+  provider_actions_enabled: false
+  phase15_authorized: false
+  timeout_sets_payment_recovered_false: false
+  observational_equals_attributed: false
+  synthetic_may_enter_real_labels: false
+  legacy_decisions_backfilled: false
+
+label_kinds:
+  attributed_intervention_recovery: attempted capture after action within window
+  observational_recovery: independent capture without attributed intervention
+  no_recovery_observed: no capture observed before the window closed
+  unknown: observation conflict or incomplete evidence
+  pending: window still open
+
+recovered_statuses:
+  - captured
+  - paid
+  - authorized
+
+non_recovery_statuses:
+  - failed
+  - cancelled
+  - created
+  - authorized_failed
+
+certification_checks:
+  - outcome_state_transitions_valid
+  - capture_attribution_correct
+  - window_24h_checkpoint_correct
+  - window_48h_checkpoint_correct
+  - timeout_semantics_correct
+  - duplicate_observations_idempotent
+  - provenance_enforced
+  - synthetic_real_separation_enforced
+  - legacy_decisions_excluded
+  - no_accidental_training_labels
+
+coverage_gate:
+  minimum_real_labels: 100
+  minimum_attributed_recoveries: 25
+  require_outcome_provenance_valid: true
+  require_no_major_label_leakage: true
+  actions:
+    retry_payment: 25
+    payment_link: 25
+    whatsapp_reminder: 25
+    escalate_to_merchant: 25
+    no_action: 10
+  taxonomy:
+    known_customer: 15
+    known_payment_method: 10
+    merchant: 5
+    technical: 10
+    fraud: 5
+    unknown: 10
+  customer_segments:
+    high_value: 10
+    medium_value: 10
+    low_value: 10
+    new_customer: 10
+    returning_customer: 10
+  outcome_classes:
+    recovered: 25
+    no_recovery_observed: 25
+    unknown: 5
+  temporal:
+    weekday: 20
+    weekend: 10
+    day: 15
+    night: 10
+
+customer_value_thresholds_minor:
+  high_value: 500000
+  medium_value: 100000
+
+taxonomy_buckets:
+  customer: known_customer
+  customer_decline: known_customer
+  insufficient_funds: known_customer
+  authentication_required: known_customer
+  authentication: known_customer
+  payment_method: known_payment_method
+  payment_method_restricted: known_payment_method
+  merchant: merchant
+  merchant_configuration: merchant
+  network: technical
+  technical_retryable: technical
+  fraud_risk: fraud
+  unknown: unknown

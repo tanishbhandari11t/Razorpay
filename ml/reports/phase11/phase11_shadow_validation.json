@@ -1,0 +1,195 @@
+{
+  "evaluation_gate": {
+    "checks": {
+      "artifact_validation": {
+        "observed": true,
+        "passed": true,
+        "required": true
+      },
+      "automated_fraud_actions": {
+        "maximum": 0,
+        "observed": 0,
+        "passed": true
+      },
+      "duplicate_decisions": {
+        "maximum": 0,
+        "observed": 0,
+        "passed": true
+      },
+      "feature_parity": {
+        "observed": "passed",
+        "passed": true,
+        "required": "passed"
+      },
+      "inference_failure_rate": {
+        "maximum": 0.05,
+        "observed": 0.0,
+        "passed": true
+      },
+      "minimum_real_cases": {
+        "observed": 20,
+        "passed": true,
+        "required": 20
+      },
+      "policy_violations": {
+        "maximum": 0,
+        "observed": 0,
+        "passed": true
+      },
+      "unknown_failure_rate": {
+        "maximum": 0.2,
+        "observed": 1.0,
+        "passed": false
+      },
+      "unknown_feature_rate": {
+        "maximum": 0.2,
+        "observed": 0.833333,
+        "passed": false
+      },
+      "worker_reliability": {
+        "observed": true,
+        "passed": true,
+        "required": true
+      }
+    },
+    "controlled_execution_authorized": false,
+    "execution_mode": "shadow",
+    "metrics": {
+      "action_distribution": {
+        "escalate_to_merchant": 20
+      },
+      "at_risk_revenue": 60792.0,
+      "automated_fraud_actions": 0,
+      "blocked_actions": 0,
+      "cases": 20,
+      "duplicate_decisions": 0,
+      "duplicate_webhook_deliveries": 2,
+      "execution_mode": "shadow",
+      "failed_inferences": 0,
+      "failure_taxonomy": {
+        "unknown": 20
+      },
+      "fallbacks": 20,
+      "feature_drift": {
+        "amount_mean_ratio": 2.244892,
+        "hour_total_variation": 0.879299,
+        "reasons": [
+          "high_unknown_category_rate",
+          "high_unseen_category_rate",
+          "amount_distribution_shift",
+          "customer_history_shift",
+          "hour_distribution_shift"
+        ],
+        "shadow_amount_mean": 3039.6,
+        "shadow_no_history_rate": 0.3,
+        "status": "stop",
+        "training_amount_mean": 1354.01,
+        "training_no_history_rate": 0.036603,
+        "unknown_category_rate": 0.833333,
+        "unseen_category_rate": 1.0
+      },
+      "feature_missing_rate": 0.0,
+      "hour_distribution": {
+        "0": 0,
+        "1": 0,
+        "10": 0,
+        "11": 1,
+        "12": 19,
+        "13": 0,
+        "14": 0,
+        "15": 0,
+        "16": 0,
+        "17": 0,
+        "18": 0,
+        "19": 0,
+        "2": 0,
+        "20": 0,
+        "21": 0,
+        "22": 0,
+        "23": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "job_statuses": {
+        "succeeded": 20
+      },
+      "mean_decision_margin": 0.0185637945,
+      "mean_selected_probability": 0.169159514,
+      "observed_recoveries": 0,
+      "observed_recovery_rate": 0.0,
+      "payment_method_distribution": {
+        "netbanking": 20
+      },
+      "policy_violations": 0,
+      "predicted_recovery_value": 9432.1,
+      "razorpay_failure_reasons": {
+        "payment_failed": 20
+      },
+      "shadow_decisions": 20,
+      "successful_inferences": 20,
+      "unknown_failure_rate": 1.0,
+      "weak_margin_count": 20
+    },
+    "status": "blocked"
+  },
+  "generated_at": "2026-08-25T12:23:10.620595+00:00",
+  "infrastructure": {
+    "cases_completed": 20,
+    "cases_received": 20,
+    "celery_worker": "ready",
+    "crash_recovery": "pass",
+    "idempotency": "pass",
+    "late_ack": "pass",
+    "permanent_failure": "pass",
+    "redis": "available",
+    "retries": 2,
+    "retry_behavior": "pass",
+    "worker_failures": 0,
+    "worker_nodes": 1
+  },
+  "ml": {
+    "fallbacks": 20,
+    "feature_drift": {
+      "amount_mean_ratio": 2.244892,
+      "hour_total_variation": 0.879299,
+      "reasons": [
+        "high_unknown_category_rate",
+        "high_unseen_category_rate",
+        "amount_distribution_shift",
+        "customer_history_shift",
+        "hour_distribution_shift"
+      ],
+      "shadow_amount_mean": 3039.6,
+      "shadow_no_history_rate": 0.3,
+      "status": "stop",
+      "training_amount_mean": 1354.01,
+      "training_no_history_rate": 0.036603,
+      "unknown_category_rate": 0.833333,
+      "unseen_category_rate": 1.0
+    },
+    "feature_parity_failures": 0,
+    "inference_success": "20/20"
+  },
+  "policy": {
+    "action_distribution": {
+      "escalate_to_merchant": 20
+    },
+    "policy_version": "recovery_policy_v3",
+    "v3_frozen": true,
+    "v4_promoted": false
+  },
+  "safety": {
+    "duplicate_decisions": 0,
+    "execution_mode": "shadow",
+    "external_executions": 0,
+    "fraud_actions": 0,
+    "policy_violations": 0
+  },
+  "status": "validation_complete_execution_blocked",
+  "version": 1
+}

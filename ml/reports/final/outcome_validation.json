@@ -1,0 +1,79 @@
+{
+  "certified": true,
+  "checks": [
+    {
+      "check": "outcome_state_transitions_valid",
+      "detail": "recovered",
+      "passed": true
+    },
+    {
+      "check": "capture_attribution_correct",
+      "detail": "attributed:21600",
+      "passed": true
+    },
+    {
+      "check": "window_24h_checkpoint_correct",
+      "detail": "captured",
+      "passed": true
+    },
+    {
+      "check": "window_48h_checkpoint_correct",
+      "detail": "failed",
+      "passed": true
+    },
+    {
+      "check": "timeout_semantics_correct",
+      "detail": "no_recovery_observed:None",
+      "passed": true
+    },
+    {
+      "check": "duplicate_outcome_worker_idempotent",
+      "detail": "False",
+      "passed": true
+    },
+    {
+      "check": "duplicate_observations_idempotent",
+      "detail": "{'inserted': False, 'attribution': 'duplicate'}:observational",
+      "passed": true
+    },
+    {
+      "check": "provenance_enforced",
+      "detail": "edge_cases",
+      "passed": true
+    },
+    {
+      "check": "synthetic_real_separation_enforced",
+      "detail": "['real_controlled']",
+      "passed": true
+    },
+    {
+      "check": "legacy_decisions_excluded",
+      "detail": "legacy_backfill_disabled",
+      "passed": true
+    },
+    {
+      "check": "no_accidental_training_labels",
+      "detail": "['outcome_not_terminal', 'action_not_attempted', 'data_source_not_real_controlled', 'independent_or_late_recovery_not_attributed']",
+      "passed": true
+    }
+  ],
+  "controlled_execution_authorized": false,
+  "happy_paths": {
+    "recovered_at_6h": {
+      "label_kind": "attributed_intervention_recovery",
+      "payment_status_after_24h": "captured",
+      "state": "recovered",
+      "time_to_recovery_seconds": 21600
+    },
+    "timeout_at_48h": {
+      "label_kind": "no_recovery_observed",
+      "payment_recovered": null,
+      "payment_status_after_48h": "failed",
+      "state": "no_recovery_observed"
+    }
+  },
+  "missing_checks": [],
+  "phase": "14B",
+  "phase15_authorized": false,
+  "version": 1
+}

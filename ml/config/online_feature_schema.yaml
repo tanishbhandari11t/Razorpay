@@ -1,0 +1,88 @@
+version: "1.0"
+feature_set: temporal_recovery_features_online_v1
+base_schema: ml/config/feature_schema.yaml
+baseline_dataset: REAL_RAZORPAY_SHADOW_V1
+
+states:
+  - ONLINE_AVAILABLE
+  - ONLINE_DERIVABLE
+  - ONLINE_UNAVAILABLE
+  - SEMANTICALLY_MISMATCHED
+
+deployable_model_features:
+  online_available:
+    - amount_inr
+    - hour_of_day
+    - day_of_week
+    - is_weekend
+    - chosen_intervention
+  online_derivable:
+    - has_prior_history
+    - has_previous_success
+    - has_previous_failure
+    - previous_transaction_count
+    - previous_success_count
+    - previous_failure_count
+    - historical_success_rate
+    - historical_failure_rate
+    - previous_failure_streak
+    - transactions_last_7d
+    - successes_last_7d
+    - failures_last_7d
+    - amount_last_7d
+    - transactions_last_30d
+    - successes_last_30d
+    - failures_last_30d
+    - amount_last_30d
+    - days_since_previous_transaction
+    - days_since_previous_success
+    - days_since_previous_failure
+    - previous_avg_amount
+    - previous_median_amount
+    - previous_max_amount
+    - amount_vs_previous_avg
+    - current_amount_percentile
+    - historical_weekend_ratio
+    - same_day_of_week_previous_rate
+    - usual_hour_previous_rate
+
+excluded_model_features:
+  online_unavailable:
+    transaction_type: Standard Razorpay payment.failed payload has no training transaction type.
+    merchant_category: Standard payment payload does not expose merchant category.
+    device_type: Standard payment payload does not expose payer device type.
+    network_type: Standard payment payload does not expose payer network type.
+    sender_age_group: Standard payment payload does not expose payer age group.
+    sender_state: Standard payment payload does not expose payer state.
+    previous_fraud_count: Missing fraud evidence is not evidence of zero fraud.
+    historical_fraud_rate: Missing fraud evidence is not evidence of zero fraud.
+  semantically_mismatched:
+    sender_bank: Razorpay bank codes are not the synthetic training bank vocabulary.
+    same_transaction_type_previous_count: Derived from an unavailable synthetic transaction type.
+    same_merchant_category_previous_count: Derived from an unavailable merchant category.
+    same_merchant_category_previous_rate: Derived from an unavailable merchant category.
+    customer_primary_device_before_failure: Derived from unavailable device observations.
+    device_matches_primary: Derived from unavailable device observations.
+    customer_primary_network_before_failure: Derived from unavailable network observations.
+    network_matches_primary: Derived from unavailable network observations.
+
+non_model_online_features:
+  online_available:
+    - transaction_id
+    - customer_id
+    - prediction_time
+  online_unavailable:
+    - fraud_flag
+
+automation_support:
+  denominator: all_model_inputs_except_chosen_intervention
+  thresholds_to_evaluate:
+    - 0.50
+    - 0.60
+    - 0.70
+    - 0.80
+    - 0.90
+  unknown_failure_execution_allowed: false
+  unavailable_feature_execution_allowed: false
+  selected_threshold: null
+  selection_status: evaluation_required

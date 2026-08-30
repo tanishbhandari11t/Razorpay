@@ -1,0 +1,106 @@
+version: 1
+taxonomy_id: razorpay_failure_taxonomy_v1
+default_taxonomy: unknown
+unknown_execution_allowed: false
+
+# Mappings are limited to failure reasons whose semantics are explicit in
+# Razorpay payloads or documentation. Generic reasons remain unknown.
+mappings:
+  card_declined:
+    taxonomy: bank_decline
+    subtype: card_declined
+    retryable: false
+    safe_automation: conditional
+  bank_decline:
+    taxonomy: bank_decline
+    subtype: bank_decline
+    retryable: false
+    safe_automation: conditional
+  do_not_honour:
+    taxonomy: bank_decline
+    subtype: do_not_honour
+    retryable: false
+    safe_automation: conditional
+  transaction_not_allowed:
+    taxonomy: bank_decline
+    subtype: transaction_not_allowed
+    retryable: false
+    safe_automation: false
+  issuer_decline:
+    taxonomy: bank_decline
+    subtype: issuer_decline
+    retryable: false
+    safe_automation: conditional
+  payment_cancelled:
+    taxonomy: customer_payment_issue
+    subtype: payment_cancelled
+    retryable: false
+    safe_automation: false
+  insufficient_funds:
+    taxonomy: customer_payment_issue
+    subtype: insufficient_funds
+    retryable: false
+    safe_automation: conditional
+  low_balance:
+    taxonomy: customer_payment_issue
+    subtype: insufficient_funds
+    retryable: false
+    safe_automation: conditional
+  authentication_failed:
+    taxonomy: authentication
+    subtype: authentication_failed
+    retryable: false
+    safe_automation: conditional
+  otp_failed:
+    taxonomy: authentication
+    subtype: otp_failed
+    retryable: false
+    safe_automation: conditional
+  payment_method_not_supported:
+    taxonomy: payment_method
+    subtype: unsupported
+    retryable: false
+    safe_automation: conditional
+  card_not_supported:
+    taxonomy: payment_method
+    subtype: unsupported
+    retryable: false
+    safe_automation: conditional
+  invalid_vpa:
+    taxonomy: payment_method
+    subtype: invalid_vpa
+    retryable: false
+    safe_automation: conditional
+  international_transaction_not_allowed:
+    taxonomy: merchant_configuration
+    subtype: international_transaction_not_allowed
+    retryable: false
+    safe_automation: false
+  merchant_not_enabled:
+    taxonomy: merchant_configuration
+    subtype: merchant_not_enabled
+    retryable: false
+    safe_automation: false
+  gateway_timeout:
+    taxonomy: network
+    subtype: gateway_timeout
+    retryable: true
+    safe_automation: conditional
+  server_error:
+    taxonomy: network
+    subtype: server_error
+    retryable: true
+    safe_automation: conditional
+  suspected_fraud:
+    taxonomy: fraud_risk
+    subtype: suspected_fraud
+    retryable: false
+    safe_automation: never
+
+explicit_unknowns:
+  payment_failed:
+    reason: Razorpay Test Mode exposes only a generic bank-decline reason.
+  bad_request_error:
+    reason: Error code alone does not identify failure semantics.
+  unknown:
+    reason: No provider failure reason was supplied.

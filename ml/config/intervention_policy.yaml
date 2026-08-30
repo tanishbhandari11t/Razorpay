@@ -1,0 +1,131 @@
+version: 3
+policy_version: recovery_policy_v3
+dry_run: true
+
+case_limits:
+  max_actions: 3
+  recovery_window_hours: 72
+  recent_intervention_window_hours: 24
+  max_recent_interventions: 2
+
+simulation_assumptions:
+  customer_contact_available_rate: 0.90
+  customer_opt_out_rate: 0.03
+  max_attempts_per_action: 1
+
+decision:
+  minimum_expected_value_inr: 25.0
+  minimum_expected_value_margin_inr: 10.0
+  minimum_probability_margin: 0.01701281
+  preferred_fallback_action: retry_payment
+  no_eligible_action_fallback: escalate_to_merchant
+
+# Experimental policy costs, not measured Razorpay pricing.
+interventions:
+  retry_payment:
+    enabled: true
+    support_required: true
+    max_attempts: 2
+    cooldown_hours: 2
+    cost_inr: 1.0
+    base_risk_penalty_inr: 2.0
+    repeat_risk_penalty_inr: 5.0
+
+  payment_link:
+    enabled: true
+    support_required: true
+    max_attempts: 1
+    cooldown_hours: 6
+    cost_inr: 10.0
+    base_risk_penalty_inr: 1.0
+    repeat_risk_penalty_inr: 5.0
+
+  whatsapp_reminder:
+    enabled: true
+    support_required: true
+    max_attempts: 1
+    cooldown_hours: 24
+    cost_inr: 0.75
+    base_risk_penalty_inr: 8.0
+    repeat_risk_penalty_inr: 15.0
+
+  escalate_to_merchant:
+    enabled: true
+    support_required: false
+    max_attempts: 1
+    cooldown_hours: 72
+    cost_inr: 25.0
+    base_risk_penalty_inr: 0.0
+    repeat_risk_penalty_inr: 0.0
+
+failure_taxonomy:
+  fraud_risk:
+    exact:
+      - fraud
+      - suspected_fraud
+    contains:
+      - fraud
+      - risk
+
+  technical_retryable:
+    exact:
+      - timeout
+      - gateway_timeout
+      - server_error
+      - temporary_failure
+    contains:
+      - timeout
+      - temporarily unavailable
+      - server error
+      - gateway error
+
+  insufficient_funds:
+    exact:
+      - insufficient_funds
+      - low_balance
+    contains:
+      - insufficient fund
+      - insufficient balance
+
+  authentication_required:
+    exact:
+      - authentication_failed
+      - authentication_issue
+      - otp_failed
+    contains:
+      - authentication
+      - otp
+      - 3d secure
+
+  merchant_configuration:
+    exact:
+      - international_transaction_not_allowed
+      - merchant_configuration
+      - merchant_not_enabled
+    contains:
+      - merchant configuration
+      - merchant not enabled
+      - international transaction not allowed
+
+  payment_method_restricted:
+    exact:
+      - payment_method_not_supported
+      - card_not_supported
+      - invalid_vpa
+    contains:
+      - not supported
+      - invalid vpa
+      - payment method
+
+  customer_decline:
+    exact:
+      - customer_decline
+      - payment_cancelled
+      - card_declined
+    contains:
+      - declined
+      - cancelled by customer
+
+  unknown:
+    exact: []
+    contains: []

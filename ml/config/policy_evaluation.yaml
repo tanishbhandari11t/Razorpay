@@ -1,0 +1,73 @@
+version: 1
+model_version: recovery_model_v1
+dataset_version: "1.0"
+test_split: frozen
+random_seed: 42
+
+frozen_artifacts:
+  dataset_sha256: ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf
+  model_sha256: 488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e
+  preprocessor_sha256: 6229aedee7ab545fb52999cfe7c9454c49be2f116adc8943ab2c32023c448268
+  calibrator_sha256: f0798cce1b2a2d937b245acc73af23f5f9f654173fa61bd760e760db3683c1fe
+  model_metadata_sha256: dbf16ac1f72071b2d90d675384877a79e389f26feb07a6e92873016d810c77d7
+  metrics_sha256: dbdf7623392d7038b6f06576fe58b91ed34202a724fbcceb4d1b0af4b6603c0e
+  policy_evaluation_v1_sha256: 48ee609cccf1acd9da2298443d7b4840baceb37d3387d95f6dda0de1ac851a11
+  policy_decisions_v1_sha256: f1b8b5d87c3fff776fe343325941730ae6b516365633cf00b9dd7cf3e9e35617
+
+frozen_v1_benchmark:
+  full_dataset_always_retry_recovery_rate: 0.553733
+  test_always_retry_recovery_rate: 0.58912224
+  test_recoverai_v1_recovery_rate: 0.64997307
+  uplift_percentage_points: 6.0851
+  recovered_amount_uplift: 35745
+
+interventions:
+  - retry_payment
+  - payment_link
+  - whatsapp_reminder
+  - escalate_to_merchant
+
+support:
+  # Boundaries are frozen training-set quantiles, calculated before V2 evaluation.
+  history_success_boundaries:
+    - 0.94444444
+    - 1.0
+  amount_boundaries_inr:
+    - 283.5
+    - 632.0
+    - 1621.5
+  failure_frequency_boundaries:
+    zero: 0
+    one: 1
+    two_plus_minimum: 2
+  # 20 is approximately the median positive contextual cell count (22).
+  min_context_action_count: 20
+  # 8 is the rounded-down median contextual inverse-propensity ESS (8.14).
+  min_context_effective_sample_size: 8.0
+
+decision:
+  # Validation-set post-calibration absolute calibration error.
+  minimum_probability_margin: 0.01701281
+  preferred_fallback_action: retry_payment
+  no_supported_action_fallback: escalate_to_merchant
+  fraud_action: no_action
+
+offline_evaluation:
+  split: test
+  # The observed exploration floor is 1/30; this caps a matching row near 30.
+  maximum_importance_weight: 30.0
+  bootstrap_iterations: 1000
+  bootstrap_unit: customer_id
+  confidence_level: 0.95
+  clipping_sensitivity:
+    - 0.02
+    - 0.03333333
+    - 0.05
+    - 0.10
+
+sensitivity:
+  intervention_probability_multipliers:
+    - 0.90
+    - 0.95
+    - 1.05
+    - 1.10

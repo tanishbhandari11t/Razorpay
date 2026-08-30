@@ -1,0 +1,39 @@
+version: 1
+
+model:
+  name: recovery_model
+  version: v1
+  sha256: 488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e
+
+policy:
+  name: support_safe
+  version: v2
+
+dataset:
+  version: "1.0"
+  sha256: ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf
+
+evaluation:
+  test_set: frozen
+  test_rows: 1857
+  test_membership_sha256: 70a1ac3ad1bfedab531cc2d62926aa884e1daf20fd7494904a25edfaaa1fd711
+  random_seed: 42
+
+frozen_phase7:
+  policy_evaluation_config_sha256: 15e0b6739c00490c87dcc3c14aebde4518f9387e8faa25ca4577e653bc30315f
+  report_manifest_sha256: 00e27383c95bfdfc2d7dc1b6a29c426b1c916387990b4433cf507fe510cf26c0
+
+benchmarks:
+  recoverai_v1_synthetic_recovery_rate: 0.64997307
+  support_safe_v2_synthetic_recovery_rate: 0.58535272
+  always_retry_synthetic_recovery_rate: 0.58912224
+  support_safe_v2_doubly_robust_estimate: 0.62439680
+  support_safe_v2_doubly_robust_ci_95:
+    - 0.53248979
+    - 0.71483662
+  support_safe_v2_importance_weight_ess: 83.23997842
+
+status:
+  production_approved: false
+  execution_authorized: false
+  qwen_integration_authorized: false

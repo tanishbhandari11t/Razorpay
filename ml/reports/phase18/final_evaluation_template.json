@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "phase": 18,
+  "status": "scaffold",
+  "demo_ready": false,
+  "execution_mode": "shadow",
+  "controlled_execution_authorized": false,
+  "phase15_authorized": false,
+  "phase17_authorized": false,
+  "benchmark_template": {
+    "policies": [
+      "always_retry",
+      "historical_policy",
+      "v1",
+      "v2_online",
+      "v3_challenger",
+      "recoverai_final"
+    ],
+    "metrics": [
+      "recovery_rate",
+      "amount_recovered",
+      "intervention_cost",
+      "net_value",
+      "roi"
+    ],
+    "safety": {
+      "fraud_actions": 0,
+      "policy_violations": 0,
+      "duplicate_executions": 0,
+      "unsupported_actions": 0,
+      "out_of_bound_actions": 0
+    }
+  },
+  "architecture": {
+    "xgboost": "prediction",
+    "policy": "financial_authority",
+    "safety_gate": "authorization",
+    "qwen": "communication_only",
+    "razorpay": "execution"
+  },
+  "remaining_blockers": [
+    "insufficient_real_attributed_labels",
+    "phase15_unauthorized",
+    "model_ready_false",
+    "controlled_pilot_disabled"
+  ],
+  "honest_final_state_if_blocked": {
+    "shadow": true,
+    "safe": true,
+    "measured": true,
+    "authorized_for_financial_execution": false
+  }
+}

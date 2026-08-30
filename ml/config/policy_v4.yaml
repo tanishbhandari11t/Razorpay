@@ -1,0 +1,44 @@
+version: 4
+policy_version: recovery_policy_v4
+base_policy_version: recovery_policy_v3
+
+frozen_v3:
+  policy_v3_manifest_sha256: 8d6e5751b55e0f8fc025a6899615bb6805ae3bf40db90b29e5f06c9ac9d3f508
+  phase9_report_manifest_sha256: 58877fd8dcd345e8e721868598b424fbb3f09cb26ddb85747429b9eb94233a57
+
+objective:
+  name: incremental_net_recovery_value
+  formula: expected_recovered_amount - intervention_cost - risk_penalty
+  compare_against: no_action
+  minimum_incremental_net_value_inr: 25.0
+  minimum_incremental_recovery_to_cost_ratio: 2.0
+
+actions:
+  no_action:
+    intervention_cost_inr: 0.0
+    risk_penalty_inr: 0.0
+    cost_basis: no intervention
+    probability_source: conservative_zero
+    support_note: only 21 frozen logged rows, all fraud and all unrecovered
+
+  retry_payment:
+    intervention_cost_inr: 1.0
+    cost_basis: synthetic estimate; not Razorpay pricing
+
+  payment_link:
+    intervention_cost_inr: 10.0
+    cost_basis: synthetic estimate; not Razorpay pricing
+
+  whatsapp_reminder:
+    intervention_cost_inr: 0.75
+    cost_basis: synthetic messaging estimate; not measured provider pricing
+
+  escalate_to_merchant:
+    intervention_cost_inr: 25.0
+    cost_basis: synthetic operational estimate
+
+safety:
+  preserve_v3_eligibility: true
+  preserve_v3_stopping_rules: true
+  fraud_action: escalate_to_merchant
+  execution_authorized: false

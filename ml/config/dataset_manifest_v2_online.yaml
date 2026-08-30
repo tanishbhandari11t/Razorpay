@@ -1,0 +1,88 @@
+dataset:
+  name: online_training_features
+  version: 2.0-online
+  path: ml/data/processed/online_training_features.csv
+  sha256: d0a2bf3916a0be0a61a8e0d6004ae7de7024e5267ef2c7379c5fc94074d2e57a
+  rows: 12376
+  provenance: SYNTHETIC
+  source_dataset: logging_policy_dataset
+  source_dataset_sha256: ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf
+  real_shadow_cases_included: false
+split:
+  type: frozen_temporal_membership
+  column: split
+  train:
+    rows: 8663
+    membership_sha256: a7fcfb8a34375d5b7186e45b2422ab7cc6119243341cf26c2a779093b50ab4a5
+    starts_at: '2024-01-01 02:26:24'
+    ends_at: '2024-09-11 12:45:27'
+  validation:
+    rows: 1856
+    membership_sha256: c8241f4924675f7869bf7faf3272f230a847c136ba92c6856ab29048c0861899
+    starts_at: '2024-09-11 12:57:03'
+    ends_at: '2024-11-05 21:54:53'
+  test:
+    rows: 1857
+    membership_sha256: 70a1ac3ad1bfedab531cc2d62926aa884e1daf20fd7494904a25edfaaa1fd711
+    starts_at: '2024-11-05 22:28:08'
+    ends_at: '2024-12-30 22:58:19'
+random_seed: 42
+target:
+  name: recovered
+identifiers:
+- payment_id
+- customer_id
+categorical_features:
+- day_of_week
+- chosen_intervention
+numerical_features:
+- amount_inr
+- hour_of_day
+- is_weekend
+- has_prior_history
+- has_previous_success
+- has_previous_failure
+- previous_transaction_count
+- previous_success_count
+- previous_failure_count
+- historical_success_rate
+- historical_failure_rate
+- previous_failure_streak
+- transactions_last_7d
+- successes_last_7d
+- failures_last_7d
+- amount_last_7d
+- transactions_last_30d
+- successes_last_30d
+- failures_last_30d
+- amount_last_30d
+- days_since_previous_transaction
+- days_since_previous_success
+- days_since_previous_failure
+- previous_avg_amount
+- previous_median_amount
+- previous_max_amount
+- amount_vs_previous_avg
+- current_amount_percentile
+- historical_weekend_ratio
+- same_day_of_week_previous_rate
+- usual_hour_previous_rate
+evaluation_metadata:
+- fraud_flag
+- base_policy_intervention
+- policy_probability
+- policy_type
+- logging_policy_version
+- amount_recovered
+- intervention_cost
+- net_recovered
+- time_to_recovery_hours
+forbidden_patterns:
+- simulated_recovery_probability
+- counterfactual
+- retry_outcome
+- payment_link_outcome
+- whatsapp_outcome
+- escalation_outcome
+online_model_schema_sha256: a142d17024619fb3cda269a0262a332e1f9f37149b7bd65a0546214c4c3dfdc1
+source_manifest_sha256: 5dbb3cf7f8aaab06db86382b3bcbe127330d1cd30376d65b3c8bd24e8fbbfb7e

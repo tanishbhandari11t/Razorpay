@@ -1,0 +1,91 @@
+{
+  "evidence_boundaries": {
+    "dataset_split": {
+      "mixed_without_provenance": false,
+      "real_path": "ml/data/processed/real_observed_outcomes.csv",
+      "real_rows": 0,
+      "synthetic_path": "ml/data/processed/synthetic_outcome_rows.csv",
+      "synthetic_rows": 0,
+      "training_candidate_path": "ml/data/processed/real_controlled_training_candidates.csv",
+      "training_candidate_rows": 0
+    },
+    "natural_recovery_tracked_separately": true,
+    "no_recovery_observed_means_definite_nonrecovery": false,
+    "observational_equals_attributed": false,
+    "real_shadow_outcomes_are_causal_uplift": false,
+    "synthetic_and_real_data_mixed": false,
+    "timeout_labeled_recovered_false": false
+  },
+  "evidence_inventory": {
+    "attributed_intervention_recoveries": 0,
+    "legacy_untracked_decisions": 21,
+    "note": "Shadow cases are not training examples. Independent captures are observational_recovery, not attributed_intervention_recovery.",
+    "observational_recoveries": 0,
+    "real_actions_executed": 0,
+    "real_failures_observed": 21,
+    "shadow_decisions": 21,
+    "training_eligible_labels": 0
+  },
+  "generated_at": "2026-08-26T08:24:35.970392+00:00",
+  "legacy_untracked_decisions": 21,
+  "metrics": {
+    "attempted_actions": 0,
+    "attributed_intervention_recoveries": 0,
+    "attributed_recoveries": 0,
+    "controlled_execution_authorized": false,
+    "data_source_counts": {},
+    "observational_recoveries": 0,
+    "observations": 0,
+    "outcomes": 0,
+    "phase15_authorized": false,
+    "provider_actions_enabled": false,
+    "real_actions_executed": 0,
+    "real_failures_observed": 21,
+    "shadow_decisions": 21,
+    "state_counts": {},
+    "training_eligible_labels": 0
+  },
+  "phase": 14,
+  "phase15_gate": {
+    "authorized": false,
+    "blocked_reason": "Phase 15 training blocked: evidence coverage gate unauthorized",
+    "candidate_ready": false,
+    "checks": {
+      "action_coverage": false,
+      "attributed_recoveries": false,
+      "customer_segment_coverage": false,
+      "no_major_label_leakage": true,
+      "outcome_class_coverage": false,
+      "outcome_provenance_valid": true,
+      "real_labels": false,
+      "taxonomy_coverage": false,
+      "temporal_coverage": false
+    }
+  },
+  "safety": {
+    "controlled_execution_authorized": false,
+    "execution_mode": "shadow",
+    "provider_actions_enabled": false
+  },
+  "scope": "real_outcome_observation_and_coverage_gate_without_execution",
+  "training_readiness": {
+    "coverage_passed": false,
+    "eligible_action_counts": {
+      "escalate_to_merchant": 0,
+      "payment_link": 0,
+      "retry_payment": 0,
+      "whatsapp_reminder": 0
+    },
+    "eligible_labels": 0,
+    "eligible_outcome_class_counts": {
+      "no_recovery_observed": 0,
+      "recovered": 0
+    },
+    "evidence_sufficient_for_experiment": false,
+    "minimum_rows": 100,
+    "reason": "Phase 14C/14D observe real outcomes and measure coverage; Phase 15 stays blocked until the coverage gate authorizes.",
+    "retraining_allowed": false,
+    "retraining_stage": "no_retraining"
+  },
+  "version": 1
+}

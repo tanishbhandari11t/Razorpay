@@ -1,0 +1,131 @@
+{
+  "blocked_reason": "Phase 15 training blocked: evidence coverage gate unauthorized",
+  "controlled_execution_authorized": false,
+  "deployment_constraints": {
+    "execution_mode": "shadow",
+    "provider_actions_enabled": false,
+    "qwen_tools_enabled": false
+  },
+  "evidence_gate": {
+    "candidate_ready": false,
+    "checks": {
+      "action_coverage": false,
+      "attributed_recoveries": false,
+      "config_phase15_still_locked": true,
+      "customer_segment_coverage": false,
+      "no_major_label_leakage": true,
+      "observational_not_mixed_as_attributed": true,
+      "outcome_class_coverage": false,
+      "outcome_provenance_valid": true,
+      "real_labels": false,
+      "taxonomy_coverage": false,
+      "temporal_coverage": false,
+      "zero_duplicate_decision_ids": true
+    },
+    "counts": {
+      "actions": {
+        "escalate_to_merchant": 0,
+        "no_action": 0,
+        "payment_link": 0,
+        "retry_payment": 0,
+        "whatsapp_reminder": 0
+      },
+      "attributed_intervention_recoveries": 0,
+      "no_recovery_observed": 0,
+      "observational_recoveries": 0,
+      "real_cases": 0,
+      "segments": {
+        "high_value": 0,
+        "low_value": 0,
+        "medium_value": 0,
+        "new_customer": 0,
+        "returning_customer": 0
+      },
+      "taxonomy": {
+        "fraud": 0,
+        "known_customer": 0,
+        "known_payment_method": 0,
+        "merchant": 0,
+        "technical": 0,
+        "unknown": 0
+      },
+      "temporal": {
+        "day": 0,
+        "night": 0,
+        "weekday": 0,
+        "weekend": 0
+      },
+      "unknown": 0
+    },
+    "minima": {
+      "actions": {
+        "escalate_to_merchant": 25,
+        "no_action": 10,
+        "payment_link": 25,
+        "retry_payment": 25,
+        "whatsapp_reminder": 25
+      },
+      "attributed_recoveries": 25,
+      "customer_segments": {
+        "high_value": 10,
+        "low_value": 10,
+        "medium_value": 10,
+        "new_customer": 10,
+        "returning_customer": 10
+      },
+      "outcome_classes": {
+        "no_recovery_observed": 25,
+        "recovered": 25,
+        "unknown": 5
+      },
+      "real_labels": 100,
+      "taxonomy": {
+        "fraud": 5,
+        "known_customer": 15,
+        "known_payment_method": 10,
+        "merchant": 5,
+        "technical": 10,
+        "unknown": 10
+      },
+      "temporal": {
+        "day": 15,
+        "night": 10,
+        "weekday": 20,
+        "weekend": 10
+      }
+    },
+    "phase15_authorized": false,
+    "reason": "Final evidence gate never auto-authorizes Phase 15. Keep collecting until candidate_ready is true, then an explicit human/safety review may unlock training.",
+    "version": 1
+  },
+  "features": {
+    "mode": "action_conditioned",
+    "objective": "P(recovery | features, action)"
+  },
+  "generated_at": "2026-08-26T09:20:24.542797+00:00",
+  "known_failure_modes": [
+    "weak_decision_margin",
+    "unknown_taxonomy",
+    "feature_support_below_threshold"
+  ],
+  "limitations": [
+    "Insufficient real attributed intervention labels",
+    "Shadow observational recoveries are not causal uplift",
+    "V1 and V2-online remain the frozen baselines"
+  ],
+  "metrics": null,
+  "model_ready": false,
+  "model_version": "recovery_model_v3_challenger",
+  "phase15_authorized": false,
+  "status": "blocked",
+  "training_data": {
+    "allowed_sources": [
+      "real_controlled",
+      "synthetic"
+    ],
+    "current_eligible_rows": 0,
+    "observational_as_attributed": false,
+    "require_data_source_column": true
+  },
+  "version": 1
+}

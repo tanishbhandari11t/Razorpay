@@ -1,0 +1,73 @@
+version: 1
+schema_id: recoverai_recovery_campaigns_v1
+# Inspired by Churnkey multi-step dunning + Novu workflow delays.
+# Execution of provider actions stays gated by shadow/pilot policy.
+
+campaigns:
+  payment_failed_default:
+    name: Standard payment recovery
+    enabled: true
+    audience:
+      failure_classes:
+        - customer_payment_issue
+        - bank_decline
+        - temporary_issue
+      exclude_fraud: true
+      max_amount_inr: 5000
+    steps:
+      - id: immediate_diagnose
+        at: immediate
+        action: diagnose
+        communication: false
+      - id: immediate_link_or_retry
+        at: immediate
+        action: policy_selected  # payment_link | retry | message
+        communication: true
+        template: payment_link
+      - id: followup_6h
+        at: PT6H
+        action: reminder
+        communication: true
+        template: whatsapp_reminder
+        only_if_unpaid: true
+      - id: followup_24h
+        at: PT24H
+        action: promise_nudge
+        communication: true
+        template: whatsapp_reminder
+        only_if_unpaid: true
+      - id: followup_48h
+        at: PT48H
+        action: escalate_if_needed
+        communication: false
+        only_if_unpaid: true
+
+  high_value_review:
+    name: High-value merchant review
+    enabled: true
+    audience:
+      min_amount_inr: 5000
+    steps:
+      - id: block_auto_exec
+        at: immediate
+        action: escalate_to_merchant
+        communication: false
+
+  fraud_block:
+    name: Fraud / unknown block
+    enabled: true
+    audience:
+      fraud: true
+    steps:
+      - id: hard_block
+        at: immediate
+        action: stop
+        communication: false
+
+defaults:
+  promise_grace_hours: 12
+  max_reminders: 3
+  languages:
+    - hinglish
+    - hindi
+    - english

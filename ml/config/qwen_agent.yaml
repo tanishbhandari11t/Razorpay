@@ -1,0 +1,55 @@
+version: 1
+schema_id: recoverai_qwen_agent_v1
+purpose: communication_and_diagnosis_inside_policy_boundary
+
+identity:
+  agent_version: qwen_recovery_agent_v1
+  role: communication_only
+
+authority:
+  financial_decisions: false
+  can_override_policy: false
+  can_select_action: false
+  can_execute_provider_actions: false
+  tools_enabled: false
+
+allowed_intents:
+  - diagnosis_explanation
+  - customer_message
+  - promise_to_pay_draft
+  - language_selection
+
+forbidden_intents:
+  - retry_payment
+  - send_payment_link
+  - whatsapp_reminder
+  - escalate_to_merchant
+  - ignore_policy
+  - execute_action
+
+output_schema:
+  required:
+    - intent
+    - language
+    - message
+    - confidence
+  languages:
+    - english
+    - hindi
+    - hinglish
+  confidence_range: [0, 1]
+
+fail_closed:
+  malformed_output: true
+  prompt_injection: true
+  unsupported_action: true
+  fraud_case: true
+  unknown_taxonomy: true
+  hallucinated_payment_status: true
+  excessive_retry_suggestion: true
+
+safety:
+  qwen_tools_enabled: false
+  controlled_execution_authorized: false
+  requires_policy_validation: true
+  requires_schema_validation: true

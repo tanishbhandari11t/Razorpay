@@ -1,0 +1,40 @@
+{
+  "evidence": {
+    "observational_ne_intervention": "enforced",
+    "phase15_authorized": false,
+    "real_outcomes_observer": "implemented",
+    "training_eligible_labels": 0
+  },
+  "execution": {
+    "controlled_pilot": "disabled",
+    "global_kill_switch": "configured",
+    "mode": "shadow",
+    "provider_actions": false
+  },
+  "generated_at": "2026-08-26T09:20:21.965270+00:00",
+  "ingestion": {
+    "event_idempotency": "implemented",
+    "hmac_verified": "implemented",
+    "payment_persisted": "implemented",
+    "razorpay_webhook": "implemented"
+  },
+  "ml": {
+    "challenger_evaluated": "blocked",
+    "feature_parity": "implemented",
+    "model_ready": false,
+    "ope_completed": "phase13_only"
+  },
+  "qwen": {
+    "deterministic_fallback": "implemented",
+    "financial_authority": false,
+    "structured_output": "implemented",
+    "tools_enabled": false
+  },
+  "user_actions_required": [
+    "Generate more Razorpay Test Mode payment.failed webhooks",
+    "Keep Celery outcome observer running through 24h/48h windows",
+    "Do not flip phase15_authorized until coverage gate is green",
+    "Do not enable controlled execution without model_ready"
+  ],
+  "version": 1
+}

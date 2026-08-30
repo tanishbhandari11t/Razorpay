@@ -1,0 +1,157 @@
+{
+  "frozen_test_rows": 1857,
+  "intervention_sensitivity": [
+    {
+      "always_retry_recovery_rate": 0.53257943,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 0.9,
+      "recoverai_v2_beats_always_retry": true,
+      "recoverai_v2_recovery_rate": 0.55465805,
+      "recoverai_v2_uplift_percentage_points": 2.2079
+    },
+    {
+      "always_retry_recovery_rate": 0.5627356,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 0.95,
+      "recoverai_v2_beats_always_retry": true,
+      "recoverai_v2_recovery_rate": 0.56973613,
+      "recoverai_v2_uplift_percentage_points": 0.7001
+    },
+    {
+      "always_retry_recovery_rate": 0.61335487,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 1.05,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.59827679,
+      "recoverai_v2_uplift_percentage_points": -1.5078
+    },
+    {
+      "always_retry_recovery_rate": 0.64189553,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 1.1,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.61389338,
+      "recoverai_v2_uplift_percentage_points": -2.8002
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 0.9,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.57296715,
+      "recoverai_v2_uplift_percentage_points": -1.6155
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 0.95,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.57942919,
+      "recoverai_v2_uplift_percentage_points": -0.9693
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 1.05,
+      "recoverai_v2_beats_always_retry": true,
+      "recoverai_v2_recovery_rate": 0.59181475,
+      "recoverai_v2_uplift_percentage_points": 0.2693
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 1.1,
+      "recoverai_v2_beats_always_retry": true,
+      "recoverai_v2_recovery_rate": 0.5993538,
+      "recoverai_v2_uplift_percentage_points": 1.0232
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 0.9,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.56812062,
+      "recoverai_v2_uplift_percentage_points": -2.1002
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 0.95,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.57727518,
+      "recoverai_v2_uplift_percentage_points": -1.1847
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 1.05,
+      "recoverai_v2_beats_always_retry": true,
+      "recoverai_v2_recovery_rate": 0.59289176,
+      "recoverai_v2_uplift_percentage_points": 0.377
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 1.1,
+      "recoverai_v2_beats_always_retry": true,
+      "recoverai_v2_recovery_rate": 0.60204631,
+      "recoverai_v2_uplift_percentage_points": 1.2924
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 0.9,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.5821217,
+      "recoverai_v2_uplift_percentage_points": -0.7001
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 0.95,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.58481422,
+      "recoverai_v2_uplift_percentage_points": -0.4308
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 1.05,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.58750673,
+      "recoverai_v2_uplift_percentage_points": -0.1616
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 1.1,
+      "recoverai_v2_beats_always_retry": false,
+      "recoverai_v2_recovery_rate": 0.58912224,
+      "recoverai_v2_uplift_percentage_points": 0.0
+    }
+  ],
+  "maximum_v2_uplift_percentage_points": 2.2079,
+  "minimum_v2_uplift_percentage_points": -2.8002,
+  "original_environment": {
+    "always_retry": {
+      "recovered_amount": 1411362,
+      "recovered_payments": 1094,
+      "recovery_rate": 0.58912224
+    },
+    "recoverai_v1": {
+      "recovered_amount": 1447107,
+      "recovered_payments": 1207,
+      "recovery_rate": 0.64997307
+    },
+    "recoverai_v2_support_safe": {
+      "recovered_amount": 1350631,
+      "recovered_payments": 1087,
+      "recovery_rate": 0.58535272
+    },
+    "recoverai_v2_uplift_vs_always_retry_percentage_points": -0.377
+  },
+  "scenarios_where_v2_beats_always_retry": 6,
+  "scope": "Synthetic counterfactual sensitivity analysis; simulator probabilities are environment-only and never model inputs",
+  "total_sensitivity_scenarios": 16,
+  "version": 1
+}

@@ -10,7 +10,11 @@ from app.database.connection import get_session
 from app.models.recovery_case import RecoveryCase
 from app.models.webhook_event import WebhookEvent
 from app.services.customer_service import find_or_create_customer
+from app.services.features.customer_history import (
+    upsert_payment_feature_context,
+)
 from app.services.payment_service import upsert_payment_from_webhook
+from app.services.outcome_observation import record_payment_observation
 
 
 RECOVERY_EVENTS = {"payment.failed", "subscription.pending"}
@@ -75,6 +79,10 @@ def process_webhook(
                     WebhookEvent.razorpay_event_id == event_id
                 )
             )
+            if existing is not None:
+                existing.delivery_count += 1
+                existing.last_received_at = datetime.now(UTC)
+                session.commit()
             return {
                 "event_id": event_id,
                 "event_type": existing.event_type if existing else event_type,
@@ -84,6 +92,11 @@ def process_webhook(
             }
 
     recovery_case_id: str | None = None
+    outcome_observation = {
+        "observations_inserted": 0,
+        "attributed_recoveries": 0,
+        "natural_recoveries_observed": 0,
+    }
     with get_session() as session:
         event = session.scalar(
             select(WebhookEvent).where(WebhookEvent.razorpay_event_id == event_id)
@@ -101,6 +114,11 @@ def process_webhook(
                     event_type=event_type,
                     customer_id=customer.id if customer else None,
                     fallback_payment_id=f"event:{event_id}",
+                )
+                upsert_payment_feature_context(
+                    session,
+                    payment,
+                    payment_entity,
                 )
 
                 recovery_case = session.scalar(
@@ -121,6 +139,17 @@ def process_webhook(
                     recovery_case.status = "recovered"
 
                 recovery_case_id = recovery_case.id if recovery_case else None
+                outcome_observation = record_payment_observation(
+                    session,
+                    payment=payment,
+                    observation_source="webhook",
+                    external_ref=event_id,
+                    observed_at=event.created_at,
+                    payload={
+                        "event_type": event_type,
+                        "provider_payment_id": payment.razorpay_payment_id,
+                    },
+                )
 
             event.processed = True
             event.processed_at = datetime.now(UTC)
@@ -144,4 +173,5 @@ def process_webhook(
         "duplicate": False,
         "processed": True,
         "recovery_case_id": recovery_case_id,
+        "outcome_observation": outcome_observation,
     }

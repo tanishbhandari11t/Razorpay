@@ -1,0 +1,44 @@
+version: 1
+model_version: recovery_model_v2_online
+policy_wrapper: recovery_policy_v3
+policy_v3_modified: false
+dataset_manifest: ml/config/dataset_manifest_v2_online.yaml
+model_manifest: ml/config/recovery_model_v2_online_manifest.yaml
+
+interventions:
+  - retry_payment
+  - payment_link
+  - whatsapp_reminder
+  - escalate_to_merchant
+
+decision_margins:
+  frozen_v3_minimum_probability_margin: 0.01701281
+  v2_validation_calibration_margin: 0.03489003
+  minimum_expected_value_margin_inr: 10.0
+
+offline_evaluation:
+  maximum_importance_weight: 30.0
+  bootstrap_iterations: 1000
+  bootstrap_unit: customer_id
+  confidence_level: 0.95
+  clipping_sensitivity:
+    - 0.02
+    - 0.03333333
+    - 0.05
+    - 0.10
+
+sensitivity:
+  intervention_probability_multipliers:
+    - 0.90
+    - 0.95
+    - 1.05
+    - 1.10
+  robust_win_minimum_scenarios: 9
+
+evidence_policy:
+  synthetic_counterfactual_is_real_uplift: false
+  logged_ope_is_causal_proof: false
+  real_shadow_is_recovery_evaluation: false
+  real_shadow_training_allowed: false
+  costs_are_synthetic: true
+  controlled_execution_authorized: false

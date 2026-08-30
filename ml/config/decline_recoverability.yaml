@@ -1,0 +1,108 @@
+version: 1
+# Inspired by ReCoup decline-codes-v1.json (PARZIVAL7498/ReCoup)
+# Maps Razorpay-shaped failure text → recoverability class for merchant gallery + policy.
+
+catalog_version: recoverai_decline_v1
+
+entries:
+  - patterns:
+      - insufficient funds
+      - nsf
+      - low balance
+      - not sufficient
+      - upi_autopay_nsf
+    mapped_class: insufficient_funds
+    recoverability: wait_then_retry
+    recommended_action: payment_link
+    merchant_label: Temporary funds issue
+
+  - patterns:
+      - timeout
+      - timed out
+      - bank unavailable
+      - gateway timeout
+      - issuer timeout
+      - network
+    mapped_class: technical_decline
+    recoverability: silent_retry
+    recommended_action: retry_payment
+    merchant_label: Temporary bank / network issue
+
+  - patterns:
+      - expired
+      - revoked
+      - mandate cancelled
+      - invalid vpa
+      - incorrect vpa
+      - card expired
+    mapped_class: instrument_dead
+    recoverability: customer_repair
+    recommended_action: payment_link
+    merchant_label: Payment method needs update
+
+  - patterns:
+      - authentication
+      - otp
+      - mpin
+      - afa required
+      - step up
+    mapped_class: auth_required
+    recoverability: customer_repair
+    recommended_action: whatsapp_reminder
+    merchant_label: Customer authentication needed
+
+  - patterns:
+      - stolen
+      - lost card
+      - fraud
+      - pickup
+      - restricted
+      - hard decline
+      - do not honour
+      - do_not_honour
+    mapped_class: hard_decline
+    recoverability: terminal
+    recommended_action: escalate_to_merchant
+    merchant_label: Hard decline - do not auto-retry
+
+  - patterns:
+      - duplicate
+      - already captured
+      - already processed
+    mapped_class: duplicate_or_unknown
+    recoverability: unknown
+    recommended_action: escalate_to_merchant
+    merchant_label: Duplicate / unclear - reconcile
+
+  - patterns:
+      - debit window
+      - mandate window
+      - velocity
+      - daily limit
+    mapped_class: window_blocked
+    recoverability: wait_window
+    recommended_action: retry_payment
+    merchant_label: Outside debit window - wait
+
+  - patterns:
+      - payment failed
+      - payment_failed
+      - failed
+    mapped_class: generic_failure
+    recoverability: customer_repair
+    recommended_action: payment_link
+    merchant_label: Payment failed - send secure link
+
+defaults:
+  mapped_class: unknown
+  recoverability: customer_repair
+  recommended_action: payment_link
+  merchant_label: Unclear failure - try payment link first
+
+policy_rules:
+  never_retry:
+    - hard_decline
+    - terminal
+  honor_promise_before_chase: true
+  max_contacts: 3
+  min_retry_gap_hours: 6

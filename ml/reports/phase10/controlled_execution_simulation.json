@@ -1,0 +1,10 @@
+{
+  "execution_gate_outcomes": {},
+  "execution_mode": "shadow",
+  "policy_outcomes_if_controlled": {},
+  "provider_actions_enabled": false,
+  "provider_calls": 0,
+  "shadow_cases": 0,
+  "status": "awaiting_shadow_cases",
+  "version": 1
+}

@@ -1,0 +1,96 @@
+{
+  "candidate_ready": false,
+  "checks": {
+    "action_coverage": false,
+    "attributed_recoveries": false,
+    "customer_segment_coverage": false,
+    "no_major_label_leakage": true,
+    "outcome_class_coverage": false,
+    "outcome_provenance_valid": true,
+    "real_labels": false,
+    "taxonomy_coverage": false,
+    "temporal_coverage": false
+  },
+  "counts": {
+    "actions": {
+      "escalate_to_merchant": 0,
+      "no_action": 0,
+      "payment_link": 0,
+      "retry_payment": 0,
+      "whatsapp_reminder": 0
+    },
+    "attributed_intervention_recoveries": 0,
+    "customer_history": {
+      "new_customer": 0,
+      "returning_customer": 0
+    },
+    "customer_value": {
+      "high_value": 0,
+      "low_value": 0,
+      "medium_value": 0
+    },
+    "eligible_labels": 0,
+    "observational_recoveries": 0,
+    "outcome_classes": {
+      "no_recovery_observed": 0,
+      "recovered": 0,
+      "unknown": 0
+    },
+    "synthetic_recovered_rows": 0,
+    "taxonomy": {
+      "fraud": 0,
+      "known_customer": 0,
+      "known_payment_method": 0,
+      "merchant": 0,
+      "technical": 0,
+      "unknown": 0
+    },
+    "temporal": {
+      "day": 0,
+      "night": 0,
+      "weekday": 0,
+      "weekend": 0
+    }
+  },
+  "minima": {
+    "actions": {
+      "escalate_to_merchant": 25,
+      "no_action": 10,
+      "payment_link": 25,
+      "retry_payment": 25,
+      "whatsapp_reminder": 25
+    },
+    "attributed_recoveries": 25,
+    "customer_segments": {
+      "high_value": 10,
+      "low_value": 10,
+      "medium_value": 10,
+      "new_customer": 10,
+      "returning_customer": 10
+    },
+    "outcome_classes": {
+      "no_recovery_observed": 25,
+      "recovered": 25,
+      "unknown": 5
+    },
+    "real_labels": 100,
+    "taxonomy": {
+      "fraud": 5,
+      "known_customer": 15,
+      "known_payment_method": 10,
+      "merchant": 5,
+      "technical": 10,
+      "unknown": 10
+    },
+    "temporal": {
+      "day": 15,
+      "night": 10,
+      "weekday": 20,
+      "weekend": 10
+    }
+  },
+  "phase": "14D",
+  "phase15_authorized": false,
+  "reason": "Phase 15 stays unauthorized until real attributed labels meet coverage minima. Row count alone is not sufficient.",
+  "version": 1
+}

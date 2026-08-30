@@ -1,0 +1,9 @@
+{
+  "artifact_dir": "ml/artifacts/final",
+  "blocked_reason": "Phase 15 training blocked: evidence coverage gate unauthorized",
+  "candidate_ready": false,
+  "generated_at": "2026-08-26T09:20:24.544554+00:00",
+  "model_ready": false,
+  "phase15_authorized": false,
+  "version": 1
+}

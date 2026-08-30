@@ -1,0 +1,52 @@
+version: 1
+model:
+  version: recovery_model_v2_online
+  artifact_version: v2_online
+  objective: P(recovery | deployable_context, candidate_action)
+  raw_feature_count: 33
+  transformed_feature_count: 43
+generated_at: '2026-08-25T16:29:23.379031+00:00'
+training:
+  dataset_provenance: SYNTHETIC
+  real_shadow_cases_used: false
+  temporal_split: true
+  test_used_for_fitting: false
+frozen_inputs:
+  dataset_manifest_v2_online:
+    path: ml/config/dataset_manifest_v2_online.yaml
+    sha256: 5423521418defe6ff9dddef2796633adebaf5fa505f84e2078eb86cca684b573
+  online_model_schema:
+    path: ml/config/online_model_schema.yaml
+    sha256: a142d17024619fb3cda269a0262a332e1f9f37149b7bd65a0546214c4c3dfdc1
+  phase11_baseline:
+    path: ml/config/phase11_baseline_manifest.yaml
+    sha256: d51c88a875be50e711dc6ca4bd4a37a8afd5d81ceccbe5752e416759d01d6c3f
+  phase12_manifest:
+    path: ml/reports/phase12/phase12_manifest.json
+    sha256: 954c2fe725caeedf23cf0d7734770cb44d0b9963872cef0459cdb1917a470f52
+artifacts:
+  recovery_model_v2_online.json:
+    path: ml/artifacts/v2_online/recovery_model_v2_online.json
+    sha256: 91be9119c7334bb40b491926a626c0b74f90420ce4e57012ecf7b64d4ec0a4a4
+  preprocessing_v2_online.joblib:
+    path: ml/artifacts/v2_online/preprocessing_v2_online.joblib
+    sha256: 5f85f6e2a62c9c45cdd89f889b3086ea2189d5eab35b4b6532b723de8914d876
+  calibration_v2_online.joblib:
+    path: ml/artifacts/v2_online/calibration_v2_online.joblib
+    sha256: a151913e3501e61eb050b0ba83a768ba6d69429b451cd1e22e9de58bdcbe066e
+  metrics_v2_online.json:
+    path: ml/artifacts/v2_online/metrics_v2_online.json
+    sha256: fe95e73c2f2ae09d90f9b8e359c07f4c7eb87d25231d76c694610b1b4bf003de
+  model_metadata_v2_online.json:
+    path: ml/artifacts/v2_online/model_metadata_v2_online.json
+    sha256: 63823e8a18ce3d1efb753595ff0f4f3100bddd63516f533aa4ea23918e06909f
+  feature_importance_v2_online.json:
+    path: ml/artifacts/v2_online/feature_importance_v2_online.json
+    sha256: 1967f51be5ce680065607901661e2200c2828a2cf644005fffc37316c733c673
+  observed_predictions_v2_online.csv:
+    path: ml/data/evaluation/observed_predictions_v2_online.csv
+    sha256: 152d3e5dfbb5458820db7237a1592ffde23970c14756312f92a63f48b110e7d4
+deployment:
+  shadow_authorized: false
+  controlled_execution_authorized: false
+  provider_actions_enabled: false

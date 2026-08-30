@@ -5,6 +5,11 @@ import json
 from fastapi import APIRouter, HTTPException, Request
 
 from app.services.razorpay_service import RazorpayNotConfigured, verify_webhook
+from app.services.recovery_jobs import enqueue_recovery_case
+from app.services.recovery_jobs_v2_online import (
+    enqueue_v2_online_case,
+    v2_online_automatic_enqueue_enabled,
+)
 from app.services.webhook_service import process_webhook
 
 
@@ -45,4 +50,18 @@ async def razorpay_webhook(request: Request) -> dict[str, object]:
             detail="Webhook was verified but could not be processed.",
         ) from error
 
-    return {"status": "received", **result}
+    recovery_case_id = result.get("recovery_case_id")
+    queued = bool(recovery_case_id and not result.get("duplicate"))
+    job: dict[str, object] | None = None
+    v2_online_job: dict[str, object] | None = None
+    if queued:
+        job = enqueue_recovery_case(str(recovery_case_id))
+        if v2_online_automatic_enqueue_enabled():
+            v2_online_job = enqueue_v2_online_case(str(recovery_case_id))
+    return {
+        "status": "received",
+        "shadow_inference_queued": queued,
+        "recovery_job": job,
+        "v2_online_shadow_job": v2_online_job,
+        **result,
+    }

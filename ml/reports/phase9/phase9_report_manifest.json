@@ -1,0 +1,12 @@
+{
+  "frozen_inputs": {
+    "feature_schema.yaml": "bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64",
+    "policy_v3_manifest.yaml": "8d6e5751b55e0f8fc025a6899615bb6805ae3bf40db90b29e5f06c9ac9d3f508",
+    "recovery_model_v1.json": "488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e"
+  },
+  "generated_at": "2026-08-25T09:32:54.107512+00:00",
+  "reports": {
+    "feature_contract_report.json": "e61d3dd57355a2333c9503824ce657a6f945ddf34c5ccedbde2d8d60cff7f739",
+    "shadow_evaluation_status.json": "b246182d545db19e8df8c9d6eda4c0a3549977c70e6674a77a7c84b37d37e20b"
+  }
+}

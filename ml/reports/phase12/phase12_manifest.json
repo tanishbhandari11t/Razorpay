@@ -1,0 +1,74 @@
+{
+  "artifacts": {
+    "deployable_feature_subset.json": {
+      "path": "ml/reports/phase12/deployable_feature_subset.json",
+      "sha256": "f1bfad5f5bbb75ec76f900ad3250de856c7f6a250aa7ae70566f2642d8763d54"
+    },
+    "failure_taxonomy_analysis.json": {
+      "path": "ml/reports/phase12/failure_taxonomy_analysis.json",
+      "sha256": "e96aabc60c9304284eb55f7608f986643aaa105f22401ce68827c1197523ea11"
+    },
+    "feature_support_analysis.json": {
+      "path": "ml/reports/phase12/feature_support_analysis.json",
+      "sha256": "c0172829e9445c98f707e0373ce3e8e50f53f6812cf91300696ea1bda0cccc0b"
+    },
+    "phase12_readiness.json": {
+      "path": "ml/reports/phase12/phase12_readiness.json",
+      "sha256": "ae1d0a275693c2be62241d02f218f817081e515698eeaa6dfa2fa95104f83982"
+    },
+    "real_razorpay_shadow_v1_features.json": {
+      "path": "ml/reports/phase12/real_razorpay_shadow_v1_features.json",
+      "sha256": "fa88d1ac76685facdc458680a5d6945d028634803526196ad3c144c83ff13d1e"
+    },
+    "real_vs_training_drift.json": {
+      "path": "ml/reports/phase12/real_vs_training_drift.json",
+      "sha256": "796c54e6e64370739e55bed5b22fc6d5c306ad2dd6e2df760d227fcfc6118df1"
+    },
+    "unknown_feature_analysis.json": {
+      "path": "ml/reports/phase12/unknown_feature_analysis.json",
+      "sha256": "769e1b713cd483020aed956336cbae6f10266edf75847df69eb52ab27847250d"
+    }
+  },
+  "baseline": {
+    "id": "REAL_RAZORPAY_SHADOW_V1",
+    "manifest": "ml/config/phase11_baseline_manifest.yaml",
+    "training_allowed": false
+  },
+  "controlled_execution_authorized": false,
+  "frozen_system_unchanged": true,
+  "generated_at": "2026-08-25T16:16:14.315805+00:00",
+  "inputs": {
+    "backend/scripts/generate_phase12_reports.py": {
+      "sha256": "bba7eae010526edc0582c880fa2f7e6015c42210cafd0d98019fd3924139d01f"
+    },
+    "ml/config/dataset_manifest.yaml": {
+      "sha256": "5dbb3cf7f8aaab06db86382b3bcbe127330d1cd30376d65b3c8bd24e8fbbfb7e"
+    },
+    "ml/config/feature_schema.yaml": {
+      "sha256": "bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64"
+    },
+    "ml/config/online_feature_schema.yaml": {
+      "sha256": "e432bbbe00a8437c42db56650929536e7a0779d5d6665796f43c7e8db3406782"
+    },
+    "ml/config/phase11_baseline_manifest.yaml": {
+      "sha256": "d51c88a875be50e711dc6ca4bd4a37a8afd5d81ceccbe5752e416759d01d6c3f"
+    },
+    "ml/config/razorpay_failure_taxonomy.yaml": {
+      "sha256": "f2f0b8339866a2a84d1e3e53eee2157935ebe63e9c0cb7a37a02de71e18db227"
+    },
+    "ml/data/processed/logging_policy_dataset.csv": {
+      "sha256": "ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf"
+    },
+    "ml/data/processed/upi_transactions_clean.csv": {
+      "sha256": "7a3a85dd4dd5418ed81099924622fc1001a1ca525ed4754b1b1b6d861b9649c2"
+    },
+    "ml/src/feature_support.py": {
+      "sha256": "0f83000a6b8c9a78c98fd8fd93fb086ffc22f658841cf91475fcb03c03f6ad96"
+    },
+    "ml/src/razorpay_failure_taxonomy.py": {
+      "sha256": "bf1d6450a78200407b3ce1ed0d505d12cf1730c15d6ffbc5beefbdc07fca4412"
+    }
+  },
+  "phase": 12,
+  "version": 1
+}

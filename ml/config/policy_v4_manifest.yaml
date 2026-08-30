@@ -1,0 +1,42 @@
+version: 1
+policy_version: recovery_policy_v4
+
+artifacts:
+  policy_v4_yaml_sha256: 87a6ae6266c75b46a47f23b1733702eaf9b57fa38aa0ef9334dd9554a0d50a97
+  comparison_report_sha256: 866165f6a72560312443c8d6a60eb098c1b088eb067a8ac6c0fc5ea54f291c3b
+  decisions_csv_sha256: 6c63bec441ffb6a3c78416b29bded34ca0daf7d14a869a7c122035cecf3ef1a8
+  execution_gate_sha256: 60cf3670928282d0faba2f0f24efa35a640ec4492d53da7b0fc3ed276a7948c6
+
+evaluation:
+  frozen_test_rows: 1857
+  comparison_horizon: one_step
+  no_action_realized_recovery_assumption: zero
+  costs_are_synthetic: true
+
+policy_v3_one_step:
+  recovered_amount: 1211903
+  intervention_cost: 9247.0
+  net_recovered_value: 1202656.0
+  recovery_rate: 0.50996230
+  recovery_roi: 131.0590
+
+policy_v4:
+  recovered_amount: 1211435
+  intervention_cost: 9122.0
+  net_recovered_value: 1202313.0
+  recovery_rate: 0.50726979
+  recovery_roi: 132.8037
+
+deltas_v4_minus_v3_one_step:
+  recovered_amount: -468
+  intervention_cost: -125.0
+  net_recovered_value: -343.0
+  recovery_rate: -0.00269251
+  recovery_roi: 1.7447
+
+status:
+  candidate_approved: false
+  reason: net_recovered_value_did_not_improve
+  production_approved: false
+  execution_authorized: false
+  qwen_integration_authorized: false

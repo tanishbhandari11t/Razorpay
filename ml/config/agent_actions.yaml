@@ -1,0 +1,35 @@
+version: 1
+schema_id: recoverai_agent_actions_v1
+purpose: communication_permissions_only
+
+# Policy selects the action. This file only says whether the agent may
+# draft a customer message. Execution stays controlled by the global gate.
+
+defaults:
+  execution: false
+  communication: false
+
+actions:
+  payment_link:
+    communication: true
+    execution: false
+  retry_payment:
+    communication: true
+    execution: false
+  whatsapp_reminder:
+    communication: true
+    execution: false
+  escalate_to_merchant:
+    communication: false
+    execution: false
+  stop:
+    communication: false
+    execution: false
+  no_action:
+    communication: false
+    execution: false
+
+safety:
+  executed_always_false: true
+  tools_enabled: false
+  financial_authority: false

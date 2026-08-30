@@ -53,6 +53,11 @@ def test_connection() -> dict[str, Any]:
     return get_client().order.all({"count": 1})
 
 
+def check_payment_status(payment_id: str) -> str:
+    payment = get_client().payment.fetch(payment_id)
+    return str(payment["status"]).lower()
+
+
 def create_order(
     *,
     amount: int,

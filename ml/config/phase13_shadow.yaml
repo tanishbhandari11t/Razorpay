@@ -1,0 +1,31 @@
+version: 1
+lane: v2_online_challenger
+enabled: false
+automatic_enqueue: false
+manual_shadow_evaluation: true
+
+identity:
+  task_name: shadow_inference_v2_online
+  model_version: recovery_model_v2_online
+  policy_version: recovery_policy_v3_v2_online
+  feature_version: temporal_recovery_features_v2_online
+  execution_mode: shadow
+
+safety:
+  provider_actions_enabled: false
+  controlled_execution_authorized: false
+  intervention_writes_allowed: false
+  unknown_failure_action: escalate_to_merchant
+  require_phase12_compatibility_gate: true
+  refuse_if_global_execution_not_shadow: true
+
+decision_margin:
+  fallback_action: retry_payment
+  minimum_expected_value_margin_inr: 10.0
+
+worker:
+  max_attempts: 3
+  retry_backoff_seconds:
+    - 5
+    - 30
+    - 120

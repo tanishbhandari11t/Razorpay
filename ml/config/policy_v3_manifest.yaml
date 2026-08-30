@@ -1,0 +1,43 @@
+version: 1
+
+model:
+  version: recovery_model_v1
+
+policy:
+  version: recovery_policy_v3
+
+dataset:
+  version: "1.0"
+
+frozen_phase8:
+  phase8_report_manifest_sha256: 781dbbab15d4c24d592c8fe58f6160e80a144b7caed07f5af71f708987f22cdb
+  intervention_policy_sha256: 70ccc0e95a50a879145482de8d4bd1014f456100f76647426125ceffec8ceda9
+  action_matrix_sha256: 974ea15e43a874cf06507279588a8fcdfd3d25d79e6b5f7599c5319c5ea3d049
+  policy_v2_manifest_sha256: 14f953a09f4e9ba00e46b4f43a316f53f57f795fab7de2e826b8c1feb77aef85
+
+benchmarks:
+  recovery_policy_v3_recovery_rate: 0.59181475
+  always_retry_recovery_rate: 0.58912224
+  recovery_policy_v3_recovered_amount: 1526714
+  always_retry_recovered_amount: 1411362
+  recovery_policy_v3_intervention_count: 1579
+  always_retry_intervention_count: 1853
+  recovery_policy_v3_intervention_cost: 10179.75
+  always_retry_intervention_cost: 1853.00
+  policy_violations: 0
+  fraud_automated_actions: 0
+
+deployment:
+  mode: offline_dry_run
+  shadow_mode_authorized: true
+  provider_execution_authorized: false
+  qwen_integration_authorized: false
+
+online_feature_contract:
+  version: temporal_recovery_features_v1
+  feature_schema_sha256: bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64
+  temporal_feature_count: 52
+  raw_model_feature_count: 49
+  transformed_feature_count: 103
+  strict_past_only: true
+  same_timestamp_excluded: true

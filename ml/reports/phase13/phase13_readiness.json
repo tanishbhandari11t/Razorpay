@@ -1,0 +1,94 @@
+{
+  "checks": {
+    "artifact_integrity": {
+      "passed": true,
+      "required": true
+    },
+    "deployable_feature_contract": {
+      "observed": 33,
+      "passed": true,
+      "required": 33
+    },
+    "economic_improvement_vs_always_retry": {
+      "always_retry_net_value_inr": 1409509.0,
+      "passed": false,
+      "v2_net_value_inr": 1196304.75
+    },
+    "model_quality": {
+      "details": {
+        "brier_not_worse_than_v1": false,
+        "calibration_error_not_worse_than_v1": false,
+        "pr_auc_not_worse_than_v1": false,
+        "roc_auc_not_worse_than_v1": false
+      },
+      "passed": false,
+      "required": "V2 must not regress against V1"
+    },
+    "ope_uncertainty": {
+      "always_retry_dr": 0.53360126,
+      "always_retry_dr_ci95": [
+        0.44729482,
+        0.6184626
+      ],
+      "intervals_nonoverlapping": false,
+      "passed": false,
+      "v2_dr": 0.50799875,
+      "v2_dr_ci95": [
+        0.43697474,
+        0.58312585
+      ]
+    },
+    "policy_safety": {
+      "fraud_automated_actions": 0,
+      "passed": true,
+      "policy_violations": 0
+    },
+    "real_shadow_compatibility": {
+      "cases": 20,
+      "compatible_cases": 0,
+      "feature_support_score": 0.66666667,
+      "feature_support_threshold": null,
+      "feature_support_threshold_selected": false,
+      "known_failure_taxonomy_required": true,
+      "passed": false,
+      "taxonomy_distribution": {
+        "unknown": 20
+      }
+    },
+    "sensitivity": {
+      "passed": false,
+      "required_wins": 9,
+      "scenarios_total": 16,
+      "scenarios_won": 0
+    },
+    "shadow_safety": {
+      "database_writes": 0,
+      "passed": true,
+      "provider_calls": 0
+    },
+    "temporal_integrity": {
+      "passed": true,
+      "required": true
+    }
+  },
+  "decision": "V2-online is deployable by feature contract but does not beat the frozen quality, economics, OPE, sensitivity, or real compatibility gates. Preserve it as a shadow challenger.",
+  "evidence_boundaries": {
+    "classification": "synthetic_frozen_test",
+    "economics": "synthetic_counterfactual",
+    "ope": "synthetic_logged_observed",
+    "real_recovery_uplift_claim_allowed": false,
+    "real_shadow": "descriptive_compatibility_only"
+  },
+  "execution": {
+    "controlled": "BLOCKED",
+    "mode": "shadow",
+    "provider_actions_enabled": false,
+    "v2_live_automatic_lane": "DISABLED",
+    "v2_offline_shadow_replay": "PASS"
+  },
+  "model_ready": false,
+  "model_version": "recovery_model_v2_online",
+  "policy_wrapper": "recovery_policy_v3",
+  "status": "blocked",
+  "version": 1
+}

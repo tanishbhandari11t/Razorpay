@@ -1,0 +1,19 @@
+{
+  "dataset_version": "1.0",
+  "frozen_test_membership_sha256": "70a1ac3ad1bfedab531cc2d62926aa884e1daf20fd7494904a25edfaaa1fd711",
+  "frozen_test_rows": 1857,
+  "model_version": "recovery_model_v1",
+  "original_synthetic_always_retry_recovery_rate": 0.58912224,
+  "original_synthetic_v2_recovery_rate": 0.58535272,
+  "policy_evaluation_config_sha256": "15e0b6739c00490c87dcc3c14aebde4518f9387e8faa25ca4577e653bc30315f",
+  "report_sha256": {
+    "context_support": "3f22f8021a73f36fcb1cf7ddc9005a9d74e09410456c3625ff3c38445a22ea07",
+    "offline_policy_metrics": "83a9e134a20ea74839674b6e52745c4d471a99b4550ffa64754be756e73f2ee8",
+    "policy_decisions": "c4bc316383d0cd73bfe924ad3790ef24b707f5c5ccfcf5cd3e089f035e40ea6d",
+    "support_report": "e7c77c01321eeeea46233be2b7b5141543b3ac8ce22bad5ea08483ae38dfef46",
+    "synthetic_policy_evaluation": "b258ab024cf8186ac7324f47031d8efcdf93cebd701e8fe864208d1261cd8a80"
+  },
+  "sensitivity_scenarios_total": 16,
+  "sensitivity_scenarios_won": 6,
+  "version": 1
+}

@@ -1,0 +1,63 @@
+version: 1
+schema_id: recoverai_controlled_pilot_v1
+purpose: final_phase_payment_link_pilot_scaffold_blocked
+
+execution:
+  mode: shadow
+  controlled_execution_authorized: false
+  provider_actions_enabled: false
+  qwen_tools_enabled: false
+  global_kill_switch: false
+  allowed_modes:
+    - shadow
+    - controlled
+    - disabled
+
+pilot:
+  enabled: false
+
+controlled_pilot:
+  enabled: false
+  initial_action: payment_link
+  max_attempts: 1
+  max_amount_inr: 5000
+  max_cases: 5
+  cooldown_hours: 24
+  daily_action_limit: 25
+  customer_action_limit: 1
+  require_model_ready: true
+  require_taxonomy_known: true
+  require_feature_support: true
+  require_fraud_check: true
+  require_risk_check: true
+  require_decision_margin: true
+  require_attempt_budget: true
+  require_cooldown: true
+  require_amount_limit: true
+  require_idempotency: true
+
+allowlist:
+  actions:
+    - payment_link
+  shadow_only_actions:
+    - retry_payment
+    - whatsapp_reminder
+    - escalate_to_merchant
+
+limits:
+  max_cases: 5
+  max_amount_inr: 5000
+  max_attempts_per_case: 1
+
+safety:
+  never_enable_without_model_ready: true
+  never_bypass_global_kill_switch: true
+  phase17_authorized: false
+  block_fraud: true
+  block_unknown_taxonomy: true
+  block_unknown_features: true
+
+kill_switch:
+  enabled: true
+  default_state: false
+  blocks_provider_calls: true

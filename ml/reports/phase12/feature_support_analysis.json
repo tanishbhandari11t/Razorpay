@@ -1,0 +1,88 @@
+{
+  "baseline_id": "REAL_RAZORPAY_SHADOW_V1",
+  "score_distribution": {
+    "count": 20,
+    "maximum": 0.6666666666666666,
+    "mean": 0.6666666666666665,
+    "median": 0.6666666666666666,
+    "minimum": 0.6666666666666666,
+    "std": 1.1102230246251565e-16
+  },
+  "selection_reason": "All real cases have unknown failure taxonomy; no threshold can authorize automation from this sample.",
+  "support_matrix": [
+    {
+      "failure": "known_customer_failure",
+      "features_available": "high_or_partial",
+      "model_supported": "evaluate",
+      "safe_automation": "conditional"
+    },
+    {
+      "failure": "known_payment_method_failure",
+      "features_available": "partial",
+      "model_supported": "partial",
+      "safe_automation": "conditional_after_all_gates"
+    },
+    {
+      "failure": "merchant_configuration",
+      "features_available": "high",
+      "model_supported": "no",
+      "safe_automation": "no"
+    },
+    {
+      "failure": "unknown",
+      "features_available": "low_or_unknown",
+      "model_supported": "no",
+      "safe_automation": "no"
+    },
+    {
+      "failure": "fraud_risk",
+      "features_available": "not_relevant",
+      "model_supported": "no",
+      "safe_automation": "never"
+    }
+  ],
+  "threshold_evaluation": {
+    "0.50": {
+      "automation_eligible_cases": 0,
+      "estimated_recovery_value_inr": 0.0,
+      "fallback_cases": 20,
+      "feature_support_cases": 20,
+      "feature_support_coverage": 1.0,
+      "policy_violations": 0
+    },
+    "0.60": {
+      "automation_eligible_cases": 0,
+      "estimated_recovery_value_inr": 0.0,
+      "fallback_cases": 20,
+      "feature_support_cases": 20,
+      "feature_support_coverage": 1.0,
+      "policy_violations": 0
+    },
+    "0.70": {
+      "automation_eligible_cases": 0,
+      "estimated_recovery_value_inr": 0.0,
+      "fallback_cases": 20,
+      "feature_support_cases": 0,
+      "feature_support_coverage": 0.0,
+      "policy_violations": 0
+    },
+    "0.80": {
+      "automation_eligible_cases": 0,
+      "estimated_recovery_value_inr": 0.0,
+      "fallback_cases": 20,
+      "feature_support_cases": 0,
+      "feature_support_coverage": 0.0,
+      "policy_violations": 0
+    },
+    "0.90": {
+      "automation_eligible_cases": 0,
+      "estimated_recovery_value_inr": 0.0,
+      "fallback_cases": 20,
+      "feature_support_cases": 0,
+      "feature_support_coverage": 0.0,
+      "policy_violations": 0
+    }
+  },
+  "threshold_selection": "not_selected",
+  "version": 1
+}

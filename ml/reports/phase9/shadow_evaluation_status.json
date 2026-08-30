@@ -1,0 +1,16 @@
+{
+  "execution_authorized": false,
+  "execution_mode": "shadow",
+  "generated_at": "2026-08-25T09:32:54.105746+00:00",
+  "live_cases_in_report": 0,
+  "metrics_implemented": [
+    "feature_drift",
+    "action_distribution",
+    "fallback_rate",
+    "confidence",
+    "decision_margin",
+    "failure_taxonomy_coverage"
+  ],
+  "minimum_cases_before_drift_gate": 20,
+  "status": "awaiting_razorpay_test_mode_cases"
+}

@@ -1,0 +1,496 @@
+{
+  "baseline_id": "REAL_RAZORPAY_SHADOW_V1",
+  "cases": [
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzN0OLZSPkJlw",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzoCdx337ZJ6c",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzrI56LOYxOqB",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzrfniPmsoCOc",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzsBGJmxDJpi2",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzsnvTRNmprU6",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzuLw11Wl28Cb",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzuvw8lrLFQQk",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzvElq9pegpF7",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzveoLeMJ1uLJ",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzwMbypycmexA",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzyW8wcy0qWse",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzyz1qnbsfavy",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzzSKykOjNfTd",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TTzzmj9p64Q1VR",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TU00SeO9wICDuM",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TU00uzIaSaRONQ",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TU01Ieq86SY6JV",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TU021EuPKxaOmB",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    },
+    {
+      "mapping": {
+        "confidence": "unknown",
+        "execution_allowed": false,
+        "matched_rule": "explicit_unknown:payment_failed",
+        "normalized_reason": "payment_failed",
+        "raw_reason": "payment_failed",
+        "retryable": false,
+        "safe_automation": "never",
+        "state": "UNKNOWN",
+        "subtype": "unknown",
+        "taxonomy": "unknown"
+      },
+      "payment_id": "pay_TU07FVObp3Yn4H",
+      "provider_error": {
+        "bank": "BARB_R",
+        "error_code": "BAD_REQUEST_ERROR",
+        "error_description": "Your payment didn't go through as it was declined by the bank. Try another payment method or contact your bank.",
+        "error_reason": "payment_failed",
+        "error_source": "bank",
+        "error_step": "payment_authorization"
+      },
+      "raw_failure_reason": "payment_failed"
+    }
+  ],
+  "known_cases": 0,
+  "raw_failure_reasons": {
+    "payment_failed": 20
+  },
+  "taxonomy_distribution": {
+    "unknown": 20
+  },
+  "total_cases": 20,
+  "unknown_cases": 20,
+  "unknown_rate": 1.0,
+  "version": 1
+}

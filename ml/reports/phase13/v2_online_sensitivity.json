@@ -1,0 +1,123 @@
+{
+  "real_uplift_claim_allowed": false,
+  "robust_uplift_supported": false,
+  "robust_win_minimum": 9,
+  "scenarios": [
+    {
+      "always_retry_recovery_rate": 0.53257943,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 0.9,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.49757674
+    },
+    {
+      "always_retry_recovery_rate": 0.5627356,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 0.95,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.50673129
+    },
+    {
+      "always_retry_recovery_rate": 0.61335487,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 1.05,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.51965536
+    },
+    {
+      "always_retry_recovery_rate": 0.64189553,
+      "perturbed_intervention": "retry_payment",
+      "probability_multiplier": 1.1,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.5277329
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 0.9,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.49434572
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 0.95,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.50296177
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 1.05,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.52611739
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "payment_link",
+      "probability_multiplier": 1.1,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.53796446
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 0.9,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.50296177
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 0.95,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.5094238
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 1.05,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.51857835
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "whatsapp_reminder",
+      "probability_multiplier": 1.1,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.5271944
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 0.9,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.5083468
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 0.95,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.51157781
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 1.05,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.51750135
+    },
+    {
+      "always_retry_recovery_rate": 0.58912224,
+      "perturbed_intervention": "escalate_to_merchant",
+      "probability_multiplier": 1.1,
+      "v2_online_beats_always_retry": false,
+      "v2_online_recovery_rate": 0.51965536
+    }
+  ],
+  "scenarios_total": 16,
+  "scenarios_won": 0,
+  "scope": "synthetic_counterfactual_sensitivity",
+  "version": 1
+}

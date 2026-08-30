@@ -1,0 +1,82 @@
+version: 1
+schema_id: recoverai_real_outcomes_v1
+purpose: collect_observed_payment_recovery_without_enabling_execution
+
+states:
+  - decided
+  - executed
+  - waiting_for_outcome
+  - recovered
+  - no_recovery_observed
+  - unknown
+
+terminal_states:
+  - recovered
+  - no_recovery_observed
+  - unknown
+
+transitions:
+  decided:
+    - executed
+    - no_recovery_observed
+    - unknown
+  executed:
+    - waiting_for_outcome
+  waiting_for_outcome:
+    - recovered
+    - no_recovery_observed
+    - unknown
+
+observation:
+  default_window_hours: 72
+  timeout_label: no_recovery_observed
+  timeout_interpretation: no recovery was observed within the configured window
+  checkpoint_hours:
+    - 24
+    - 48
+  poll_interval_minutes: 60
+  provider_poll_enabled: false
+  provider_poll_enabled_in_shadow: false
+  webhook_observation_enabled: true
+  attribution_rule: captured_after_attempted_at_within_window
+  time_to_recovery: recovery_timestamp_minus_failure_timestamp
+  evaluation_dataset:
+    require_data_source_column: true
+    allow_unlabeled_mix: false
+    real_sources:
+      - real_shadow
+      - real_controlled
+    training_candidate_source: real_controlled
+
+outcome_sources:
+  - provider
+  - webhook
+  - database
+  - simulator
+
+data_sources:
+  - synthetic
+  - real_shadow
+  - real_controlled
+
+training_eligibility:
+  require_terminal_state: true
+  require_attempted_action: true
+  require_data_source: real_controlled
+  allow_real_shadow: false
+  allow_synthetic: false
+  minimum_rows_for_retraining: 100
+  experimental_challenger_rows:
+    minimum: 100
+    maximum: 499
+  production_candidate_minimum_rows: 500
+  coverage_requirements:
+    require_both_outcome_classes: true
+    require_each_action: true
+    minimum_rows_per_action: 25
+
+safety:
+  controlled_execution_authorized: false
+  provider_actions_enabled: false
+  outcome_collection_enables_execution: false
+  natural_recovery_is_intervention_uplift: false

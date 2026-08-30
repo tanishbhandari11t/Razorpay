@@ -1,0 +1,32 @@
+{
+  "cases": 20,
+  "compatibility_allowed_cases": 0,
+  "dataset_id": "REAL_RAZORPAY_SHADOW_V1",
+  "evidence_type": "real_shadow_descriptive_replay",
+  "mean_feature_support_score": 0.66666667,
+  "post_gate_action_agreement_rate": 1.0,
+  "post_gate_action_distribution": {
+    "v1": {
+      "escalate_to_merchant": 20
+    },
+    "v2_online": {
+      "escalate_to_merchant": 20
+    }
+  },
+  "pre_gate_action_agreement_rate": 1.0,
+  "recovery_uplift_claim_allowed": false,
+  "safety": {
+    "controlled_execution_authorized": false,
+    "database_writes": 0,
+    "provider_calls": 0,
+    "unknown_failure_action": "escalate_to_merchant"
+  },
+  "taxonomy_distribution": {
+    "unknown": 20
+  },
+  "training_allowed": false,
+  "v1_mean_probability_margin": 0.01856379,
+  "v2_margin_fallback_count": 0,
+  "v2_mean_probability_margin": 0.01923078,
+  "version": 1
+}

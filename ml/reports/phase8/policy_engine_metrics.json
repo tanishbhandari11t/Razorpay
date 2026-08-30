@@ -1,0 +1,87 @@
+{
+  "baselines": {
+    "always_retry": {
+      "intervention_cost": 1853.0,
+      "intervention_count": 1853,
+      "recovered_amount": 1411362,
+      "recovered_amount_per_intervention": 761.66,
+      "recovered_payments": 1094,
+      "recovery_rate": 0.58912224,
+      "recovery_roi": 761.6632
+    },
+    "historical_base_policy": {
+      "intervention_cost": 18674.0,
+      "intervention_count": 1853,
+      "recovered_amount": 1354513,
+      "recovered_amount_per_intervention": 730.98,
+      "recovered_payments": 1029,
+      "recovery_rate": 0.55411955,
+      "recovery_roi": 72.5347
+    },
+    "logging_policy_observed": {
+      "intervention_cost": 18176.75,
+      "intervention_count": 1853,
+      "recovered_amount": 1343797,
+      "recovered_amount_per_intervention": 725.2,
+      "recovered_payments": 1044,
+      "recovery_rate": 0.56219709,
+      "recovery_roi": 73.9294
+    },
+    "recoverai_v1": {
+      "intervention_cost": 10854.25,
+      "intervention_count": 1853,
+      "recovered_amount": 1447107,
+      "recovered_amount_per_intervention": 780.95,
+      "recovered_payments": 1207,
+      "recovery_rate": 0.64997307,
+      "recovery_roi": 133.3217
+    },
+    "support_safe_v2": {
+      "intervention_cost": 9437.5,
+      "intervention_count": 1853,
+      "recovered_amount": 1350631,
+      "recovered_amount_per_intervention": 728.89,
+      "recovered_payments": 1087,
+      "recovery_rate": 0.58535272,
+      "recovery_roi": 143.1132
+    }
+  },
+  "execution_mode": "dry_run",
+  "frozen_test_rows": 1857,
+  "policy_version": "recovery_policy_v3",
+  "qwen_used": false,
+  "razorpay_api_calls": 0,
+  "recovery_policy_v3": {
+    "actions_per_case": 0.85029618,
+    "blocked_decisions": 39,
+    "fallback_decisions": 1281,
+    "fraud_automated_actions": 0,
+    "fraud_cases": 4,
+    "intervention_cost": 10179.75,
+    "intervention_count": 1579,
+    "policy_violations": 0,
+    "recovered_amount": 1526714,
+    "recovered_amount_per_intervention": 966.89,
+    "recovered_payments": 1099,
+    "recovery_rate": 0.59181475,
+    "recovery_roi": 149.9756,
+    "revenue_at_risk": 2456791,
+    "selected_action_counts": {
+      "escalate_to_merchant": 157,
+      "no_action": 722,
+      "payment_link": 548,
+      "retry_payment": 477,
+      "whatsapp_reminder": 397
+    },
+    "stop_decisions": 683,
+    "stop_rate": 0.38879914,
+    "terminal_state_counts": {
+      "escalated": 36,
+      "recovered": 1099,
+      "stopped": 722
+    }
+  },
+  "scope": "Dry-run policy-engine simulation using frozen calibrated V1 predictions and synthetic counterfactual outcomes",
+  "simulator_max_attempts_per_action": 1,
+  "version": 1
+}

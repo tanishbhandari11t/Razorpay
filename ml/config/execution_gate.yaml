@@ -1,0 +1,26 @@
+version: 1
+
+execution:
+  mode: shadow
+  controlled_execution_authorized: false
+  provider_actions_enabled: false
+  qwen_tools_enabled: false
+
+shadow_evaluation:
+  minimum_real_cases: 20
+  maximum_failed_inference_rate: 0.05
+  maximum_unknown_failure_rate: 0.20
+  maximum_unknown_feature_rate: 0.20
+  maximum_policy_violations: 0
+  maximum_automated_fraud_actions: 0
+  maximum_duplicate_decisions: 0
+  require_feature_parity: true
+  require_artifact_validation: true
+  require_worker_reliability: true
+
+worker:
+  max_attempts: 3
+  retry_backoff_seconds:
+    - 5
+    - 30
+    - 120

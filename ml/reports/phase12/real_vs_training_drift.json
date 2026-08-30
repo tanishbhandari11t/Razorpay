@@ -1,0 +1,231 @@
+{
+  "baseline_id": "REAL_RAZORPAY_SHADOW_V1",
+  "categorical": {
+    "day_of_week": {
+      "real_test_mode_distribution": {
+        "Tuesday": 1.0
+      },
+      "total_variation_descriptive": 0.8578399999999999,
+      "training_distribution": {
+        "Friday": 0.141984,
+        "Monday": 0.14598,
+        "Saturday": 0.141336,
+        "Sunday": 0.144012,
+        "Thursday": 0.141728,
+        "Tuesday": 0.14216,
+        "Wednesday": 0.1428
+      }
+    },
+    "device_type": {
+      "real_test_mode_distribution": {
+        "UNKNOWN": 1.0
+      },
+      "total_variation_descriptive": 1.0,
+      "training_distribution": {
+        "Android": 0.751108,
+        "Web": 0.05044,
+        "iOS": 0.198452
+      }
+    },
+    "merchant_category": {
+      "real_test_mode_distribution": {
+        "UNKNOWN": 1.0
+      },
+      "total_variation_descriptive": 1.0,
+      "training_distribution": {
+        "Education": 0.030392,
+        "Entertainment": 0.080412,
+        "Food": 0.149856,
+        "Fuel": 0.100252,
+        "Grocery": 0.199864,
+        "Healthcare": 0.050652,
+        "Other": 0.099312,
+        "Shopping": 0.119488,
+        "Transport": 0.08042,
+        "Utilities": 0.089352
+      }
+    },
+    "network_type": {
+      "real_test_mode_distribution": {
+        "UNKNOWN": 1.0
+      },
+      "total_variation_descriptive": 1.0,
+      "training_distribution": {
+        "3G": 0.049884,
+        "4G": 0.599252,
+        "5G": 0.250328,
+        "WiFi": 0.100536
+      }
+    },
+    "sender_bank": {
+      "real_test_mode_distribution": {
+        "BARB_R": 1.0
+      },
+      "total_variation_descriptive": 1.0,
+      "training_distribution": {
+        "Axis": 0.100168,
+        "HDFC": 0.14994,
+        "ICICI": 0.119076,
+        "IndusInd": 0.100692,
+        "Kotak": 0.080128,
+        "PNB": 0.099784,
+        "SBI": 0.250772,
+        "Yes Bank": 0.09944
+      }
+    },
+    "sender_state": {
+      "real_test_mode_distribution": {
+        "UNKNOWN": 1.0
+      },
+      "total_variation_descriptive": 1.0,
+      "training_distribution": {
+        "Andhra Pradesh": 0.080024,
+        "Delhi": 0.09948,
+        "Gujarat": 0.080244,
+        "Karnataka": 0.119024,
+        "Maharashtra": 0.149708,
+        "Rajasthan": 0.079924,
+        "Tamil Nadu": 0.101468,
+        "Telangana": 0.08974,
+        "Uttar Pradesh": 0.1205,
+        "West Bengal": 0.079888
+      }
+    },
+    "transaction_type": {
+      "real_test_mode_distribution": {
+        "UNKNOWN": 1.0
+      },
+      "total_variation_descriptive": 1.0,
+      "training_distribution": {
+        "Bill Payment": 0.149472,
+        "P2M": 0.35064,
+        "P2P": 0.44978,
+        "Recharge": 0.050108
+      }
+    }
+  },
+  "domain_mismatches": {
+    "failure_reason": {
+      "classification": "SEMANTICALLY_MISMATCHED",
+      "real": {
+        "payment_failed": 20
+      },
+      "training": "synthetic UPI status context"
+    },
+    "payment_method": {
+      "classification": "SEMANTICALLY_MISMATCHED",
+      "real": {
+        "netbanking": 20
+      },
+      "training": "no equivalent canonical model feature"
+    }
+  },
+  "interpretation": "early_distribution_shift_evidence",
+  "model_training_rows": 12376,
+  "numerical": {
+    "amount_inr": {
+      "ks_statistic_descriptive": 0.352224,
+      "real_test_mode": {
+        "count": 20,
+        "maximum": 10000.0,
+        "mean": 3039.6,
+        "median": 1749.0,
+        "minimum": 100.0,
+        "std": 3316.3884332206926
+      },
+      "reference": "synthetic_source_transactions",
+      "training": {
+        "count": 250000,
+        "maximum": 42099.0,
+        "mean": 1311.756036,
+        "median": 629.0,
+        "minimum": 10.0,
+        "std": 1848.0555281737522
+      }
+    },
+    "amount_vs_previous_avg": {
+      "ks_statistic_descriptive": 0.2922753716871364,
+      "real_test_mode": {
+        "count": 20,
+        "maximum": 33.333333333333336,
+        "mean": 3.110552115370413,
+        "median": 0.276235608378442,
+        "minimum": 0.0,
+        "std": 7.3730826072544025
+      },
+      "reference": "model_training_failures",
+      "training": {
+        "count": 12376,
+        "maximum": 192.62666667,
+        "mean": 1.3549163448238528,
+        "median": 0.53690353,
+        "minimum": 0.0,
+        "std": 3.4052698359307603
+      }
+    },
+    "hour_of_day": {
+      "ks_statistic_descriptive": 0.650808,
+      "real_test_mode": {
+        "count": 20,
+        "maximum": 12.0,
+        "mean": 11.95,
+        "median": 12.0,
+        "minimum": 11.0,
+        "std": 0.21794494717703367
+      },
+      "reference": "synthetic_source_transactions",
+      "training": {
+        "count": 250000,
+        "maximum": 23.0,
+        "mean": 14.681032,
+        "median": 15.0,
+        "minimum": 0.0,
+        "std": 5.188293304640361
+      }
+    },
+    "previous_failure_count": {
+      "ks_statistic_descriptive": 0.24452165481577237,
+      "real_test_mode": {
+        "count": 20,
+        "maximum": 3.0,
+        "mean": 1.35,
+        "median": 1.0,
+        "minimum": 0.0,
+        "std": 1.107925990308017
+      },
+      "reference": "model_training_failures",
+      "training": {
+        "count": 12376,
+        "maximum": 11.0,
+        "mean": 0.8323367808661927,
+        "median": 0.0,
+        "minimum": 0.0,
+        "std": 1.1958064390938816
+      }
+    },
+    "previous_transaction_count": {
+      "ks_statistic_descriptive": 0.845830639948287,
+      "real_test_mode": {
+        "count": 20,
+        "maximum": 3.0,
+        "mean": 1.35,
+        "median": 1.0,
+        "minimum": 0.0,
+        "std": 1.107925990308017
+      },
+      "reference": "model_training_failures",
+      "training": {
+        "count": 12376,
+        "maximum": 109.0,
+        "mean": 15.14423076923077,
+        "median": 12.0,
+        "minimum": 0.0,
+        "std": 13.067219517837495
+      }
+    }
+  },
+  "real_rows": 20,
+  "statistical_caveat": "The real sample has n=20 and is not sufficient for production population or significance claims.",
+  "synthetic_source_rows": 250000,
+  "version": 1
+}

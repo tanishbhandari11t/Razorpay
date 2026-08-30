@@ -1,0 +1,502 @@
+{
+  "aggregate": {
+    "known": 640,
+    "known_rate": 0.6666666666666666,
+    "total": 960,
+    "unavailable": 160,
+    "unavailable_rate": 0.16666666666666666,
+    "unknown": 160,
+    "unknown_rate": 0.16666666666666666
+  },
+  "baseline_id": "REAL_RAZORPAY_SHADOW_V1",
+  "features": {
+    "amount_inr": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_AVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "provider or inference input",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "amount_last_30d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "amount_last_7d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "amount_vs_previous_avg": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "current_amount_percentile": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "customer_primary_device_before_failure": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Derived from unavailable device observations.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "customer_primary_network_before_failure": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Derived from unavailable network observations.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "day_of_week": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_AVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "provider or inference input",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "days_since_previous_failure": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "days_since_previous_success": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "days_since_previous_transaction": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "device_matches_primary": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Derived from unavailable device observations.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "device_type": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Standard payment payload does not expose payer device type.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "failures_last_30d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "failures_last_7d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "has_previous_failure": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "has_previous_success": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "has_prior_history": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "historical_failure_rate": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "historical_fraud_rate": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Missing fraud evidence is not evidence of zero fraud.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "historical_success_rate": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "historical_weekend_ratio": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "hour_of_day": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_AVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "provider or inference input",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "is_weekend": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_AVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "provider or inference input",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "merchant_category": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Standard payment payload does not expose merchant category.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "network_matches_primary": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Derived from unavailable network observations.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "network_type": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Standard payment payload does not expose payer network type.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "previous_avg_amount": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "previous_failure_count": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "previous_failure_streak": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "previous_fraud_count": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Missing fraud evidence is not evidence of zero fraud.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "previous_max_amount": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "previous_median_amount": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "previous_success_count": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "previous_transaction_count": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "same_day_of_week_previous_rate": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "same_merchant_category_previous_count": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Derived from an unavailable merchant category.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "same_merchant_category_previous_rate": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Derived from an unavailable merchant category.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "same_transaction_type_previous_count": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Derived from an unavailable synthetic transaction type.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "sender_age_group": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Standard payment payload does not expose payer age group.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "sender_bank": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "SEMANTICALLY_MISMATCHED",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "Razorpay bank codes are not the synthetic training bank vocabulary.",
+      "unavailable": 0,
+      "unknown": 20
+    },
+    "sender_state": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Standard payment payload does not expose payer state.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "successes_last_30d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "successes_last_7d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "transaction_type": {
+      "known": 0,
+      "known_rate": 0.0,
+      "online_classification": "ONLINE_UNAVAILABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 20,
+      "reason": "Standard Razorpay payment.failed payload has no training transaction type.",
+      "unavailable": 20,
+      "unknown": 0
+    },
+    "transactions_last_30d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "transactions_last_7d": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    },
+    "usual_hour_previous_rate": {
+      "known": 20,
+      "known_rate": 1.0,
+      "online_classification": "ONLINE_DERIVABLE",
+      "raw_null": 0,
+      "raw_unknown_sentinel": 0,
+      "reason": "strictly prior persisted history",
+      "unavailable": 0,
+      "unknown": 0
+    }
+  },
+  "model_feature_count": 48,
+  "state_definitions": {
+    "KNOWN": "Available with compatible online semantics.",
+    "UNAVAILABLE": "Not observable from the standard Razorpay payload.",
+    "UNKNOWN": "Present as a sentinel or semantically mismatched."
+  },
+  "total_cases": 20,
+  "version": 1
+}

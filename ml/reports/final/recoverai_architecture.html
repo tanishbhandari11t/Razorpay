@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RecoverAI Architecture</title>
+  <style>
+    :root {
+      --ink: #111;
+      --muted: #444;
+      --line: #222;
+      --paper: #faf9f6;
+      --box: #fff;
+      --accent: #1a1a1a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      padding: 28px 20px 60px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      letter-spacing: 0.04em;
+      margin: 0 0 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+    .board {
+      max-width: 1180px;
+      margin: 0 auto;
+      border: 2px solid var(--line);
+      background: #fff;
+      padding: 22px 18px 28px;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 14px 0 8px;
+    }
+    .row {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .sources { grid-template-columns: repeat(4, 1fr); }
+    .mid {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: stretch;
+    }
+    .actions-row { grid-template-columns: 1fr 1.2fr; }
+    .bottom { grid-template-columns: 1.2fr 1fr; }
+    .box {
+      border: 2px solid var(--line);
+      background: var(--box);
+      padding: 10px 12px;
+      min-height: 54px;
+    }
+    .box strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .box span, .box li {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .box ul {
+      margin: 4px 0 0;
+      padding-left: 16px;
+    }
+    .plane { background: #f3f3f3; text-align: center; font-weight: 650; }
+    .brain {
+      border-width: 3px;
+      min-height: 280px;
+    }
+    .brain h2 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+    .brain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .inner {
+      border: 1.5px solid #555;
+      padding: 8px;
+      background: #fcfcfc;
+    }
+    .inner strong { font-size: 12px; }
+    .gate {
+      text-align: center;
+      font-weight: 700;
+      padding: 14px;
+      background: #f7f7f7;
+    }
+    .arrow {
+      text-align: center;
+      font-size: 18px;
+      margin: 4px 0;
+      color: #333;
+    }
+    .note {
+      max-width: 1180px;
+      margin: 14px auto 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .lock {
+      display: inline-block;
+      border: 1px solid #333;
+      padding: 2px 6px;
+      font-size: 11px;
+      margin-left: 6px;
+    }
+    @media (max-width: 900px) {
+      .sources, .mid, .actions-row, .bottom, .brain-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media print {
+      body { padding: 0; background: white; }
+      .board { border-width: 1.5px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>RecoverAI Architecture</h1>
+  <p class="subtitle">
+    Failed-payment recovery · XGBoost predicts · Policy decides · Safety gates · Agent communicates · Shadow execution
+    <span class="lock">EXECUTION: SHADOW</span>
+  </p>
+
+  <div class="board">
+    <div class="section-label">Sources</div>
+    <div class="row sources">
+      <div class="box"><strong>Razorpay webhooks</strong><span>payment.failed / payment.captured</span></div>
+      <div class="box"><strong>Test Mode checkout</strong><span>orders · subscriptions · demo failures</span></div>
+      <div class="box"><strong>Celery Beat tick</strong><span>jobs · 24h/48h observer</span></div>
+      <div class="box"><strong>Frozen seed / eval</strong><span>offline datasets · phase reports</span></div>
+    </div>
+
+    <div class="arrow">↓</div>
+    <div class="box plane">Control Plane — FastAPI ingest · case APIs · webhook HMAC verify · eval endpoints</div>
+    <div class="arrow">↓</div>
+
+    <div class="row mid">
+      <div class="box brain">
+        <h2>Recovery Brain — one tick, one action</h2>
+        <div class="brain-grid">
+          <div class="inner"><strong>Orchestrator</strong><span>Celery worker · recovery_jobs outbox</span></div>
+          <div class="inner"><strong>Code catalog</strong><span>Razorpay failure taxonomy v1</span></div>
+          <div class="inner"><strong>Normalizer → Revenue at Risk</strong><span>amount · case · payment status</span></div>
+          <div class="inner"><strong>Diagnoser</strong><span>FailureClass + recoverability features</span></div>
+          <div class="inner"><strong>XGBoost V1</strong><span>recovery probability · 49 features</span></div>
+          <div class="inner"><strong>Decider — Policy V3</strong><span>one ActionIntent · legal set</span></div>
+          <div class="inner" style="grid-column: 1 / -1">
+            <strong>Qwen / templates (optional) — copy + explain</strong>
+            <span>communication only · never chooses financial action · schema validated</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <strong>Hard bans</strong>
+        <ul>
+          <li>contact / attempt caps</li>
+          <li>hard decline never retries</li>
+          <li>idempotency + in-flight lock</li>
+          <li>amount frozen = original obligation</li>
+          <li>unknown taxonomy → fail-closed</li>
+          <li>kill switch / stop on capture</li>
+          <li>provider actions disabled in shadow</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow">↓ legal set / proposed intent</div>
+    <div class="box gate">
+      Policy Gate — code, not a prompt<br />
+      <span style="font-weight:500;color:#444;font-size:12px">
+        execution_gate + controlled_pilot + taxonomy + feature support → signed ActionIntent · or blocked
+      </span>
+    </div>
+
+    <div class="arrow">↓</div>
+    <div class="row actions-row">
+      <div class="box">
+        <strong>Actions</strong>
+        <ul>
+          <li>payment_link (pilot-only, currently locked)</li>
+          <li>retry / whatsapp (shadow log only)</li>
+          <li>escalate_to_merchant</li>
+          <li>write-off / stop</li>
+        </ul>
+      </div>
+      <div class="box">
+        <strong>World — same interface</strong>
+        <ul>
+          <li>Razorpay Test Mode (optional live path)</li>
+          <li>Shadow mode: decide + draft, do not move money</li>
+          <li>Offline simulator / OPE for policy comparison</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="arrow">↓</div>
+    <div class="box">
+      <strong>Memory</strong>
+      <span>
+        customers · payments · recovery_cases · webhook_events · agent_decisions · recovery_jobs ·
+        interventions · intervention_outcomes · outcome_observations · audit / timeline
+      </span>
+    </div>
+
+    <div class="arrow">↓</div>
+    <div class="row bottom">
+      <div class="box">
+        <strong>Eval — RecoverAI vs baseline</strong>
+        <span>at-risk ₹ · predicted recoverable · observed recovered · attributed vs observational · safety blocks</span>
+      </div>
+      <div class="box">
+        <strong>Console — board / case / failure gallery</strong>
+        <span>Command center · Recovery queue · Agent activity · Evaluation · case timeline</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">
+    <strong>Authority split:</strong> XGBoost predicts · Policy decides · Safety permits/blocks ·
+    Agent/Qwen communicates · Executor acts only if allowed (currently never) ·
+    Observer records 24h/48h outcomes without inventing attributed recoveries.
+  </p>
+</body>
+</html>

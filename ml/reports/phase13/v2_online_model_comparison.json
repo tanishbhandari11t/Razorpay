@@ -1,0 +1,31 @@
+{
+  "delta_v2_minus_v1": {
+    "brier_score": 0.00055498,
+    "log_loss": 0.00140321,
+    "mean_absolute_calibration_error": 0.00481069,
+    "pr_auc": -0.00687055,
+    "roc_auc": -0.00272158
+  },
+  "evaluation_split": "same_frozen_test_membership",
+  "interpretation": "A deployability trade-off comparison on synthetic logged data; not evidence of real Razorpay recovery uplift.",
+  "rows": 1857,
+  "v1_research_model": {
+    "brier_score": 0.23414363,
+    "log_loss": 0.66101909,
+    "mean_absolute_calibration_error": 0.03121794,
+    "positive_rate": 0.56219709,
+    "pr_auc": 0.65264549,
+    "roc_auc": 0.62488277,
+    "rows": 1857
+  },
+  "v2_online_model": {
+    "brier_score": 0.23469861,
+    "log_loss": 0.6624223,
+    "mean_absolute_calibration_error": 0.03602863,
+    "positive_rate": 0.56219709,
+    "pr_auc": 0.64577494,
+    "roc_auc": 0.62216119,
+    "rows": 1857
+  },
+  "version": 1
+}

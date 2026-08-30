@@ -1,0 +1,70 @@
+version: 1
+baseline_id: REAL_RAZORPAY_SHADOW_V1
+frozen: true
+frozen_at: "2026-08-25T12:23:10.620595+00:00"
+
+scope:
+  provider: razorpay
+  provider_mode: test
+  execution_mode: shadow
+  real_cases: 20
+  amount_at_risk_inr: 60792.0
+
+frozen_system:
+  model_version: recovery_model_v1
+  policy_version: recovery_policy_v3
+  feature_version: temporal_recovery_features_v1
+
+baseline_results:
+  worker_successes: 20
+  inference_failures: 0
+  duplicate_decisions: 0
+  policy_violations: 0
+  automated_fraud_actions: 0
+  external_executions: 0
+  fallback_rate: 1.0
+  weak_margin_rate: 1.0
+  unknown_failure_rate: 1.0
+  unknown_feature_rate: 0.833333
+  action_distribution:
+    escalate_to_merchant: 20
+
+artifacts:
+  phase11_shadow_validation:
+    path: ml/reports/phase11/phase11_shadow_validation.json
+    sha256: e25b44056308abe784505e2f1b7f7223525ea9e98092ebbd02d65619973a8a61
+  real_shadow_cases:
+    path: ml/reports/phase11/real_shadow_cases.csv
+    sha256: eaf56699a358d31132d92a4f6292a98e1ee3f3fe840339369c6ffe426f57eafe
+
+frozen_upstream:
+  phase9_report_manifest:
+    path: ml/reports/phase9/phase9_report_manifest.json
+    sha256: 58877fd8dcd345e8e721868598b424fbb3f09cb26ddb85747429b9eb94233a57
+  phase10_report_manifest:
+    path: ml/reports/phase10/phase10_report_manifest.json
+    sha256: 79c1ea9751f25a840b31dad3fb1c5bb9e9d5e715ca691efcae3c54c7ace541bc
+  execution_gate:
+    path: ml/config/execution_gate.yaml
+    sha256: 60cf3670928282d0faba2f0f24efa35a640ec4492d53da7b0fc3ed276a7948c6
+  policy_v3_manifest:
+    path: ml/config/policy_v3_manifest.yaml
+    sha256: 8d6e5751b55e0f8fc025a6899615bb6805ae3bf40db90b29e5f06c9ac9d3f508
+  feature_schema:
+    path: ml/config/feature_schema.yaml
+    sha256: bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64
+  dataset_manifest:
+    path: ml/config/dataset_manifest.yaml
+    sha256: 5dbb3cf7f8aaab06db86382b3bcbe127330d1cd30376d65b3c8bd24e8fbbfb7e
+  model_training_dataset:
+    path: ml/data/processed/logging_policy_dataset.csv
+    sha256: ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf
+  synthetic_source_dataset:
+    path: ml/data/processed/upi_transactions_clean.csv
+    sha256: 7a3a85dd4dd5418ed81099924622fc1001a1ca525ed4754b1b1b6d861b9649c2
+
+restrictions:
+  train_on_cases: false
+  tune_v1_from_cases: false
+  modify_policy_v3_from_cases: false
+  enable_controlled_execution: false

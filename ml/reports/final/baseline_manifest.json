@@ -1,0 +1,178 @@
+{
+  "artifacts": {
+    "action_matrix": {
+      "exists": true,
+      "path": "ml/config/action_matrix.yaml",
+      "sha256": "974ea15e43a874cf06507279588a8fcdfd3d25d79e6b5f7599c5319c5ea3d049"
+    },
+    "controlled_pilot": {
+      "exists": true,
+      "path": "ml/config/controlled_pilot.yaml",
+      "sha256": "f859d5370a0a3d3f988082c24bf4d17e682d2b07946b61427941dea1754c993e"
+    },
+    "execution_gate": {
+      "exists": true,
+      "path": "ml/config/execution_gate.yaml",
+      "sha256": "60cf3670928282d0faba2f0f24efa35a640ec4492d53da7b0fc3ed276a7948c6"
+    },
+    "feature_schema": {
+      "exists": true,
+      "path": "ml/config/feature_schema.yaml",
+      "sha256": "bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64"
+    },
+    "intervention_policy": {
+      "exists": true,
+      "path": "ml/config/intervention_policy.yaml",
+      "sha256": "70ccc0e95a50a879145482de8d4bd1014f456100f76647426125ceffec8ceda9"
+    },
+    "online_model_schema": {
+      "exists": true,
+      "path": "ml/config/online_model_schema.yaml",
+      "sha256": "a142d17024619fb3cda269a0262a332e1f9f37149b7bd65a0546214c4c3dfdc1"
+    },
+    "outcome_observation": {
+      "exists": true,
+      "path": "ml/config/outcome_observation.yaml",
+      "sha256": "0c56d48fd315140e92d7236669443c05e35873b18353d222e908d6f4729ac044"
+    },
+    "phase11_baseline": {
+      "exists": true,
+      "path": "ml/config/phase11_baseline_manifest.yaml",
+      "sha256": "d51c88a875be50e711dc6ca4bd4a37a8afd5d81ceccbe5752e416759d01d6c3f"
+    },
+    "phase11_cases": {
+      "exists": true,
+      "path": "ml/reports/phase11/real_shadow_cases.csv",
+      "sha256": "eaf56699a358d31132d92a4f6292a98e1ee3f3fe840339369c6ffe426f57eafe"
+    },
+    "phase11_shadow_validation": {
+      "exists": true,
+      "path": "ml/reports/phase11/phase11_shadow_validation.json",
+      "sha256": "e25b44056308abe784505e2f1b7f7223525ea9e98092ebbd02d65619973a8a61"
+    },
+    "phase12_manifest": {
+      "exists": true,
+      "path": "ml/reports/phase12/phase12_manifest.json",
+      "sha256": "954c2fe725caeedf23cf0d7734770cb44d0b9963872cef0459cdb1917a470f52"
+    },
+    "phase12_readiness": {
+      "exists": true,
+      "path": "ml/reports/phase12/phase12_readiness.json",
+      "sha256": "ae1d0a275693c2be62241d02f218f817081e515698eeaa6dfa2fa95104f83982"
+    },
+    "phase13_readiness": {
+      "exists": true,
+      "path": "ml/reports/phase13/phase13_readiness.json",
+      "sha256": "01bf4df0475761762d19f8ad63fe81af821a0864b8d4b0e5e4b422b3327b8027"
+    },
+    "phase13_report_manifest": {
+      "exists": true,
+      "path": "ml/reports/phase13/phase13_report_manifest.json",
+      "sha256": "42f383c7f061c25a2f7bf3cd98675f42137c6beb1103028c2b43de5365da208c"
+    },
+    "phase14_coverage": {
+      "exists": true,
+      "path": "ml/reports/phase14/coverage.json",
+      "sha256": "dd85cf3cd077d117e37fe0df0bc0449006866e9741011f18c312dcfad84b02e1"
+    },
+    "phase14_manifest": {
+      "exists": true,
+      "path": "ml/reports/phase14/phase14_manifest.json",
+      "sha256": "f9ebc39885b3f50be958f1fad50af69f283084c534c03b05a81bece1a01b548d"
+    },
+    "phase14_summary": {
+      "exists": true,
+      "path": "ml/reports/phase14/phase14_summary.json",
+      "sha256": "db41b81b4065bb4c26f0dd5ac471fcca1e6bd07fbadc6fec1d3fab0eb43e2259"
+    },
+    "phase15_readiness": {
+      "exists": true,
+      "path": "ml/reports/phase15/phase15_readiness.json",
+      "sha256": "93c0b65e3ae9bf1dafba2b009b624f6822fc1000f17896e2d23d9f2f4c78b1ac"
+    },
+    "policy_evaluation": {
+      "exists": true,
+      "path": "ml/config/policy_evaluation.yaml",
+      "sha256": "15e0b6739c00490c87dcc3c14aebde4518f9387e8faa25ca4577e653bc30315f"
+    },
+    "policy_v3_manifest": {
+      "exists": true,
+      "path": "ml/config/policy_v3_manifest.yaml",
+      "sha256": "8d6e5751b55e0f8fc025a6899615bb6805ae3bf40db90b29e5f06c9ac9d3f508"
+    },
+    "qwen_agent": {
+      "exists": true,
+      "path": "ml/config/qwen_agent.yaml",
+      "sha256": "817b4e878b4be4609bfd08456c4a237e646e577d862d6b7f0b5a57591cfd74de"
+    },
+    "real_outcome_schema": {
+      "exists": true,
+      "path": "ml/config/real_outcome_schema.yaml",
+      "sha256": "63eca91bc78e7f67c96d4c92b4ba1fb8727c38ff304eb2adf1616bc79e0bd8be"
+    },
+    "v1_calibrator": {
+      "exists": true,
+      "path": "ml/artifacts/calibration_v1.joblib",
+      "sha256": "f0798cce1b2a2d937b245acc73af23f5f9f654173fa61bd760e760db3683c1fe"
+    },
+    "v1_metadata": {
+      "exists": true,
+      "path": "ml/artifacts/model_metadata.json",
+      "sha256": "dbf16ac1f72071b2d90d675384877a79e389f26feb07a6e92873016d810c77d7"
+    },
+    "v1_model": {
+      "exists": true,
+      "path": "ml/artifacts/recovery_model_v1.json",
+      "sha256": "488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e"
+    },
+    "v1_preprocessor": {
+      "exists": true,
+      "path": "ml/artifacts/preprocessing_v1.joblib",
+      "sha256": "6229aedee7ab545fb52999cfe7c9454c49be2f116adc8943ab2c32023c448268"
+    },
+    "v2_calibrator": {
+      "exists": true,
+      "path": "ml/artifacts/v2_online/calibration_v2_online.joblib",
+      "sha256": "a151913e3501e61eb050b0ba83a768ba6d69429b451cd1e22e9de58bdcbe066e"
+    },
+    "v2_manifest": {
+      "exists": true,
+      "path": "ml/config/recovery_model_v2_online_manifest.yaml",
+      "sha256": "e03254961d8858f8a4ec94048e2e72371e6577c35bf83763441ac67e932033e9"
+    },
+    "v2_model": {
+      "exists": true,
+      "path": "ml/artifacts/v2_online/recovery_model_v2_online.json",
+      "sha256": "91be9119c7334bb40b491926a626c0b74f90420ce4e57012ecf7b64d4ec0a4a4"
+    },
+    "v2_preprocessor": {
+      "exists": true,
+      "path": "ml/artifacts/v2_online/preprocessing_v2_online.joblib",
+      "sha256": "5f85f6e2a62c9c45cdd89f889b3086ea2189d5eab35b4b6532b723de8914d876"
+    }
+  },
+  "controlled_execution_authorized": false,
+  "execution_mode": "shadow",
+  "feature_schema": "bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64",
+  "freeze_note": "Final baseline freeze. Do not mutate hashed upstream artifacts during the final phase.",
+  "generated_at": "2026-08-26T09:20:20.297157+00:00",
+  "missing_artifacts": [],
+  "model_ready": false,
+  "phase": "final",
+  "phase15_authorized": false,
+  "policy_version": "recovery_policy_v3",
+  "qwen_tools_enabled": false,
+  "v1": {
+    "calibrator_hash": "f0798cce1b2a2d937b245acc73af23f5f9f654173fa61bd760e760db3683c1fe",
+    "model_hash": "488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e",
+    "preprocessor_hash": "6229aedee7ab545fb52999cfe7c9454c49be2f116adc8943ab2c32023c448268",
+    "version": "recovery_model_v1"
+  },
+  "v2_online": {
+    "calibrator_hash": "a151913e3501e61eb050b0ba83a768ba6d69429b451cd1e22e9de58bdcbe066e",
+    "model_hash": "91be9119c7334bb40b491926a626c0b74f90420ce4e57012ecf7b64d4ec0a4a4",
+    "preprocessor_hash": "5f85f6e2a62c9c45cdd89f889b3086ea2189d5eab35b4b6532b723de8914d876",
+    "version": "recovery_model_v2_online"
+  },
+  "version": 1
+}

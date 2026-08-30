@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from uuid import uuid4
 
-from sqlalchemy import Boolean, DateTime, JSON, String, Text
+from sqlalchemy import Boolean, DateTime, Integer, JSON, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database.connection import Base
@@ -26,6 +26,7 @@ class WebhookEvent(Base):
     payload: Mapped[dict] = mapped_column(JSON)
     processed: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     processing_error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    delivery_count: Mapped[int] = mapped_column(Integer, default=1)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         default=lambda: datetime.now(UTC),
@@ -33,4 +34,8 @@ class WebhookEvent(Base):
     processed_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True),
         nullable=True,
+    )
+    last_received_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(UTC),
     )

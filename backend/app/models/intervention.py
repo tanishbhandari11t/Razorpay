@@ -19,6 +19,11 @@ class Intervention(Base):
         default=lambda: str(uuid4()),
     )
     payment_id: Mapped[str] = mapped_column(ForeignKey("payments.id"), index=True)
+    agent_decision_id: Mapped[str | None] = mapped_column(
+        ForeignKey("agent_decisions.id"),
+        nullable=True,
+        index=True,
+    )
     type: Mapped[str] = mapped_column(String(64))
     reason: Mapped[str | None] = mapped_column(String(500), nullable=True)
     attempt_number: Mapped[int] = mapped_column(Integer, default=1)

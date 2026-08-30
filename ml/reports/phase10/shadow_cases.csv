@@ -1,0 +1,1 @@
+case_id,payment_id,customer_id,amount_inr,failure_reason,payment_method,payment_timestamp,features_version,model_version,policy_version,predicted_probabilities,selected_action,fallback_used,risk_checks,risk_checks_passed,decision_margin,failure_class,job_status,job_attempts

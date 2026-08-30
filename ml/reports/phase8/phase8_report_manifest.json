@@ -1,0 +1,12 @@
+{
+  "action_matrix_sha256": "974ea15e43a874cf06507279588a8fcdfd3d25d79e6b5f7599c5319c5ea3d049",
+  "frozen_test_membership_sha256": "70a1ac3ad1bfedab531cc2d62926aa884e1daf20fd7494904a25edfaaa1fd711",
+  "intervention_policy_sha256": "70ccc0e95a50a879145482de8d4bd1014f456100f76647426125ceffec8ceda9",
+  "policy_version": "recovery_policy_v3",
+  "reports": {
+    "policy_engine_cases_sha256": "af4e12a305fa4c05842531e938781e02b5e95433c1dc239c3f7d5c9125511193",
+    "policy_engine_decisions_sha256": "7e8fa41d7d040a781686b54ea36bf4ad2dbfb9fce2f4fca059bec6556e50b709",
+    "policy_engine_metrics_sha256": "e0080d0d8578870f9dfcc3a1d40917b7e1d52262340f98e4896dc34007f7cb0f"
+  },
+  "version": 1
+}

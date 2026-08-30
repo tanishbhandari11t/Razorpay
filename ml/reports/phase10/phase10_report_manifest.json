@@ -1,0 +1,14 @@
+{
+  "artifacts": {
+    "ml/config/execution_gate.yaml": "60cf3670928282d0faba2f0f24efa35a640ec4492d53da7b0fc3ed276a7948c6",
+    "ml/config/policy_v4.yaml": "87a6ae6266c75b46a47f23b1733702eaf9b57fa38aa0ef9334dd9554a0d50a97",
+    "ml/config/policy_v4_manifest.yaml": "212cfd92848d76a5f7ecd8bf271c7147b96111d5eaa6293626bd858a201394d0",
+    "ml/reports/phase10/controlled_execution_simulation.json": "b99d1f6f3a926ed747562c5b06ca2a990299b0d304bb4f29c20a67c2bf221022",
+    "ml/reports/phase10/phase10_shadow_report.json": "7c340673e8dd39a22e9137c9226c28d87945c1cb0b503e7cc11cb5219ee3c512",
+    "ml/reports/phase10/policy_v4_comparison.json": "866165f6a72560312443c8d6a60eb098c1b088eb067a8ac6c0fc5ea54f291c3b",
+    "ml/reports/phase10/policy_v4_decisions.csv": "6c63bec441ffb6a3c78416b29bded34ca0daf7d14a869a7c122035cecf3ef1a8",
+    "ml/reports/phase10/shadow_cases.csv": "b0d8c198362a8a7e8125fc3812feb8ccacf72f8174bbe52fcec49bf0cefabbf8"
+  },
+  "generated_at": "2026-08-25T10:14:27.831786+00:00",
+  "version": 1
+}

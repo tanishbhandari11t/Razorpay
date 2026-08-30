@@ -1,0 +1,42 @@
+{
+  "blockers": [
+    "evidence_coverage_incomplete",
+    "no_attributed_training_labels",
+    "phase15_unauthorized",
+    "challenger_not_evaluated",
+    "safety_evaluation_incomplete",
+    "qwen_not_validated",
+    "controlled_gates_incomplete",
+    "pilot_not_completed",
+    "final_evaluation_incomplete"
+  ],
+  "controlled_ready": false,
+  "evidence": {
+    "attributed_intervention_recoveries": 0,
+    "candidate_ready": false,
+    "coverage_checks": {
+      "action_coverage": false,
+      "attributed_recoveries": false,
+      "customer_segment_coverage": false,
+      "no_major_label_leakage": true,
+      "outcome_class_coverage": false,
+      "outcome_provenance_valid": true,
+      "real_labels": false,
+      "taxonomy_coverage": false,
+      "temporal_coverage": false
+    },
+    "observational_recoveries": 0,
+    "phase15_authorized": false,
+    "real_cases": 21,
+    "training_eligible_labels": 0
+  },
+  "execution_mode": "shadow",
+  "final_ready": false,
+  "manual_skip_forbidden": true,
+  "model_ready": false,
+  "next_action": "Keep shadow collection running until coverage minima are met and Phase 15 is legitimately authorized.",
+  "phase15_authorized": false,
+  "pilot_active": false,
+  "qwen_ready": false,
+  "state": "EVIDENCE_INSUFFICIENT"
+}

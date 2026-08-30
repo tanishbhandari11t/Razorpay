@@ -12,11 +12,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 from app.api.customers import router as customers_router
+from app.api.outcomes import router as outcomes_router
 from app.api.payments import router as payments_router
+from app.api.promises import router as promises_router
 from app.api.recovery import router as recovery_router
 from app.api.webhooks import router as webhooks_router
 from app.database import initialize_database
-from app.database.connection import database_backend
+from app.ml.model_loader import load_model_bundle
+from app.services.execution_gate import load_execution_gate
+from app.services.runtime_health import runtime_health
 
 
 FailureReason = Literal[
@@ -86,13 +90,21 @@ app = FastAPI(
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:4173",
+        "http://127.0.0.1:4173",
+    ],
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1|100\.\d+\.\d+\.\d+)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 app.include_router(payments_router)
 app.include_router(customers_router)
+app.include_router(outcomes_router)
+app.include_router(promises_router)
 app.include_router(recovery_router)
 app.include_router(webhooks_router)
 
@@ -377,11 +389,13 @@ def seed_demo() -> None:
 
 seed_demo()
 initialize_database()
+load_model_bundle()
+load_execution_gate()
 
 
 @app.get("/health")
-def health() -> dict[str, str]:
-    return {"status": "ok", "database": database_backend()}
+def health() -> dict[str, object]:
+    return {"status": "ok", **runtime_health()}
 
 
 @app.get("/api/dashboard", response_model=DashboardResponse)

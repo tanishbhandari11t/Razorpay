@@ -1,0 +1,39 @@
+version: 1
+model_version: recovery_model_v2_online
+policy_wrapper: recovery_policy_v3
+
+requirements:
+  artifact_integrity:
+    required: true
+  deployable_feature_contract:
+    required_feature_count: 33
+    synthetic_only_features_online: 0
+  temporal_integrity:
+    frozen_split_membership: true
+    test_used_for_fitting: false
+  model_quality:
+    require_roc_auc_not_worse_than_v1: true
+    require_pr_auc_not_worse_than_v1: true
+    require_brier_not_worse_than_v1: true
+    require_calibration_error_not_worse_than_v1: true
+  policy:
+    maximum_policy_violations: 0
+    maximum_fraud_automated_actions: 0
+    require_positive_net_value_vs_always_retry: true
+    require_decision_margin_evaluation: true
+  offline_evaluation:
+    require_doubly_robust_ci_nonoverlap_with_baseline: true
+    require_sensitivity_wins: 9
+  real_shadow:
+    require_known_failure_taxonomy: true
+    require_feature_support_threshold_selected: true
+    minimum_compatibility_cases: 20
+    recovery_uplift_claim_allowed: false
+  safety:
+    execution_mode: shadow
+    provider_actions_enabled: false
+    controlled_execution_authorized: false
+
+execution:
+  require_all: true
+  on_failure: blocked

@@ -1,0 +1,19 @@
+{
+  "dataset_version": "1.0",
+  "encoded_feature_count": 103,
+  "feature_schema_sha256": "bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64",
+  "feature_set": "temporal_recovery_features_v1",
+  "features_version": "1.0",
+  "generated_at": "2026-08-25T09:32:54.102034+00:00",
+  "model_version": "recovery_model_v1",
+  "parity_verification": {
+    "command": "backend/.venv/Scripts/python.exe -m pytest backend/tests/test_feature_parity.py -q",
+    "status": "passed",
+    "tests_passed": 5
+  },
+  "policy_version": "recovery_policy_v3",
+  "raw_model_feature_count": 49,
+  "same_timestamp_excluded": true,
+  "strict_past_only": true,
+  "temporal_feature_count": 52
+}

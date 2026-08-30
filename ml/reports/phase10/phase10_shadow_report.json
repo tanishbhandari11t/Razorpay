@@ -1,0 +1,130 @@
+{
+  "evaluation_gate": {
+    "checks": {
+      "artifact_validation": {
+        "observed": true,
+        "passed": true,
+        "required": true
+      },
+      "automated_fraud_actions": {
+        "maximum": 0,
+        "observed": 0,
+        "passed": true
+      },
+      "duplicate_decisions": {
+        "maximum": 0,
+        "observed": 0,
+        "passed": true
+      },
+      "feature_parity": {
+        "observed": "passed",
+        "passed": true,
+        "required": "passed"
+      },
+      "inference_failure_rate": {
+        "maximum": 0.05,
+        "observed": 0.0,
+        "passed": true
+      },
+      "minimum_real_cases": {
+        "observed": 0,
+        "passed": false,
+        "required": 20
+      },
+      "policy_violations": {
+        "maximum": 0,
+        "observed": 0,
+        "passed": true
+      },
+      "unknown_failure_rate": {
+        "maximum": 0.2,
+        "observed": 1.0,
+        "passed": false
+      },
+      "unknown_feature_rate": {
+        "maximum": 0.2,
+        "observed": 1.0,
+        "passed": false
+      },
+      "worker_reliability": {
+        "observed": false,
+        "passed": false,
+        "required": true
+      }
+    },
+    "controlled_execution_authorized": false,
+    "execution_mode": "shadow",
+    "metrics": {
+      "action_distribution": {},
+      "at_risk_revenue": 0.0,
+      "automated_fraud_actions": 0,
+      "blocked_actions": 0,
+      "cases": 1,
+      "duplicate_decisions": 0,
+      "duplicate_webhook_deliveries": 0,
+      "execution_mode": "shadow",
+      "failed_inferences": 0,
+      "failure_taxonomy": {},
+      "fallbacks": 0,
+      "feature_drift": {
+        "reasons": [
+          "no_shadow_cases"
+        ],
+        "status": "collecting"
+      },
+      "feature_missing_rate": null,
+      "job_statuses": {
+        "queued": 1
+      },
+      "mean_decision_margin": null,
+      "mean_selected_probability": null,
+      "observed_recoveries": 0,
+      "observed_recovery_rate": null,
+      "policy_violations": 0,
+      "predicted_recovery_value": 0.0,
+      "shadow_decisions": 0,
+      "successful_inferences": 0,
+      "unknown_failure_rate": null,
+      "weak_margin_count": 0
+    },
+    "status": "blocked"
+  },
+  "execution_authorized": false,
+  "generated_at": "2026-08-25T10:14:27.816447+00:00",
+  "metrics": {
+    "action_distribution": {},
+    "at_risk_revenue": 0.0,
+    "automated_fraud_actions": 0,
+    "blocked_actions": 0,
+    "cases": 1,
+    "duplicate_decisions": 0,
+    "duplicate_webhook_deliveries": 0,
+    "execution_mode": "shadow",
+    "failed_inferences": 0,
+    "failure_taxonomy": {},
+    "fallbacks": 0,
+    "feature_drift": {
+      "reasons": [
+        "no_shadow_cases"
+      ],
+      "status": "collecting"
+    },
+    "feature_missing_rate": null,
+    "job_statuses": {
+      "queued": 1
+    },
+    "mean_decision_margin": null,
+    "mean_selected_probability": null,
+    "observed_recoveries": 0,
+    "observed_recovery_rate": null,
+    "policy_violations": 0,
+    "predicted_recovery_value": 0.0,
+    "shadow_decisions": 0,
+    "successful_inferences": 0,
+    "unknown_failure_rate": null,
+    "weak_margin_count": 0
+  },
+  "qwen_used": false,
+  "source": "signed_razorpay_webhook_to_durable_worker",
+  "version": 1
+}

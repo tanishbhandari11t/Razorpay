@@ -1,0 +1,294 @@
+{
+  "bootstrap": {
+    "confidence_level": 0.95,
+    "iterations": 1000,
+    "seed": 42,
+    "unit": "customer_id"
+  },
+  "clipping_sensitivity": {
+    "0.02": {
+      "always_retry": {
+        "doubly_robust": 0.53180704,
+        "importance_weight_effective_sample_size": 96.27118819,
+        "ips": 0.42302401,
+        "maximum_importance_weight": 30.000003,
+        "self_normalized_ips": 0.53455315
+      },
+      "historical_base_policy": {
+        "doubly_robust": 0.55220435,
+        "importance_weight_effective_sample_size": 1696.9600764,
+        "ips": 0.56064142,
+        "maximum_importance_weight": 1.11111111,
+        "self_normalized_ips": 0.55228103
+      },
+      "logging_policy": {
+        "doubly_robust": 0.56087321,
+        "importance_weight_effective_sample_size": 1857.0,
+        "ips": 0.56219709,
+        "maximum_importance_weight": 1.0,
+        "self_normalized_ips": 0.56219709
+      },
+      "recoverai_v1": {
+        "doubly_robust": 0.69409851,
+        "importance_weight_effective_sample_size": 69.25223779,
+        "ips": 0.67312876,
+        "maximum_importance_weight": 30.000003,
+        "self_normalized_ips": 0.69893141
+      },
+      "recoverai_v2_support_safe": {
+        "doubly_robust": 0.6243968,
+        "importance_weight_effective_sample_size": 83.23997294,
+        "ips": 0.5696165,
+        "maximum_importance_weight": 30.000003,
+        "self_normalized_ips": 0.63781321
+      }
+    },
+    "0.03333333": {
+      "always_retry": {
+        "doubly_robust": 0.53180704,
+        "importance_weight_effective_sample_size": 96.27118819,
+        "ips": 0.42302401,
+        "maximum_importance_weight": 30.000003,
+        "self_normalized_ips": 0.53455315
+      },
+      "historical_base_policy": {
+        "doubly_robust": 0.55220435,
+        "importance_weight_effective_sample_size": 1696.9600764,
+        "ips": 0.56064142,
+        "maximum_importance_weight": 1.11111111,
+        "self_normalized_ips": 0.55228103
+      },
+      "logging_policy": {
+        "doubly_robust": 0.56087321,
+        "importance_weight_effective_sample_size": 1857.0,
+        "ips": 0.56219709,
+        "maximum_importance_weight": 1.0,
+        "self_normalized_ips": 0.56219709
+      },
+      "recoverai_v1": {
+        "doubly_robust": 0.69409851,
+        "importance_weight_effective_sample_size": 69.25223779,
+        "ips": 0.67312876,
+        "maximum_importance_weight": 30.000003,
+        "self_normalized_ips": 0.69893141
+      },
+      "recoverai_v2_support_safe": {
+        "doubly_robust": 0.6243968,
+        "importance_weight_effective_sample_size": 83.23997294,
+        "ips": 0.5696165,
+        "maximum_importance_weight": 30.000003,
+        "self_normalized_ips": 0.63781321
+      }
+    },
+    "0.05": {
+      "always_retry": {
+        "doubly_robust": 0.5537134,
+        "importance_weight_effective_sample_size": 144.91464858,
+        "ips": 0.3691737,
+        "maximum_importance_weight": 20.0,
+        "self_normalized_ips": 0.55756371
+      },
+      "historical_base_policy": {
+        "doubly_robust": 0.55220435,
+        "importance_weight_effective_sample_size": 1696.9600764,
+        "ips": 0.56064142,
+        "maximum_importance_weight": 1.11111111,
+        "self_normalized_ips": 0.55228103
+      },
+      "logging_policy": {
+        "doubly_robust": 0.55881179,
+        "importance_weight_effective_sample_size": 1839.93721418,
+        "ips": 0.54299048,
+        "maximum_importance_weight": 1.0,
+        "self_normalized_ips": 0.55904639
+      },
+      "recoverai_v1": {
+        "doubly_robust": 0.67032219,
+        "importance_weight_effective_sample_size": 79.00819993,
+        "ips": 0.47388261,
+        "maximum_importance_weight": 20.0,
+        "self_normalized_ips": 0.68833652
+      },
+      "recoverai_v2_support_safe": {
+        "doubly_robust": 0.61045494,
+        "importance_weight_effective_sample_size": 112.08134114,
+        "ips": 0.44037576,
+        "maximum_importance_weight": 20.0,
+        "self_normalized_ips": 0.62981345
+      }
+    },
+    "0.1": {
+      "always_retry": {
+        "doubly_robust": 0.57561975,
+        "importance_weight_effective_sample_size": 302.93951662,
+        "ips": 0.3153234,
+        "maximum_importance_weight": 10.0,
+        "self_normalized_ips": 0.59173591
+      },
+      "historical_base_policy": {
+        "doubly_robust": 0.55220435,
+        "importance_weight_effective_sample_size": 1696.9600764,
+        "ips": 0.56064142,
+        "maximum_importance_weight": 1.11111111,
+        "self_normalized_ips": 0.55228103
+      },
+      "logging_policy": {
+        "doubly_robust": 0.55675038,
+        "importance_weight_effective_sample_size": 1786.62611865,
+        "ips": 0.52378388,
+        "maximum_importance_weight": 1.0,
+        "self_normalized_ips": 0.55570368
+      },
+      "recoverai_v1": {
+        "doubly_robust": 0.64654588,
+        "importance_weight_effective_sample_size": 109.62279407,
+        "ips": 0.27463651,
+        "maximum_importance_weight": 10.0,
+        "self_normalized_ips": 0.66367843
+      },
+      "recoverai_v2_support_safe": {
+        "doubly_robust": 0.59651308,
+        "importance_weight_effective_sample_size": 207.59584895,
+        "ips": 0.31113504,
+        "maximum_importance_weight": 10.0,
+        "self_normalized_ips": 0.61567606
+      }
+    }
+  },
+  "counterfactual_outcomes_used": false,
+  "evaluation_split": "frozen_test",
+  "interpretation": "IPS and doubly robust estimates use only the observed logged action, observed recovery, logging propensity, and frozen V1 reward predictions.",
+  "logged_observed_recovery_rate": 0.56219709,
+  "maximum_importance_weight": 30.0,
+  "minimum_propensity": 0.03333333333333333,
+  "policies": {
+    "always_retry": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.44350934,
+          0.61763108
+        ],
+        "ips": [
+          0.33261629,
+          0.53082865
+        ],
+        "self_normalized_ips": [
+          0.43450214,
+          0.63974567
+        ]
+      },
+      "doubly_robust": 0.53180705,
+      "importance_weight_effective_sample_size": 96.2711973,
+      "ips": 0.42302399,
+      "matching_logged_rows": 699,
+      "matching_rate": 0.37641357,
+      "maximum_importance_weight": 30.0,
+      "mean_predicted_target_reward": 0.5827065,
+      "policy": "always_retry",
+      "self_normalized_ips": 0.53455315
+    },
+    "historical_base_policy": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.52751624,
+          0.57770951
+        ],
+        "ips": [
+          0.53656068,
+          0.58786596
+        ],
+        "self_normalized_ips": [
+          0.5276929,
+          0.57691613
+        ]
+      },
+      "doubly_robust": 0.55220435,
+      "importance_weight_effective_sample_size": 1696.9600764,
+      "ips": 0.56064142,
+      "matching_logged_rows": 1697,
+      "matching_rate": 0.91383953,
+      "maximum_importance_weight": 1.11111111,
+      "mean_predicted_target_reward": 0.55583881,
+      "policy": "historical_base_policy",
+      "self_normalized_ips": 0.55228103
+    },
+    "logging_policy": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.53723958,
+          0.58411621
+        ],
+        "ips": [
+          0.53812268,
+          0.5856531
+        ],
+        "self_normalized_ips": [
+          0.53812269,
+          0.5856531
+        ]
+      },
+      "doubly_robust": 0.5608732,
+      "importance_weight_effective_sample_size": 1857.0,
+      "ips": 0.56219709,
+      "matching_logged_rows": 1857,
+      "matching_rate": 1.0,
+      "maximum_importance_weight": 1.0,
+      "mean_predicted_target_reward": 0.55795998,
+      "policy": "logging_policy",
+      "self_normalized_ips": 0.56219709
+    },
+    "recoverai_v1": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.59235644,
+          0.78608873
+        ],
+        "ips": [
+          0.4916917,
+          0.86426373
+        ],
+        "self_normalized_ips": [
+          0.59109429,
+          0.79482175
+        ]
+      },
+      "doubly_robust": 0.6940985,
+      "importance_weight_effective_sample_size": 69.2522397,
+      "ips": 0.6731287,
+      "matching_logged_rows": 284,
+      "matching_rate": 0.15293484,
+      "maximum_importance_weight": 30.0,
+      "mean_predicted_target_reward": 0.6314753,
+      "policy": "recoverai_v1",
+      "self_normalized_ips": 0.69893141
+    },
+    "recoverai_v2_support_safe": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.53248979,
+          0.71483662
+        ],
+        "ips": [
+          0.42048356,
+          0.722329
+        ],
+        "self_normalized_ips": [
+          0.54041216,
+          0.7302882
+        ]
+      },
+      "doubly_robust": 0.6243968,
+      "importance_weight_effective_sample_size": 83.23997842,
+      "ips": 0.56961647,
+      "matching_logged_rows": 557,
+      "matching_rate": 0.29994615,
+      "maximum_importance_weight": 30.0,
+      "mean_predicted_target_reward": 0.58706717,
+      "policy": "recoverai_v2_support_safe",
+      "self_normalized_ips": 0.63781321
+    }
+  },
+  "rows": 1857,
+  "simulator_probability_used": false,
+  "version": 1
+}

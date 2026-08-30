@@ -1,0 +1,70 @@
+version: 1
+
+failure_classes:
+  technical_retryable:
+    retry_payment: allow
+    payment_link: allow
+    whatsapp_reminder: block
+    escalate_to_merchant: block
+
+  insufficient_funds:
+    retry_payment: block
+    payment_link: allow
+    whatsapp_reminder: allow
+    escalate_to_merchant: block
+
+  authentication_required:
+    retry_payment: block
+    payment_link: allow
+    whatsapp_reminder: allow
+    escalate_to_merchant: block
+
+  merchant_configuration:
+    retry_payment: block
+    payment_link: block
+    whatsapp_reminder: block
+    escalate_to_merchant: allow
+
+  payment_method_restricted:
+    retry_payment: block
+    payment_link: allow
+    whatsapp_reminder: block
+    escalate_to_merchant: allow
+
+  customer_decline:
+    retry_payment: block
+    payment_link: allow
+    whatsapp_reminder: allow
+    escalate_to_merchant: block
+
+  fraud_risk:
+    retry_payment: block
+    payment_link: block
+    whatsapp_reminder: block
+    escalate_to_merchant: allow
+
+  unknown:
+    retry_payment: block
+    payment_link: block
+    whatsapp_reminder: block
+    escalate_to_merchant: allow
+
+requirements:
+  retry_payment:
+    - payment_failed
+    - retryable_failure
+    - valid_payment_context
+
+  payment_link:
+    - payment_failed
+    - valid_payment_context
+
+  whatsapp_reminder:
+    - payment_failed
+    - valid_payment_context
+    - customer_contact_available
+    - customer_not_opted_out
+
+  escalate_to_merchant:
+    - payment_failed
+    - valid_payment_context

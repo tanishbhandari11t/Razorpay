@@ -1,0 +1,102 @@
+{
+  "artifacts": {
+    "ml/reports/phase14/coverage.json": {
+      "sha256": "dd85cf3cd077d117e37fe0df0bc0449006866e9741011f18c312dcfad84b02e1"
+    },
+    "ml/reports/phase14/outcome_coverage.json": {
+      "sha256": "7b519c494aa190ed78dfd1c151dcda982ea06bdef2de66da7b1ffc6c06d7a64b"
+    },
+    "ml/reports/phase14/outcome_validation.json": {
+      "sha256": "0c47f49b937fdd13a02ec8bd496b64b4a0fd9f2fc67be5c4d5d7da62e1433424"
+    },
+    "ml/reports/phase14/phase14_summary.json": {
+      "sha256": "db41b81b4065bb4c26f0dd5ac471fcca1e6bd07fbadc6fec1d3fab0eb43e2259"
+    },
+    "ml/reports/phase14/real_outcome_cases.csv": {
+      "sha256": "295b1454519abc64a0ede2a6812acc0e212b0323d2e34ad34435d87410aac8e7"
+    },
+    "ml/reports/phase15/phase15_readiness.json": {
+      "sha256": "93c0b65e3ae9bf1dafba2b009b624f6822fc1000f17896e2d23d9f2f4c78b1ac"
+    }
+  },
+  "controlled_execution_authorized": false,
+  "generated_at": "2026-08-26T08:24:35.971751+00:00",
+  "inputs": {
+    "backend/app/api/outcomes.py": {
+      "sha256": "d617eb521ad98d64246c78a9624e6c67df92b9a57d62d9593fe0ecbccc79bd17"
+    },
+    "backend/app/database/connection.py": {
+      "sha256": "5a863d4f7b17ff483b3a127db5ef374eb2068505f34a1da0a1fcb6479d8712de"
+    },
+    "backend/app/main.py": {
+      "sha256": "0a956d3a8c549815a8fab2ee8666cb9233872eba51d616d8ff746a9584d79f41"
+    },
+    "backend/app/models/__init__.py": {
+      "sha256": "1e701c37476090281230b23225bcb463c086a10fe29ac367ba456252ca24d8ba"
+    },
+    "backend/app/models/intervention.py": {
+      "sha256": "ff8f49cbef8907b1b1ad027ebcaf938e121f602e02f1c409d0d08974825469db"
+    },
+    "backend/app/models/intervention_outcome.py": {
+      "sha256": "55abcb2b106a5484279fe5c7bd45e158fe78b7400a45ab69ad582ec7ba3a1610"
+    },
+    "backend/app/models/outcome_observation.py": {
+      "sha256": "a1df0e466459205611894991932ff36f7d43fce50221c5014f9a3c0b17ff0175"
+    },
+    "backend/app/services/outcome_events.py": {
+      "sha256": "a8ce0b231fd2386ba8bc31c3676f31f72a667820ec5b6350301bca6a4be7dca8"
+    },
+    "backend/app/services/outcome_observation.py": {
+      "sha256": "65237ec762e9a4edab7dcfd4eae9a4b62f261d4075587cc99b6f5957d758baab"
+    },
+    "backend/app/services/outcome_state_machine.py": {
+      "sha256": "c30e8505662384d99cf0e4750864c7372a8b3f4e7db00cfe847617bc590e3755"
+    },
+    "backend/app/services/recovery_engine.py": {
+      "sha256": "c43c886fa231fd7cf78fb6a9b62a0e776e3d9b5384e1b614e32e5f90c91cd7e5"
+    },
+    "backend/app/services/webhook_service.py": {
+      "sha256": "fe4e2ac60857fc3ed4e7ea915d2a9295d5f6c7ad9d03301792119cc05e81c46f"
+    },
+    "backend/app/workers/outcome_observer.py": {
+      "sha256": "d96fa6da4543c0c9d3370fb5dc5cf759d545b8b5113ce9c6f4c3e97218cde538"
+    },
+    "backend/app/workers/outcome_tasks.py": {
+      "sha256": "8becc738d778bc23fa7275a0a89194f3c9c14d27abcea972e30d89ec393060c9"
+    },
+    "backend/app/workers/reliability_tasks.py": {
+      "sha256": "f85c153275df245adcdef0015674803b00b2cb76cd8dabecbb13c10c90f8f8b6"
+    },
+    "backend/migrations/phase14_real_outcomes.sql": {
+      "sha256": "e2171e4279ba891afa2467ce5ffec2916ba29ce58ef6fa1b635895e626151af3"
+    },
+    "backend/scripts/generate_phase14_reports.py": {
+      "sha256": "79eb024f903f78d5051bd2f39d39f072ab9df504ac21326cb249f654d40761cc"
+    },
+    "ml/config/outcome_observation.yaml": {
+      "sha256": "0c56d48fd315140e92d7236669443c05e35873b18353d222e908d6f4729ac044"
+    },
+    "ml/config/real_outcome_schema.yaml": {
+      "sha256": "63eca91bc78e7f67c96d4c92b4ba1fb8727c38ff304eb2adf1616bc79e0bd8be"
+    },
+    "ml/src/build_real_outcome_dataset.py": {
+      "sha256": "5bd0013340290135ace4d83b06df62b5dd6e2ee51d34a796183dd47d2bf17f6d"
+    },
+    "ml/src/evidence_coverage.py": {
+      "sha256": "645dfc774a94df5e7c1203f95e25c40082774b2fad30e36a58287ee671ddc12e"
+    },
+    "ml/src/observe_recovery.py": {
+      "sha256": "0d2bc7c3485c2ead3288d7de5f984094088897d52aee80b20bd4fef77746943b"
+    },
+    "ml/src/record_recovery_outcome.py": {
+      "sha256": "358b1a0e585a91dad36ab095770caf68114e8eaaec2d7d08526dc8b218995e99"
+    },
+    "ml/src/validate_outcomes.py": {
+      "sha256": "8ba1f4c47a2e06f488b2d1f648974307dfba85b9bc7d1c072e7bb345cb6d5aed"
+    }
+  },
+  "phase": 14,
+  "phase15_authorized": false,
+  "retraining_authorized": false,
+  "version": 1
+}

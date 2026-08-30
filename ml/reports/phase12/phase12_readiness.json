@@ -1,0 +1,42 @@
+{
+  "baseline_id": "REAL_RAZORPAY_SHADOW_V1",
+  "blocking_evidence": [
+    "20/20 failures map to unknown taxonomy",
+    "online-unavailable and semantically mismatched model inputs exist",
+    "20/20 decisions used fallback",
+    "20/20 decisions have weak margins",
+    "no support threshold is evidence-backed for automation"
+  ],
+  "execution": {
+    "controlled": "BLOCKED",
+    "provider_actions_enabled": false,
+    "shadow": "ENABLED"
+  },
+  "frozen_components": {
+    "execution_mode": "shadow",
+    "model": "recovery_model_v1",
+    "policy": "recovery_policy_v3",
+    "real_validation_set": "REAL_RAZORPAY_SHADOW_V1"
+  },
+  "infrastructure": {
+    "celery": "PASS",
+    "postgresql": "PASS",
+    "real_cases": "20/20",
+    "redis": "PASS"
+  },
+  "model": {
+    "calibration_on_real_cases": "UNKNOWN",
+    "distribution_shift": "REVIEW",
+    "failure_taxonomy": "BLOCKED",
+    "offline_online_parity": "PASS",
+    "online_feature_support": "PARTIAL"
+  },
+  "safety": {
+    "fraud": "BLOCK",
+    "unknown_failure": "BLOCK",
+    "unknown_or_unavailable_features": "BLOCK",
+    "weak_margin": "BLOCK"
+  },
+  "status": "execution_blocked",
+  "version": 1
+}

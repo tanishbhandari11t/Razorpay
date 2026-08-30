@@ -137,8 +137,9 @@ cases are created automatically.
 ## ML data foundation
 
 The Kaggle UPI data provides transaction behavior, not customer identities or
-recovery outcomes. The current pipeline deliberately stops before labels and
-model training:
+recovery outcomes. The pipeline keeps observed transaction data, synthetic
+environment assumptions, logged outcomes, and model artifacts as separate
+layers:
 
 ```powershell
 .\ml\.venv\Scripts\python.exe -m ml.src.clean
@@ -146,6 +147,12 @@ model training:
 .\ml\.venv\Scripts\python.exe -m ml.src.build_features
 .\ml\.venv\Scripts\python.exe -m ml.src.simulate_recovery
 .\ml\.venv\Scripts\python.exe -m ml.src.create_logging_policy
+.\ml\.venv\Scripts\python.exe -m ml.src.train_recovery_model
+.\ml\.venv\Scripts\python.exe -m ml.src.evaluate_policy
+.\ml\.venv\Scripts\python.exe -m ml.src.analyze_support
+.\ml\.venv\Scripts\python.exe -m ml.src.offline_policy_eval
+.\ml\.venv\Scripts\python.exe -m ml.src.evaluate_policy_sensitivity
+.\ml\.venv\Scripts\python.exe -m ml.src.policy_engine_simulator
 ```
 
 Phase 1 validates and cleans all 250,000 transactions. Phase 2 assigns them to
@@ -155,8 +162,8 @@ are documented synthetic assumptions.
 
 Generated files under `ml/data/processed/` include `customers.csv`,
 `transactions_with_customers.csv`, and a validation summary with SHA-256
-hashes. They are ignored by Git. No recovery label has been generated and the
-synthetic archetype must not be used as a model feature.
+hashes. They are ignored by Git. Synthetic customer archetypes must not be used
+as model features.
 
 Phase 3 produces one leakage-safe feature row for each failed payment. History
 uses only transactions with timestamps strictly earlier than the prediction
@@ -189,6 +196,120 @@ observed outcome per failed payment. It excludes simulator probabilities,
 synthetic scenarios, and all unchosen outcomes. Its train, validation, and test
 partitions are strictly chronological.
 
+Phase 6 freezes that dataset and split in `ml/config/dataset_manifest.yaml`.
+XGBoost V1 uses 49 prediction-time features, one-hot encoding fitted only on
+training data, and Platt scaling fitted only on validation data. Current fraud
+is excluded from the feature matrix and remains a hard policy constraint.
+
+On the frozen test set, the calibrated model has ROC-AUC `0.6249`, PR-AUC
+`0.6526`, log loss `0.6610`, and Brier score `0.2341`. In the synthetic
+counterfactual environment, its selected interventions recover `65.00%` versus
+`58.91%` for always-retry on the same test payments, an uplift of `6.09`
+percentage points. This is a simulation result, not real-world causal evidence.
+Observed-outcome model evaluation and synthetic policy evaluation are reported
+separately.
+
+Phase 7 freezes every V1 artifact hash in
+`ml/config/policy_evaluation.yaml`. Contextual support uses training-only
+history, amount, and failure-frequency buckets. The minimum local action count
+(`20`), inverse-propensity effective sample size (`8`), and probability margin
+(`0.0170`) are derived from frozen training/validation diagnostics before V2
+evaluation.
+
+Support-safe V2 removes unsupported model candidates, applies the fraud block,
+and falls back to retry or manual merchant escalation when evidence is
+insufficient. It selects no unsupported model action. Offline evaluation uses
+only logged actions, logged outcomes, propensities, and frozen calibrated V1
+predictions. IPS, self-normalized IPS, doubly robust estimates, clipping
+sensitivity, and deterministic customer-cluster bootstrap intervals are
+reported under `ml/reports/`.
+
+The evidence is mixed and is intentionally preserved. V2's doubly robust point
+estimate is `62.44%` with a wide `53.25%–71.48%` interval. In the original
+synthetic environment V2 reaches `58.54%` versus `58.91%` for always-retry. It
+beats always-retry in only 6 of 16 intervention-probability perturbations.
+Therefore V1's `+6.09` percentage-point synthetic result is not robust enough
+for a production claim or execution integration.
+
+Phase 8 freezes those findings in `ml/config/policy_v2_manifest.yaml` and wraps
+the frozen model in Recovery Policy V3. The policy classifies failures using
+deterministic rules, applies the versioned action matrix, contextual support,
+attempt budgets, cooldowns, opt-out/fraud controls, and stopping rules, then
+maximizes risk-adjusted expected monetary value. All intervention costs and
+contact-availability assumptions are explicitly synthetic.
+
+On the frozen synthetic test cases, V3 recovers `59.18%` versus `58.91%` for
+always-retry. It recovers ₹1,526,714 with 1,579 interventions, compared with
+₹1,411,362 from 1,853 always-retry interventions. V3 makes zero fraud automated
+actions and zero policy violations. The uplift is deliberately reported as
+small; the main Phase 8 gain is bounded behavior and intervention efficiency.
+
+Phase 9 freezes V3 in `ml/config/policy_v3_manifest.yaml` and defines the
+training/production feature contract in `ml/config/feature_schema.yaml`. The
+online builder queries only the current customer's terminal payments before
+the failed payment timestamp. Transactions at the same timestamp are excluded,
+and 7/30-day windows preserve the Phase 3 open-left boundary exactly.
+
+The parity suite compares all 52 temporal fields against
+`ml/src/build_features.py`, including no-history sentinels and categorical
+values. The cached startup loader verifies the frozen model hash, 49 raw model
+features, 103 encoded features, calibrator, dataset version, and Policy V3.
+
+Signed failed-payment webhooks now persist feature context, acknowledge the
+event, and schedule shadow inference after persistence. Shadow decisions are
+idempotent per case, policy, and execution mode and always record
+`executed=false`; no Razorpay recovery action is available. Provider fields
+that do not exist in a webhook are stored as `UNKNOWN` and surfaced by drift
+monitoring rather than replaced with invented values.
+
+Shadow APIs:
+
+- `POST /api/recovery/{case_id}/evaluate`
+- `GET /api/recovery/shadow/metrics`
+- `GET /api/recovery/cases/{case_id}/decisions`
+
+`backend/migrations/phase9_shadow_mode.sql` contains the initial
+PostgreSQL/Supabase schema changes. Drift gates remain in `collecting` state
+until at least 20 real Test Mode shadow cases.
+
+Phase 10 replaces the in-process task with a transactional database outbox,
+Redis, Celery worker, and Celery beat dispatcher:
+
+```text
+signed webhook -> persist payment/case/job -> return 200
+                                          -> beat dispatches queued job
+                                          -> Redis
+                                          -> Celery worker
+                                          -> shadow inference
+                                          -> idempotent agent_decision
+                                          -> execution gate blocks
+```
+
+The database job is committed before queue publication, so a Redis outage does
+not lose the recovery request or delay the webhook while a broker connection
+times out. Celery uses late acknowledgement, worker-loss rejection, one-message
+prefetch, bounded retries, and permanent/retryable error classification.
+`backend/migrations/phase10_durable_jobs.sql` adds the durable job records.
+
+Configure `REDIS_URL`, then run these in separate terminals:
+
+```powershell
+cd backend
+.\.venv\Scripts\celery.exe -A app.workers.celery_app:celery_app worker --loglevel=INFO --pool=solo
+.\.venv\Scripts\celery.exe -A app.workers.celery_app:celery_app beat --loglevel=INFO
+```
+
+The global gate in `ml/config/execution_gate.yaml` is frozen to `shadow`;
+provider actions and Qwen tools are disabled. Readiness is exposed through
+`GET /api/recovery/shadow/gate`, and job failures through
+`GET /api/recovery/jobs`.
+
+Policy V4 is a separate economic-veto experiment and does not modify V3. On the
+frozen one-step comparison, V4 reduced synthetic cost from ₹9,247 to ₹9,122 and
+improved ROI from 131.06 to 132.80, but net recovered value fell by ₹343.
+Therefore `ml/config/policy_v4_manifest.yaml` explicitly rejects V4 for
+promotion. Synthetic costs are not presented as real provider pricing.
+
 ## Test
 
 ```powershell
@@ -214,21 +335,24 @@ failed subscription
   -> immutable-style audit events
 ```
 
-The scorer in `backend/app/main.py` is deliberately transparent and
-rule-based. It is an MVP baseline, not a trained production model. The next ML
-milestone is to generate a labelled recovery dataset, train and calibrate an
-XGBoost/LightGBM model, and compare it against this baseline on a held-out set.
+The simulation scorer in `backend/app/main.py` remains transparent and
+rule-based. The frozen XGBoost model is connected only to the separate shadow
+path; it has no execution capability.
 
 ## Next milestones
 
-1. Train XGBoost on the predefined temporal split and calibrate probabilities.
-2. Evaluate discrimination, calibration, and support by intervention.
-3. Compare learned policy value against always-retry and historical baselines.
-4. Connect model inference to PostgreSQL recovery cases.
-5. Add payment-link recovery, outbound idempotency keys, and retry queues.
-6. Add multilingual message generation with deterministic templates as a
+1. Collect at least 20 real Razorpay Test Mode shadow cases.
+2. Review feature drift, unknown categories, confidence margins, and taxonomy
+   coverage; stop if the dashboard drift gate reports `stop`.
+3. Configure a real Redis endpoint and pass the worker crash/restart test.
+4. Keep all payment, link, WhatsApp, voice, and Qwen execution disabled until a
+   separately approved controlled-execution phase.
+5. Improve V4 on validation data before reconsidering promotion.
+6. Add signed internal policy-decision submission and audit access controls.
+7. Add payment-link recovery, outbound idempotency keys, and retry queues.
+8. Add multilingual message generation with deterministic templates as a
    fallback.
-7. Add voice and promise-to-pay only after the payment recovery loop is stable.
+9. Add voice and promise-to-pay only after the payment recovery loop is stable.
 
 ## Safety boundary
 

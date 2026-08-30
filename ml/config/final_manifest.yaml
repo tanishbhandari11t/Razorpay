@@ -1,0 +1,129 @@
+version: 1
+schema_id: recoverai_final_manifest_v1
+generated_at: '2026-08-26T12:22:27.418444+00:00'
+phase: final
+freeze:
+  xgboost_v1: true
+  xgboost_v2_online: true
+  feature_schema: true
+  policy_v3: true
+  failure_taxonomy: true
+  safety_rules: true
+  recovery_agent: true
+  qwen_validation: true
+  outcome_observer: true
+authority:
+  xgboost: recovery_probability
+  policy: intervention_selection
+  safety: permit_or_block
+  agent: communication
+  qwen: language_generation
+  executor: permitted_action_only
+execution:
+  mode: shadow
+  controlled_execution_authorized: false
+  pilot_enabled: false
+  provider_actions_enabled: false
+  qwen_tools_enabled: false
+  first_controlled_action: payment_link
+artifacts:
+  v1_model:
+    path: ml/artifacts/recovery_model_v1.json
+    sha256: 488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e
+    exists: true
+  v1_preprocessor:
+    path: ml/artifacts/preprocessing_v1.joblib
+    sha256: 6229aedee7ab545fb52999cfe7c9454c49be2f116adc8943ab2c32023c448268
+    exists: true
+  v1_calibrator:
+    path: ml/artifacts/calibration_v1.joblib
+    sha256: f0798cce1b2a2d937b245acc73af23f5f9f654173fa61bd760e760db3683c1fe
+    exists: true
+  v1_metadata:
+    path: ml/artifacts/model_metadata.json
+    sha256: dbf16ac1f72071b2d90d675384877a79e389f26feb07a6e92873016d810c77d7
+    exists: true
+  v2_model:
+    path: ml/artifacts/v2_online/recovery_model_v2_online.json
+    sha256: 91be9119c7334bb40b491926a626c0b74f90420ce4e57012ecf7b64d4ec0a4a4
+    exists: true
+  v2_preprocessor:
+    path: ml/artifacts/v2_online/preprocessing_v2_online.joblib
+    sha256: 5f85f6e2a62c9c45cdd89f889b3086ea2189d5eab35b4b6532b723de8914d876
+    exists: true
+  v2_calibrator:
+    path: ml/artifacts/v2_online/calibration_v2_online.joblib
+    sha256: a151913e3501e61eb050b0ba83a768ba6d69429b451cd1e22e9de58bdcbe066e
+    exists: true
+  feature_schema:
+    path: ml/config/feature_schema.yaml
+    sha256: bd87ef1c928e7817793738510bfa5df573f6e26141a3fa22c0f9e8f3d3b36a64
+    exists: true
+  online_model_schema:
+    path: ml/config/online_model_schema.yaml
+    sha256: a142d17024619fb3cda269a0262a332e1f9f37149b7bd65a0546214c4c3dfdc1
+    exists: true
+  online_feature_schema:
+    path: ml/config/online_feature_schema.yaml
+    sha256: e432bbbe00a8437c42db56650929536e7a0779d5d6665796f43c7e8db3406782
+    exists: true
+  policy_v3_manifest:
+    path: ml/config/policy_v3_manifest.yaml
+    sha256: 8d6e5751b55e0f8fc025a6899615bb6805ae3bf40db90b29e5f06c9ac9d3f508
+    exists: true
+  intervention_policy:
+    path: ml/config/intervention_policy.yaml
+    sha256: 70ccc0e95a50a879145482de8d4bd1014f456100f76647426125ceffec8ceda9
+    exists: true
+  action_matrix:
+    path: ml/config/action_matrix.yaml
+    sha256: 974ea15e43a874cf06507279588a8fcdfd3d25d79e6b5f7599c5319c5ea3d049
+    exists: true
+  execution_gate:
+    path: ml/config/execution_gate.yaml
+    sha256: 60cf3670928282d0faba2f0f24efa35a640ec4492d53da7b0fc3ed276a7948c6
+    exists: true
+  controlled_pilot:
+    path: ml/config/controlled_pilot.yaml
+    sha256: e87b0e95ff6287ff6e7237e6c4175a998b71634e65ff17358f27ae5b4b093944
+    exists: true
+  agent_actions:
+    path: ml/config/agent_actions.yaml
+    sha256: 59ea0e50d9f195e050de72277ed4b0814ab9650df55b8e553af05dabee0934c4
+    exists: true
+  qwen_agent:
+    path: ml/config/qwen_agent.yaml
+    sha256: 817b4e878b4be4609bfd08456c4a237e646e577d862d6b7f0b5a57591cfd74de
+    exists: true
+  qwen:
+    path: ml/config/qwen.yaml
+    sha256: ee592110bec8b43d0a4c934444888bda2757d03a96d7caab6e1d87aec1e8653c
+    exists: true
+  failure_taxonomy:
+    path: ml/config/razorpay_failure_taxonomy.yaml
+    sha256: 1ad96f0719d5ab39ca47c5666c6344a282bc9e5229de4b7fbc31c498d5e371b4
+    exists: true
+  outcome_observation:
+    path: ml/config/outcome_observation.yaml
+    sha256: 0c56d48fd315140e92d7236669443c05e35873b18353d222e908d6f4729ac044
+    exists: true
+  real_outcome_schema:
+    path: ml/config/real_outcome_schema.yaml
+    sha256: 63eca91bc78e7f67c96d4c92b4ba1fb8727c38ff304eb2adf1616bc79e0bd8be
+    exists: true
+  model_readiness:
+    path: ml/config/model_readiness.yaml
+    sha256: d2541c63c443d959a357ce54b8f2be4de3b57f89c262beaddf9cbd1bd105c27d
+    exists: true
+  training_dataset_v1:
+    path: ml/data/processed/logging_policy_dataset.csv
+    sha256: ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf
+    exists: true
+  training_dataset_v2_online:
+    path: ml/data/processed/online_training_dataset.csv
+    sha256: null
+    exists: false
+missing_artifacts:
+- ml/data/processed/online_training_dataset.csv
+note: Frozen final-phase inventory. Do not retrain or flip gates until legitimate
+  attributed recoveries open the evidence gate.

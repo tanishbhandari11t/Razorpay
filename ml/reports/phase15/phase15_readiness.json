@@ -1,0 +1,31 @@
+{
+  "authorization": {
+    "authorized": false,
+    "candidate_ready": false,
+    "checks": {
+      "action_coverage": false,
+      "attributed_recoveries": false,
+      "customer_segment_coverage": false,
+      "no_major_label_leakage": true,
+      "outcome_class_coverage": false,
+      "outcome_provenance_valid": true,
+      "real_labels": false,
+      "taxonomy_coverage": false,
+      "temporal_coverage": false
+    },
+    "reason": "Phase 15 stays locked until evidence coverage authorizes it. This function never flips authorized=true from Phase 14 alone."
+  },
+  "blocked_reason": "Phase 15 training blocked: evidence coverage gate unauthorized",
+  "candidate_ready": false,
+  "controlled_execution_authorized": false,
+  "frozen_parents": [
+    "recovery_model_v1",
+    "recovery_model_v2_online"
+  ],
+  "model_ready": false,
+  "model_version": "recovery_model_v3_challenger",
+  "next_step": "Continue Phase 14C/14D evidence collection. Do not train V3.",
+  "phase": 15,
+  "phase15_authorized": false,
+  "version": 1
+}

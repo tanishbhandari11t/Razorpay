@@ -1,0 +1,66 @@
+version: 1
+schema_id: recoverai_v3_challenger_v1
+purpose: action_conditioned_challenger_blocked_until_phase15_authorized
+
+identity:
+  model_version: recovery_model_v3_challenger
+  policy_version: recovery_policy_v5_challenger
+  parent_models:
+    - recovery_model_v1
+    - recovery_model_v2_online
+
+prediction_target: recovery_given_action_context
+
+actions:
+  - retry_payment
+  - payment_link
+  - whatsapp_reminder
+  - escalate_to_merchant
+  - no_action
+
+training:
+  require_phase15_authorized: true
+  require_real_controlled_labels: true
+  allow_synthetic_augmentation: true
+  allow_synthetic_only: false
+  allow_observational_as_attributed: false
+  minimum_eligible_labels: 100
+
+evaluation:
+  baselines:
+    - always_retry
+    - historical_policy
+    - v2_online
+  metrics:
+    - recovery_rate
+    - amount_recovered
+    - intervention_cost
+    - net_value
+    - roi
+    - policy_violations
+    - fraud_actions
+    - fallback_rate
+    - calibration
+  ope:
+    - ips
+    - dr
+    - bootstrap_ci
+  require_sensitivity_wins: true
+
+readiness:
+  model_ready: false
+  phase15_authorized: false
+  controlled_execution_authorized: false
+  promotion_requires:
+    - beats_baseline
+    - confidence_supports_improvement
+    - roi_improves
+    - safety_passes
+    - online_feature_parity
+    - coverage_passes
+
+safety:
+  v1_frozen: true
+  v2_online_frozen: true
+  never_train_without_authorization: true
+  never_replace_production_without_gate: true

@@ -1,0 +1,196 @@
+{
+  "classification": {
+    "delta_v2_minus_v1": {
+      "brier_score": 0.00055498,
+      "log_loss": 0.00140321,
+      "mean_absolute_calibration_error": 0.00481069,
+      "pr_auc": -0.00687055,
+      "roc_auc": -0.00272158
+    },
+    "evaluation_split": "same_frozen_test_membership",
+    "interpretation": "A deployability trade-off comparison on synthetic logged data; not evidence of real Razorpay recovery uplift.",
+    "rows": 1857,
+    "v1_research_model": {
+      "brier_score": 0.23414363,
+      "log_loss": 0.66101909,
+      "mean_absolute_calibration_error": 0.03121794,
+      "positive_rate": 0.56219709,
+      "pr_auc": 0.65264549,
+      "roc_auc": 0.62488277,
+      "rows": 1857
+    },
+    "v2_online_model": {
+      "brier_score": 0.23469861,
+      "log_loss": 0.6624223,
+      "mean_absolute_calibration_error": 0.03602863,
+      "positive_rate": 0.56219709,
+      "pr_auc": 0.64577494,
+      "roc_auc": 0.62216119,
+      "rows": 1857
+    },
+    "version": 1
+  },
+  "economics": {
+    "always_retry": {
+      "intervention_cost_inr": 1853.0,
+      "intervention_count": 1853,
+      "net_recovered_value_inr": 1409509.0,
+      "recovered_amount_inr": 1411362,
+      "recovered_payments": 1094,
+      "recovery_rate": 0.58912224,
+      "recovery_roi": 761.6632,
+      "selected_action_counts": {
+        "no_action": 4,
+        "retry_payment": 1853
+      }
+    },
+    "cost_disclosure": "Action costs are synthetic operational assumptions, not measured Razorpay pricing.",
+    "frozen_v1_v3_one_step": {
+      "intervention_cost_inr": 9247.0,
+      "intervention_count": 1351,
+      "net_recovered_value_inr": 1202656.0,
+      "recovered_amount_inr": 1211903,
+      "recovered_payments": 947,
+      "recovery_rate": 0.5099623,
+      "recovery_roi": 131.059,
+      "selected_action_counts": {
+        "escalate_to_merchant": 157,
+        "no_action": 506,
+        "payment_link": 468,
+        "retry_payment": 390,
+        "whatsapp_reminder": 336
+      }
+    },
+    "margin_evaluation": {
+      "fallback_count": 965,
+      "fallback_rate": 0.51965536,
+      "margin_fallback_count": 0,
+      "minimum_expected_value_margin_inr": 10.0,
+      "v2_validation_calibration_margin": 0.03489003,
+      "weak_expected_value_margin_count": 17,
+      "weak_probability_margin_count": 1443,
+      "weak_probability_margin_rate": 0.77705977
+    },
+    "policy_safety": {
+      "execution_authorized": false,
+      "fraud_automated_actions": 0,
+      "policy_violations": 0,
+      "provider_calls": 0
+    },
+    "scope": "one_step_synthetic_counterfactual",
+    "v2_online_with_frozen_v3": {
+      "intervention_cost_inr": 9565.25,
+      "intervention_count": 1352,
+      "net_recovered_value_inr": 1196304.75,
+      "recovered_amount_inr": 1205870,
+      "recovered_payments": 953,
+      "recovery_rate": 0.51319332,
+      "recovery_roi": 126.0678,
+      "selected_action_counts": {
+        "escalate_to_merchant": 157,
+        "no_action": 505,
+        "payment_link": 502,
+        "retry_payment": 402,
+        "whatsapp_reminder": 291
+      }
+    },
+    "version": 1
+  },
+  "model_version": "recovery_model_v2_online",
+  "ope": {
+    "always_retry": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.44729482,
+          0.6184626
+        ],
+        "ips": [
+          0.33261629,
+          0.53082865
+        ],
+        "self_normalized_ips": [
+          0.43450214,
+          0.63974567
+        ]
+      },
+      "doubly_robust": 0.53360126,
+      "importance_weight_effective_sample_size": 96.2711973,
+      "ips": 0.42302399,
+      "matching_logged_rows": 699,
+      "matching_rate": 0.37641357,
+      "maximum_importance_weight": 30.0,
+      "mean_predicted_target_reward": 0.58518762,
+      "policy": "always_retry",
+      "self_normalized_ips": 0.53455315
+    },
+    "v2_online_with_frozen_v3": {
+      "confidence_intervals_95": {
+        "doubly_robust": [
+          0.43697474,
+          0.58312585
+        ],
+        "ips": [
+          0.3058618,
+          0.56518477
+        ],
+        "self_normalized_ips": [
+          0.60253406,
+          0.83388233
+        ]
+      },
+      "doubly_robust": 0.50799875,
+      "importance_weight_effective_sample_size": 57.66760066,
+      "ips": 0.42242566,
+      "matching_logged_rows": 401,
+      "matching_rate": 0.21593969,
+      "maximum_importance_weight": 30.0,
+      "mean_predicted_target_reward": 0.4319033,
+      "policy": "v2_online_with_frozen_v3",
+      "self_normalized_ips": 0.72559096
+    }
+  },
+  "raw_features": 33,
+  "readiness": {
+    "controlled_execution": "BLOCKED",
+    "model_ready": false
+  },
+  "real_shadow": {
+    "cases": 20,
+    "compatibility_allowed_cases": 0,
+    "dataset_id": "REAL_RAZORPAY_SHADOW_V1",
+    "evidence_type": "real_shadow_descriptive_replay",
+    "mean_feature_support_score": 0.66666667,
+    "post_gate_action_agreement_rate": 1.0,
+    "post_gate_action_distribution": {
+      "v1": {
+        "escalate_to_merchant": 20
+      },
+      "v2_online": {
+        "escalate_to_merchant": 20
+      }
+    },
+    "pre_gate_action_agreement_rate": 1.0,
+    "recovery_uplift_claim_allowed": false,
+    "safety": {
+      "controlled_execution_authorized": false,
+      "database_writes": 0,
+      "provider_calls": 0,
+      "unknown_failure_action": "escalate_to_merchant"
+    },
+    "taxonomy_distribution": {
+      "unknown": 20
+    },
+    "training_allowed": false,
+    "v1_mean_probability_margin": 0.01856379,
+    "v2_margin_fallback_count": 0,
+    "v2_mean_probability_margin": 0.01923078,
+    "version": 1
+  },
+  "sensitivity": {
+    "robust_uplift_supported": false,
+    "total": 16,
+    "won": 0
+  },
+  "transformed_features": 43,
+  "version": 1
+}

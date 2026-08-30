@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import UTC, datetime
 from typing import Any
 
 from sqlalchemy import select
@@ -28,6 +29,42 @@ def save_created_order(
         payment.status = str(order.get("status", payment.status))
     session.flush()
     return payment
+
+
+def extract_razorpay_failure_reason(entity: dict[str, Any]) -> str:
+    """
+    Prefer the most specific legitimate Razorpay failure signal.
+
+    Generic `payment_failed` alone stays generic — taxonomy will map it to
+    unknown and BLOCK execution. Descriptions are only used when they contain
+    a known token; we never invent semantics.
+    """
+    error_reason = str(entity.get("error_reason") or "").strip()
+    error_code = str(entity.get("error_code") or "").strip()
+    error_description = str(entity.get("error_description") or "").strip()
+    candidates = [error_reason, error_code, error_description]
+    for candidate in candidates:
+        if not candidate:
+            continue
+        normalized = candidate.lower()
+        if normalized not in {"payment_failed", "bad_request_error", "unknown"}:
+            return candidate
+    # Fall back to description only for keyword rescue of known reasons.
+    blob = f"{error_reason} {error_description} {error_code}".lower()
+    for token in (
+        "insufficient_funds",
+        "authentication_failed",
+        "otp_failed",
+        "card_declined",
+        "do_not_honour",
+        "gateway_timeout",
+        "server_error",
+        "suspected_fraud",
+        "invalid_vpa",
+    ):
+        if token in blob.replace(" ", "_"):
+            return token
+    return error_reason or error_code or error_description or "unknown"
 
 
 def upsert_payment_from_webhook(
@@ -67,15 +104,15 @@ def upsert_payment_from_webhook(
     payment.amount = int(entity.get("amount") or payment.amount)
     payment.currency = str(entity.get("currency") or payment.currency)
     payment.method = str(entity["method"]) if entity.get("method") else payment.method
+    if entity.get("created_at") is not None:
+        payment.created_at = datetime.fromtimestamp(
+            int(entity["created_at"]),
+            tz=UTC,
+        )
 
     if event_type in {"payment.failed", "subscription.pending"}:
         payment.status = "failed"
-        payment.failure_reason = str(
-            entity.get("error_reason")
-            or entity.get("error_code")
-            or entity.get("error_description")
-            or "unknown"
-        )
+        payment.failure_reason = extract_razorpay_failure_reason(entity)
     elif event_type in {
         "payment.captured",
         "subscription.charged",

@@ -1,0 +1,94 @@
+{
+  "baseline_freeze": {
+    "missing_artifacts": [],
+    "path": "ml/reports/final/baseline_manifest.json"
+  },
+  "baselines": {
+    "always_retry": "pending_real_pilot",
+    "final_challenger": "blocked",
+    "historical_policy": "pending_real_pilot",
+    "recoverai_final": "blocked",
+    "v1": "frozen",
+    "v2_online": "frozen_not_ready"
+  },
+  "controlled_execution_authorized": false,
+  "evidence_inventory": {
+    "attributed_intervention_recoveries": 0,
+    "observational_recoveries": 0,
+    "real_actions_executed": 0,
+    "real_failures_observed": 21,
+    "shadow_decisions": 21,
+    "training_eligible_labels": 0
+  },
+  "execution_mode": "shadow",
+  "generated_at": "2026-08-26T09:20:21.965220+00:00",
+  "honest_current_demo": {
+    "flow": [
+      "real_razorpay_failure",
+      "shadow_decision",
+      "candidate_audit",
+      "safety_gate",
+      "block",
+      "outcome_observer",
+      "audit_trail"
+    ],
+    "message": "RecoverAI can detect, diagnose, score candidates, and refuse unsafe execution. It has not earned attributed intervention labels yet."
+  },
+  "inventory_path": "ml/reports/final/evidence_inventory.json",
+  "model_card_status": "blocked",
+  "model_ready": false,
+  "phase": "final",
+  "phase15_authorized": false,
+  "plumbing_certified": true,
+  "safety": {
+    "duplicate_executions": 0,
+    "fraud_actions": 0,
+    "out_of_bound_actions": 0,
+    "policy_violations": 0,
+    "unsupported_actions": 0
+  },
+  "state": {
+    "blockers": [
+      "evidence_coverage_incomplete",
+      "no_attributed_training_labels",
+      "phase15_unauthorized",
+      "challenger_not_evaluated",
+      "safety_evaluation_incomplete",
+      "qwen_not_validated",
+      "controlled_gates_incomplete",
+      "pilot_not_completed",
+      "final_evaluation_incomplete"
+    ],
+    "controlled_ready": false,
+    "evidence": {
+      "attributed_intervention_recoveries": 0,
+      "candidate_ready": false,
+      "coverage_checks": {
+        "action_coverage": false,
+        "attributed_recoveries": false,
+        "customer_segment_coverage": false,
+        "no_major_label_leakage": true,
+        "outcome_class_coverage": false,
+        "outcome_provenance_valid": true,
+        "real_labels": false,
+        "taxonomy_coverage": false,
+        "temporal_coverage": false
+      },
+      "observational_recoveries": 0,
+      "phase15_authorized": false,
+      "real_cases": 21,
+      "training_eligible_labels": 0
+    },
+    "execution_mode": "shadow",
+    "final_ready": false,
+    "manual_skip_forbidden": true,
+    "model_ready": false,
+    "next_action": "Keep shadow collection running until coverage minima are met and Phase 15 is legitimately authorized.",
+    "phase15_authorized": false,
+    "pilot_active": false,
+    "qwen_ready": false,
+    "state": "EVIDENCE_INSUFFICIENT"
+  },
+  "status": "blocked_awaiting_evidence",
+  "version": 1
+}

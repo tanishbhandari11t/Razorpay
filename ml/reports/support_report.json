@@ -1,0 +1,1352 @@
+{
+  "actions": {
+    "escalate_to_merchant": {
+      "mean_predicted_probability": 0.42003003,
+      "observed_recovery_rate": 0.35245729,
+      "predicted_probability_distribution": {
+        "maximum": 0.70143741,
+        "median": 0.44051218,
+        "minimum": 0.07314657,
+        "p05": 0.1561752,
+        "p25": 0.38181457,
+        "p75": 0.48875982,
+        "p95": 0.55687755
+      },
+      "splits": {
+        "test": {
+          "count": 584,
+          "mean_predicted_probability": 0.44133466,
+          "observed_recovery_rate": 0.40239726
+        },
+        "train": {
+          "count": 3572,
+          "mean_predicted_probability": 0.41208333,
+          "observed_recovery_rate": 0.33538634
+        },
+        "validation": {
+          "count": 585,
+          "mean_predicted_probability": 0.4472841,
+          "observed_recovery_rate": 0.40683761
+        }
+      },
+      "total_count": 4741
+    },
+    "no_action": {
+      "mean_predicted_probability": 0.30789837,
+      "observed_recovery_rate": 0.0,
+      "predicted_probability_distribution": {
+        "maximum": 0.38635501,
+        "median": 0.32234776,
+        "minimum": 0.12398364,
+        "p05": 0.23360771,
+        "p25": 0.27080917,
+        "p75": 0.34922847,
+        "p95": 0.37607369
+      },
+      "splits": {
+        "test": {
+          "count": 4,
+          "mean_predicted_probability": 0.30713463,
+          "observed_recovery_rate": 0.0
+        },
+        "train": {
+          "count": 12,
+          "mean_predicted_probability": 0.30746466,
+          "observed_recovery_rate": 0.0
+        },
+        "validation": {
+          "count": 5,
+          "mean_predicted_probability": 0.30955034,
+          "observed_recovery_rate": 0.0
+        }
+      },
+      "total_count": 21
+    },
+    "payment_link": {
+      "mean_predicted_probability": 0.61638236,
+      "observed_recovery_rate": 0.62414132,
+      "predicted_probability_distribution": {
+        "maximum": 0.81548142,
+        "median": 0.62857848,
+        "minimum": 0.12696193,
+        "p05": 0.47692365,
+        "p25": 0.57364175,
+        "p75": 0.66898146,
+        "p95": 0.72424891
+      },
+      "splits": {
+        "test": {
+          "count": 265,
+          "mean_predicted_probability": 0.60946804,
+          "observed_recovery_rate": 0.60377358
+        },
+        "train": {
+          "count": 1492,
+          "mean_predicted_probability": 0.61803329,
+          "observed_recovery_rate": 0.6266756
+        },
+        "validation": {
+          "count": 281,
+          "mean_predicted_probability": 0.61413664,
+          "observed_recovery_rate": 0.62989324
+        }
+      },
+      "total_count": 2038
+    },
+    "retry_payment": {
+      "mean_predicted_probability": 0.61276883,
+      "observed_recovery_rate": 0.61374467,
+      "predicted_probability_distribution": {
+        "maximum": 0.82925618,
+        "median": 0.61867487,
+        "minimum": 0.1472327,
+        "p05": 0.49055618,
+        "p25": 0.57440785,
+        "p75": 0.65998498,
+        "p95": 0.71718759
+      },
+      "splits": {
+        "test": {
+          "count": 695,
+          "mean_predicted_probability": 0.61338127,
+          "observed_recovery_rate": 0.64316547
+        },
+        "train": {
+          "count": 2597,
+          "mean_predicted_probability": 0.61231744,
+          "observed_recovery_rate": 0.60300347
+        },
+        "validation": {
+          "count": 695,
+          "mean_predicted_probability": 0.61384284,
+          "observed_recovery_rate": 0.62446043
+        }
+      },
+      "total_count": 3987
+    },
+    "whatsapp_reminder": {
+      "mean_predicted_probability": 0.62350255,
+      "observed_recovery_rate": 0.64254248,
+      "predicted_probability_distribution": {
+        "maximum": 0.81080014,
+        "median": 0.63714135,
+        "minimum": 0.12558538,
+        "p05": 0.46707571,
+        "p25": 0.58498329,
+        "p75": 0.67758125,
+        "p95": 0.73257447
+      },
+      "splits": {
+        "test": {
+          "count": 309,
+          "mean_predicted_probability": 0.62473041,
+          "observed_recovery_rate": 0.65372168
+        },
+        "train": {
+          "count": 990,
+          "mean_predicted_probability": 0.62216192,
+          "observed_recovery_rate": 0.63030303
+        },
+        "validation": {
+          "count": 290,
+          "mean_predicted_probability": 0.62677097,
+          "observed_recovery_rate": 0.67241379
+        }
+      },
+      "total_count": 1589
+    }
+  },
+  "context_support": [
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 237,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 33.53941007,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.34599156,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 9,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 9.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.44444444,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 126,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 18.74890631,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.5952381,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 73,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 15.08078281,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.60273973,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 93,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 13.89845234,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.30107527,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 1,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 1.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 60,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 8.27440554,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.65,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 46,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 6.69767366,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.52173913,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 2,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 1.0739726,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 3,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 3.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.66666667,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 19,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 19.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.47368421,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 211,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 29.09046962,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.37440758,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 17,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 16.07278182,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.64705882,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 172,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 27.72056966,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.59883721,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 66,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 18.92736169,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.71212121,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 88,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 12.6942991,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.21590909,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 6,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 6.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.33333333,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 49,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 7.90577463,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.6122449,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 63,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 11.63500628,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.42857143,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 2,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 6,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 6.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.83333333,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 10,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 10.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.9,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 213,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 29.38877094,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.35680751,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 55,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 23.54174517,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.54545455,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 134,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 25.67475706,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.62686567,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 69,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 17.37637634,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.62318841,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 72,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 12.00499847,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.29166667,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 23,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 5.49540018,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.52173913,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 73,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 10.21909638,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.50684932,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 54,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 8.41672235,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.57407407,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 2,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 1.0739726,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 1,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 1.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 4,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 1.22950817,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 25,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 25.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.64,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 65,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 18.84615345,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.29230769,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 218,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 30.47265689,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.58256881,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 129,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 19.07760664,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.54263566,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 34,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 21.95535821,
+      "failure_bucket": "failures_0",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.52941176,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 43,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 10.73819641,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.23255814,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 90,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 12.53697431,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.53333333,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 59,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 8.94277964,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.66101695,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 19,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 4.27099396,
+      "failure_bucket": "failures_1",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.52631579,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 2,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 1.0739726,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 6,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 6.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 4,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 1.22950817,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.75,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 7,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 7.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "lower_history",
+      "observed_recovery_rate": 0.42857143,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 118,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 118.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.07627119,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 5,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 5.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 5,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 5.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 4,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 4.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 105,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 105.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.07619048,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 2,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 4,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 4.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 3,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 3.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 89,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 89.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.07865169,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 4,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 4.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.25,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 9,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 9.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.33333333,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 2,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 95,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 95.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.03157895,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 2,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 2,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 3,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 3.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "no_history",
+      "observed_recovery_rate": 0.33333333,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 685,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 101.1676816,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.40437956,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 55,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 50.36414754,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.67272727,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 382,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 61.49646714,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.61780105,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 122,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 42.51287438,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.7295082,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 694,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 97.85794,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.40057637,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 85,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 37.80492775,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.65882353,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 359,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 56.24386377,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.59052925,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 126,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 41.91580028,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.63492063,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 512,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 71.09486331,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.36914062,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 241,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 49.77543607,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.66390041,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 362,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 56.55389812,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.62430939,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 96,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 34.06733257,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.69791667,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 196,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 56.61961283,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.35204082,
+      "supported": true
+    },
+    {
+      "action": "payment_link",
+      "action_count": 625,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 91.91881191,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.656,
+      "supported": true
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 387,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 66.60326136,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.61757106,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 50,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 36.09870729,
+      "failure_bucket": "failures_0",
+      "history_bucket": "perfect_history",
+      "observed_recovery_rate": 0.66,
+      "supported": true
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 8,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 8.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.75,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 3,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 3.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 1.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 58,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 8.97709815,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.53448276,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 24,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 3.90270249,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.83333333,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 1,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 2,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 19,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 3.41762696,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.57894737,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 6,
+      "amount_bucket": "amount_q1",
+      "effective_sample_size": 6.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 12,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 3.68852452,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.41666667,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 2,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 47,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 47.0,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.63829787,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 21,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 3.60798899,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.66666667,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 3,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 2.0733379,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.33333333,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 6,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 6.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 6,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 6.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.66666667,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 1,
+      "amount_bucket": "amount_q2",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 11,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 2.7055214,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.54545455,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 8,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 4.29589038,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.75,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 49,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 7.2393814,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.69387755,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 23,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 3.80324523,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.73913043,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 1,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 1.0,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 18,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 18.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.61111111,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 7,
+      "amount_bucket": "amount_q3",
+      "effective_sample_size": 3.29758098,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.71428571,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 12,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 7.36805008,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.25,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 25,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 3.45418296,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.64,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 58,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 8.97709815,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.5862069,
+      "supported": true
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 10,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 3.5296262,
+      "failure_bucket": "failures_0",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.8,
+      "supported": false
+    },
+    {
+      "action": "escalate_to_merchant",
+      "action_count": 1,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.0,
+      "supported": false
+    },
+    {
+      "action": "payment_link",
+      "action_count": 6,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 1.39509533,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.66666667,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 11,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 11.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.72727273,
+      "supported": false
+    },
+    {
+      "action": "whatsapp_reminder",
+      "action_count": 2,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 2.0,
+      "failure_bucket": "failures_1",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 0.5,
+      "supported": false
+    },
+    {
+      "action": "retry_payment",
+      "action_count": 1,
+      "amount_bucket": "amount_q4",
+      "effective_sample_size": 1.0,
+      "failure_bucket": "failures_2_plus",
+      "history_bucket": "upper_imperfect_history",
+      "observed_recovery_rate": 1.0,
+      "supported": false
+    }
+  ],
+  "counterfactual_outcomes_used": false,
+  "escalation_investigation": {
+    "mean_gap_below_best": 0.17314649,
+    "mean_predicted_probability": 0.45968693,
+    "rank_counts": {
+      "3": 1,
+      "4": 1856
+    },
+    "raw_selection_count": 0
+  },
+  "frozen_artifacts_verified": {
+    "calibrator_sha256": "f0798cce1b2a2d937b245acc73af23f5f9f654173fa61bd760e760db3683c1fe",
+    "dataset_sha256": "ef90f8716158f5dd07becee445a33b7af1ceac4284b28129657ea475f9796abf",
+    "metrics_sha256": "dbdf7623392d7038b6f06576fe58b91ed34202a724fbcceb4d1b0af4b6603c0e",
+    "model_metadata_sha256": "dbf16ac1f72071b2d90d675384877a79e389f26feb07a6e92873016d810c77d7",
+    "model_sha256": "488934ca5ab001594a930bcb16d55309ced2909bead71264f352d3080cdfc30e",
+    "policy_decisions_v1_sha256": "f1b8b5d87c3fff776fe343325941730ae6b516365633cf00b9dd7cf3e9e35617",
+    "policy_evaluation_v1_sha256": "48ee609cccf1acd9da2298443d7b4840baceb37d3387d95f6dda0de1ac851a11",
+    "preprocessor_sha256": "6229aedee7ab545fb52999cfe7c9454c49be2f116adc8943ab2c32023c448268"
+  },
+  "model_version": "recovery_model_v1",
+  "retry_investigation": {
+    "mean_predicted_probability": 0.58395213,
+    "rank_counts": {
+      "1": 7,
+      "2": 81,
+      "3": 1768,
+      "4": 1
+    },
+    "raw_best_margin_distribution": {
+      "maximum": 0.10505939,
+      "median": 0.01470292,
+      "minimum": 2.26e-06,
+      "p05": 0.0012978,
+      "p25": 0.0070582,
+      "p75": 0.02387232,
+      "p95": 0.04213462
+    },
+    "raw_selection_count": 7,
+    "within_validation_calibration_margin_of_best_count": 75
+  },
+  "support_safe_policy": {
+    "decision_reason_counts": {
+      "fraud_policy_block": 4,
+      "highest_supported_probability": 760,
+      "insufficient_probability_margin": 520,
+      "no_supported_candidate_safety_fallback": 213,
+      "single_supported_candidate": 360
+    },
+    "fallback_count": 1097,
+    "fallback_rate": 0.59073775,
+    "selected_action_counts": {
+      "escalate_to_merchant": 213,
+      "no_action": 4,
+      "payment_link": 287,
+      "retry_payment": 911,
+      "whatsapp_reminder": 442
+    },
+    "unsupported_model_selection_count": 0
+  },
+  "support_thresholds": {
+    "amount_boundaries_inr": [
+      283.5,
+      632.0,
+      1621.5
+    ],
+    "failure_frequency_boundaries": {
+      "one": 1,
+      "two_plus_minimum": 2,
+      "zero": 0
+    },
+    "history_success_boundaries": [
+      0.94444444,
+      1.0
+    ],
+    "min_context_action_count": 20,
+    "min_context_effective_sample_size": 8.0
+  },
+  "test_candidate_support_rates": {
+    "escalate_to_merchant": 0.6903608,
+    "payment_link": 0.45341949,
+    "retry_payment": 0.85837372,
+    "whatsapp_reminder": 0.65320409
+  },
+  "threshold_derivation": {
+    "median_context_effective_sample_size": 8.13720277,
+    "median_positive_cell_count": 22.0,
+    "positive_context_action_cells": 110,
+    "supported_context_action_cells": 48
+  },
+  "version": 1
+}

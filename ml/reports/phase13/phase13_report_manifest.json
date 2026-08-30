@@ -1,0 +1,132 @@
+{
+  "artifacts": {
+    "ml/reports/phase13/feature_disposition.json": {
+      "sha256": "6c6b1db384020fdceddaac5cb13a908e470ee05160e9ed00c339e37e23b2de00"
+    },
+    "ml/reports/phase13/phase13_readiness.json": {
+      "sha256": "01bf4df0475761762d19f8ad63fe81af821a0864b8d4b0e5e4b422b3327b8027"
+    },
+    "ml/reports/phase13/phase13_summary.json": {
+      "sha256": "92e625d7852e2eb5903342330a6a58df606d337cf9a894ab4cc1945401f3c4e8"
+    },
+    "ml/reports/phase13/v2_online_model_comparison.json": {
+      "sha256": "3453cbeb243f90a9170c79358219cfea3538714a1fbda11206a27b85a65050db"
+    },
+    "ml/reports/phase13/v2_online_ope.json": {
+      "sha256": "c6c0b6879ce83d89841bf2532288be9aea6ddf3385bb7212bac6b5206f5af170"
+    },
+    "ml/reports/phase13/v2_online_policy_decisions.csv": {
+      "sha256": "96d87c0c328e91353807ba8ee45c397ab99e30c2fd56606cbb5ddf219c414763"
+    },
+    "ml/reports/phase13/v2_online_policy_economics.json": {
+      "sha256": "4ab33529075ee27f6efe4d76f9f2fa4698927503b06b8ad50b3810e3e6f3e7e3"
+    },
+    "ml/reports/phase13/v2_online_sensitivity.json": {
+      "sha256": "af7abb9b032dc80d84da306b2feb42b4dcdbf32e76e6ecf3e3bfed8105599d1e"
+    },
+    "ml/reports/phase13/v2_online_shadow_pairs.csv": {
+      "sha256": "7392543dbb76d262226216b79296e07c640415c30c2545d900f006675fd6fd65"
+    },
+    "ml/reports/phase13/v2_online_shadow_replay.json": {
+      "sha256": "82b38e4cdb82eab9a2f87b6a84870202e9fbeb0133af82b83b4500c19e98029e"
+    }
+  },
+  "generated_at": "2026-08-25T16:42:02.026394+00:00",
+  "inputs": {
+    "backend/app/api/recovery.py": {
+      "sha256": "b8663dd4be5e56cf4315c26e3c23cb3d460c59c82999be280512bc591113fa3b"
+    },
+    "backend/app/api/webhooks.py": {
+      "sha256": "8796849302be45e8e9fad6a0a03cad12910fe730ff7faea2dea496026d05c3fa"
+    },
+    "backend/app/ml/model_loader_v2_online.py": {
+      "sha256": "d30bd2a2ecd4d9107db5e9d50145fc47d372be4efd6fe42211f55643a78f0dbe"
+    },
+    "backend/app/services/recovery_inference_v2_online.py": {
+      "sha256": "7866250b1c272e99aa278e5adadb3a2f831554a35e8e25963d581dcc24e25fd4"
+    },
+    "backend/app/services/recovery_jobs.py": {
+      "sha256": "ffc903c4c400af0b6d5670f373672d51d704af40559b4371baba528c5eaf9d90"
+    },
+    "backend/app/services/recovery_jobs_v2_online.py": {
+      "sha256": "8d8d1102f3b0eeff6e6f48de9c20700cabd53bb4372bc11e8e423ee69c92c9fa"
+    },
+    "backend/app/services/shadow_ab_comparison.py": {
+      "sha256": "f799a299afb5203e3f574a29540e6c9bfc03833fc2020ac49d75a9edd37024bd"
+    },
+    "backend/app/services/shadow_monitoring.py": {
+      "sha256": "e7ba6dc7d441f7acfc343d8199594984e43502e8a00b5becbed8c54c97b3d77a"
+    },
+    "backend/app/workers/celery_app.py": {
+      "sha256": "cb052b0ec2e7080e9a4b65921891f51f0a1534c02ffee92a43ea785d7a8ce388"
+    },
+    "backend/app/workers/recovery_tasks_v2_online.py": {
+      "sha256": "c8962e409a4e4a95023ce0bd0314a13850466b101ed74a45c2bbaf6851c8392f"
+    },
+    "ml/config/action_matrix.yaml": {
+      "sha256": "974ea15e43a874cf06507279588a8fcdfd3d25d79e6b5f7599c5319c5ea3d049"
+    },
+    "ml/config/dataset_manifest_v2_online.yaml": {
+      "sha256": "5423521418defe6ff9dddef2796633adebaf5fa505f84e2078eb86cca684b573"
+    },
+    "ml/config/intervention_policy.yaml": {
+      "sha256": "70ccc0e95a50a879145482de8d4bd1014f456100f76647426125ceffec8ceda9"
+    },
+    "ml/config/model_readiness.yaml": {
+      "sha256": "d2541c63c443d959a357ce54b8f2be4de3b57f89c262beaddf9cbd1bd105c27d"
+    },
+    "ml/config/online_feature_schema.yaml": {
+      "sha256": "e432bbbe00a8437c42db56650929536e7a0779d5d6665796f43c7e8db3406782"
+    },
+    "ml/config/online_model_schema.yaml": {
+      "sha256": "a142d17024619fb3cda269a0262a332e1f9f37149b7bd65a0546214c4c3dfdc1"
+    },
+    "ml/config/phase11_baseline_manifest.yaml": {
+      "sha256": "d51c88a875be50e711dc6ca4bd4a37a8afd5d81ceccbe5752e416759d01d6c3f"
+    },
+    "ml/config/phase13_evaluation.yaml": {
+      "sha256": "248bd276518db448365cc3177d0b2f40e7e657a0438727322a4fbe3c391f3864"
+    },
+    "ml/config/phase13_shadow.yaml": {
+      "sha256": "6824f1858a4aedf478cffdaa2564ee9bf8859501fd65a01c2719931d652ad55f"
+    },
+    "ml/config/policy_v3_manifest.yaml": {
+      "sha256": "8d6e5751b55e0f8fc025a6899615bb6805ae3bf40db90b29e5f06c9ac9d3f508"
+    },
+    "ml/config/recovery_model_v2_online_manifest.yaml": {
+      "sha256": "e03254961d8858f8a4ec94048e2e72371e6577c35bf83763441ac67e932033e9"
+    },
+    "ml/reports/phase12/phase12_manifest.json": {
+      "sha256": "954c2fe725caeedf23cf0d7734770cb44d0b9963872cef0459cdb1917a470f52"
+    },
+    "ml/src/build_online_training_dataset.py": {
+      "sha256": "c6db501372400e12702fdd1ba09eded5770dec0b66e585d1801895f12f9fcc79"
+    },
+    "ml/src/evaluate_v2_online.py": {
+      "sha256": "619c66be961ddd5f1e94e9918e3cbce85539599aac75b27f3628395150b147e8"
+    },
+    "ml/src/generate_phase13_reports.py": {
+      "sha256": "4d5f62b2c6abb092a7b7b30317278210ef1013ee8bf7a8f1af92527583334bc6"
+    },
+    "ml/src/policies/decision_margin.py": {
+      "sha256": "506b771a8bd4e195e193b028000e4c7e2063b4c2f7107f52e9ab3e223a02026b"
+    },
+    "ml/src/replay_v2_online_shadow.py": {
+      "sha256": "9b7b23d2b13e8c1b76b54b425cd2be82e9cb720b010624854a9442550be6d020"
+    },
+    "ml/src/train_recovery_model_v2_online.py": {
+      "sha256": "3d16e731682583056eacfb635b4fb8016ae4968fe148cf6bea84a655a9e0c641"
+    }
+  },
+  "model_version": "recovery_model_v2_online",
+  "phase": 13,
+  "policy_v3_modified": false,
+  "promotion": {
+    "controlled_execution_authorized": false,
+    "live_shadow_automatic_authorized": false,
+    "model_ready": false,
+    "provider_actions_enabled": false
+  },
+  "real_shadow_training_allowed": false,
+  "version": 1
+}
