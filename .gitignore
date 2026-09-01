@@ -4,9 +4,16 @@ backend/.pytest_cache/
 backend/data/
 ml/.venv/
 ml/data/raw/
-ml/data/processed/
+ml/data/processed/*
+!ml/data/processed/logging_policy_dataset.csv
 ml/data/evaluation/
-ml/artifacts/
+ml/artifacts/*
+!ml/artifacts/recovery_model_v1.json
+!ml/artifacts/preprocessing_v1.joblib
+!ml/artifacts/calibration_v1.joblib
+!ml/artifacts/model_metadata.json
+!ml/artifacts/v2_online/
+!ml/artifacts/v2_online/**
 ml/models/
 **/__pycache__/
 *.py[cod]
@@ -24,3 +31,8 @@ dashboard/dist/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Runtime state
+appendonlydir/
+*.rdb
+backend/celerybeat-schedule*

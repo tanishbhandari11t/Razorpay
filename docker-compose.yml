@@ -1,0 +1,72 @@
+x-recoverai: &recoverai
+  build: .
+  env_file:
+    - path: backend/.env
+      required: false
+  environment:
+    DATABASE_URL: postgresql+psycopg2://recoverai:recoverai@postgres:5432/recoverai
+    REDIS_URL: redis://redis:6379/0
+    EXECUTION_MODE: shadow
+    CELERY_TASK_ALWAYS_EAGER: "false"
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: recoverai
+      POSTGRES_PASSWORD: recoverai
+      POSTGRES_DB: recoverai
+    volumes:
+      - recoverai-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U recoverai -d recoverai"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--maxmemory-policy", "noeviction"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    <<: *recoverai
+    environment:
+      PROCESS: api
+      PORT: "8010"
+      DATABASE_URL: postgresql+psycopg2://recoverai:recoverai@postgres:5432/recoverai
+      REDIS_URL: redis://redis:6379/0
+      EXECUTION_MODE: shadow
+      CELERY_TASK_ALWAYS_EAGER: "false"
+    ports:
+      - "8010:8010"
+
+  worker:
+    <<: *recoverai
+    environment:
+      PROCESS: worker
+      DATABASE_URL: postgresql+psycopg2://recoverai:recoverai@postgres:5432/recoverai
+      REDIS_URL: redis://redis:6379/0
+      EXECUTION_MODE: shadow
+      CELERY_TASK_ALWAYS_EAGER: "false"
+
+  beat:
+    <<: *recoverai
+    environment:
+      PROCESS: beat
+      DATABASE_URL: postgresql+psycopg2://recoverai:recoverai@postgres:5432/recoverai
+      REDIS_URL: redis://redis:6379/0
+      EXECUTION_MODE: shadow
+      CELERY_TASK_ALWAYS_EAGER: "false"
+
+volumes:
+  recoverai-postgres:

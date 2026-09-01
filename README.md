@@ -134,6 +134,94 @@ Restart FastAPI. `GET /health` reports the active database dialect. Tables for
 customers, payments, interventions, promises, webhook events, and recovery
 cases are created automatically.
 
+## Deploy
+
+Hosted RecoverAI is three processes from one Docker image: the API (which also
+serves the dashboard), a Celery worker, and Celery beat. Keep Razorpay in Test
+Mode and `EXECUTION_MODE=shadow`. Do not use live keys.
+
+Frozen model files must be on disk before the image will boot:
+
+```text
+ml/artifacts/recovery_model_v1.json
+ml/artifacts/preprocessing_v1.joblib
+ml/artifacts/calibration_v1.joblib
+ml/artifacts/model_metadata.json
+```
+
+They were gitignored during training. The ignore rules now allow those four
+files so you can commit them:
+
+```powershell
+git add ml/artifacts/recovery_model_v1.json ml/artifacts/preprocessing_v1.joblib ml/artifacts/calibration_v1.joblib ml/artifacts/model_metadata.json
+```
+
+Confirm locally:
+
+```powershell
+py deploy/check_runtime_files.py
+```
+
+### Render (recommended)
+
+1. Push this repository to GitHub.
+2. In Render, choose **New → Blueprint** and select the repo. `render.yaml`
+   creates `recoverai-api`, `recoverai-worker`, `recoverai-beat`, Redis, and
+   Postgres.
+3. Set the Blueprint secrets: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`,
+   `RAZORPAY_WEBHOOK_SECRET`. Leave `CORS_ORIGINS` blank unless the dashboard
+   is hosted on a different domain.
+4. Open the API URL. The dashboard is served from the same host. Check
+   `https://<api-host>/health` — `database` should be `postgresql`, `redis`
+   `available`, `worker` `ready`, and `execution` `shadow`. If the web
+   service is killed while loading the model, raise it above 512 MB RAM.
+5. In Razorpay Test Mode, set the webhook URL to
+   `https://<api-host>/api/webhooks/razorpay` with the same secret. Enable
+   `payment.failed`, `payment.captured`, `subscription.pending`,
+   `subscription.charged`, and `subscription.activated`.
+
+`DATABASE_URL` values from Render/Railway (`postgres://` or `postgresql://`)
+are rewritten to `postgresql+psycopg2://` automatically.
+
+### Railway
+
+1. New Project → Deploy from GitHub → this repo. Railway uses `railway.toml`
+   and the Dockerfile for the web process.
+2. Add a **PostgreSQL** plugin and a **Redis** plugin.
+3. Duplicate the service twice. Set start commands:
+
+   ```text
+   api:    sh /app/scripts/start.sh api
+   worker: sh /app/scripts/start.sh worker
+   beat:   sh /app/scripts/start.sh beat
+   ```
+
+4. Give all three services the same variables: `DATABASE_URL`, `REDIS_URL`,
+   Razorpay Test Mode keys, `EXECUTION_MODE=shadow`,
+   `CELERY_TASK_ALWAYS_EAGER=false`.
+5. Generate a public domain on the API service and point the Razorpay webhook
+   at `/api/webhooks/razorpay`.
+
+### Docker Compose (local production-shaped stack)
+
+```powershell
+docker compose up --build
+```
+
+API and dashboard: `http://localhost:8010`. Optional `backend/.env` supplies
+Razorpay keys. Postgres and Redis run in the compose network.
+
+### Separate dashboard host
+
+If you deploy `dashboard/` to Vercel instead of serving `dist` from FastAPI:
+
+1. Set `VITE_API_URL` to the public API origin and rebuild.
+2. Set `CORS_ORIGINS` on the API to that dashboard origin, for example
+   `https://your-app.vercel.app`.
+
+Local Vite (`npm run dev`) still talks to `http://localhost:8010`. Extra
+origins in `CORS_ORIGINS` are merged with those localhost defaults.
+
 ## ML data foundation
 
 The Kaggle UPI data provides transaction behavior, not customer identities or

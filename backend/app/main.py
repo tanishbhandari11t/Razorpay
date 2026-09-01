@@ -9,7 +9,10 @@ from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
+
+from app.config.settings import REPO_ROOT, get_settings
 
 from app.api.customers import router as customers_router
 from app.api.outcomes import router as outcomes_router
@@ -88,15 +91,11 @@ app = FastAPI(
     version="0.1.0",
     description="A bounded revenue-recovery workflow for failed subscription payments.",
 )
+_settings = get_settings()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:4173",
-        "http://127.0.0.1:4173",
-    ],
-    allow_origin_regex=r"http://(localhost|127\.0\.0\.1|100\.\d+\.\d+\.\d+)(:\d+)?",
+    allow_origins=_settings.cors_origin_list,
+    allow_origin_regex=_settings.cors_origin_regex or None,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -427,3 +426,12 @@ def create_simulation(request: SimulationRequest) -> DashboardResponse:
 @app.get("/api/policy")
 def get_policy() -> dict[str, int]:
     return POLICY
+
+
+_dashboard_dist = REPO_ROOT / "dashboard" / "dist"
+if (_dashboard_dist / "index.html").is_file():
+    app.mount(
+        "/",
+        StaticFiles(directory=_dashboard_dist, html=True),
+        name="dashboard",
+    )

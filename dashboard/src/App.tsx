@@ -3,7 +3,10 @@ import './App.css'
 
 const Beams = lazy(() => import('./components/Beams'))
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8010'
+const rawApiUrl =
+  import.meta.env.VITE_API_URL ??
+  (import.meta.env.DEV ? 'http://localhost:8010' : '')
+const API_URL = rawApiUrl.replace(/\/$/, '')
 
 type View =
   | 'overview'

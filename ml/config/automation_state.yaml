@@ -6,5 +6,5 @@ campaigns_enabled: true
 mode: fully_automatic
 max_automatic_recovery_inr: 5000
 merchant_alerts: exceptions_only
-enabled_at: '2026-08-30T12:17:58.000132+00:00'
-paused_at: '2026-08-30T12:21:41.429190+00:00'
+enabled_at: '2026-08-30T18:54:25.629934+00:00'
+paused_at: '2026-08-30T18:54:33.172319+00:00'

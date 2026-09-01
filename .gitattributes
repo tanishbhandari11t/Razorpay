@@ -1,0 +1,2 @@
+scripts/start.sh text eol=lf
+Procfile text eol=lf

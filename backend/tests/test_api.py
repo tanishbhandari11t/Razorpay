@@ -61,6 +61,19 @@ def test_unknown_case_returns_404() -> None:
         assert response.status_code == 404
 
 
+def test_cors_allows_local_dashboard() -> None:
+    with TestClient(app) as client:
+        response = client.get(
+            "/api/policy",
+            headers={"Origin": "http://localhost:5173"},
+        )
+        assert response.status_code == 200
+        assert (
+            response.headers.get("access-control-allow-origin")
+            == "http://localhost:5173"
+        )
+
+
 def test_razorpay_status_never_exposes_secret() -> None:
     with TestClient(app) as client:
         response = client.get("/api/razorpay/status")

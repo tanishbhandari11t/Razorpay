@@ -32,6 +32,15 @@ DRIFT_CATEGORICALS = (
 
 @lru_cache(maxsize=1)
 def _training_reference() -> dict[str, Any]:
+    empty = {
+        "amount_mean": 0.0,
+        "no_history_rate": 0.0,
+        "hour_distribution": {hour: 0.0 for hour in range(24)},
+        "categories": {name: set() for name in DRIFT_CATEGORICALS},
+        "available": False,
+    }
+    if not TRAINING_DATA_PATH.is_file():
+        return empty
     columns = [
         "amount_inr",
         "has_prior_history",
@@ -55,6 +64,7 @@ def _training_reference() -> dict[str, Any]:
             name: set(training[name].astype(str))
             for name in DRIFT_CATEGORICALS
         },
+        "available": True,
     }
 
 
@@ -223,6 +233,8 @@ def shadow_metrics(session: Session) -> dict[str, Any]:
         for hour in range(24)
     )
     reasons = []
+    if not reference.get("available", True):
+        reasons.append("training_reference_missing")
     if unknown_rate > 0.2:
         reasons.append("high_unknown_category_rate")
     if unseen_rate > 0.2:

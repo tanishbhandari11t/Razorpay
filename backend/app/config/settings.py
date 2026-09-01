@@ -7,7 +7,41 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = BACKEND_ROOT.parent
 DEFAULT_SQLITE_URL = f"sqlite:///{(BACKEND_ROOT / 'data' / 'recoverai.db').as_posix()}"
+DEFAULT_CORS_ORIGINS = (
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:4173",
+    "http://127.0.0.1:4173",
+    "http://localhost:8010",
+    "http://127.0.0.1:8010",
+)
+DEFAULT_CORS_ORIGIN_REGEX = (
+    r"https?://(localhost|127\.0\.0\.1|100\.\d+\.\d+\.\d+)(:\d+)?"
+)
+
+
+def normalize_database_url(value: object) -> str:
+    raw = str(value or "").strip()
+    if not raw:
+        return DEFAULT_SQLITE_URL
+    if raw.startswith("sqlite:"):
+        return raw
+    if raw.startswith("postgres://"):
+        raw = "postgresql://" + raw[len("postgres://") :]
+    if raw.startswith("postgresql://"):
+        raw = "postgresql+psycopg2://" + raw[len("postgresql://") :]
+    return raw
+
+
+def parse_cors_origins(value: str) -> list[str]:
+    extras = [
+        part.strip().rstrip("/")
+        for part in value.replace(";", ",").split(",")
+        if part.strip()
+    ]
+    return list(dict.fromkeys([*DEFAULT_CORS_ORIGINS, *extras]))
 
 
 class Settings(BaseSettings):
@@ -24,6 +58,11 @@ class Settings(BaseSettings):
         alias="CELERY_TASK_ALWAYS_EAGER",
     )
     execution_mode: str = Field(default="shadow", alias="EXECUTION_MODE")
+    cors_origins: str = Field(default="", alias="CORS_ORIGINS")
+    cors_origin_regex: str = Field(
+        default=DEFAULT_CORS_ORIGIN_REGEX,
+        alias="CORS_ORIGIN_REGEX",
+    )
 
     model_config = SettingsConfigDict(
         env_file=BACKEND_ROOT / ".env",
@@ -35,7 +74,7 @@ class Settings(BaseSettings):
     @field_validator("database_url", mode="before")
     @classmethod
     def default_blank_database_url(cls, value: object) -> object:
-        return DEFAULT_SQLITE_URL if not str(value or "").strip() else value
+        return normalize_database_url(value)
 
     @field_validator("execution_mode")
     @classmethod
@@ -44,6 +83,10 @@ class Settings(BaseSettings):
         if normalized not in {"shadow", "dry_run", "controlled"}:
             raise ValueError("EXECUTION_MODE must be shadow, dry_run, or controlled")
         return normalized
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        return parse_cors_origins(self.cors_origins)
 
 
 def get_settings() -> Settings:

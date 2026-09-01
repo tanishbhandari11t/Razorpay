@@ -1,0 +1,94 @@
+# One-click RecoverAI blueprint: API (serves the dashboard) + Celery worker + beat.
+# Create from the Render dashboard: New → Blueprint → this repo.
+# Fill Razorpay Test Mode secrets after the first deploy. Keep EXECUTION_MODE=shadow.
+
+services:
+  - type: web
+    name: recoverai-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: sh /app/scripts/start.sh api
+    healthCheckPath: /health
+    envVars:
+      - key: PROCESS
+        value: api
+      - key: EXECUTION_MODE
+        value: shadow
+      - key: CELERY_TASK_ALWAYS_EAGER
+        value: "false"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: recoverai-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: recoverai-redis
+          property: connectionString
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+
+  - type: worker
+    name: recoverai-worker
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: sh /app/scripts/start.sh worker
+    envVars:
+      - key: PROCESS
+        value: worker
+      - key: EXECUTION_MODE
+        value: shadow
+      - key: CELERY_TASK_ALWAYS_EAGER
+        value: "false"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: recoverai-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: recoverai-redis
+          property: connectionString
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
+
+  - type: worker
+    name: recoverai-beat
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: sh /app/scripts/start.sh beat
+    envVars:
+      - key: PROCESS
+        value: beat
+      - key: EXECUTION_MODE
+        value: shadow
+      - key: CELERY_TASK_ALWAYS_EAGER
+        value: "false"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: recoverai-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: recoverai-redis
+          property: connectionString
+
+  - type: redis
+    name: recoverai-redis
+    ipAllowList: []
+    maxmemoryPolicy: noeviction
+
+databases:
+  - name: recoverai-db
+    postgresMajorVersion: 16
