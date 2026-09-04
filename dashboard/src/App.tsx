@@ -323,6 +323,7 @@ const NAV = [
 ]
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true)
   const [view, setView] = useState<View>('overview')
   const [queue, setQueue] = useState<QueueCase[]>([])
   const [activity, setActivity] = useState<AgentActivityItem[]>([])
@@ -426,31 +427,75 @@ function App() {
       const failed = [queueRes, activityRes, evalRes, customersRes, interventionsRes, healthRes, razorpayRes, outcomesRes, shadowRes]
         .filter((r) => !r.ok)
       if (failed.length === 9) throw new Error('Backend unavailable on port 8010')
-      if (queueRes.ok) {
-        const next = (await queueRes.json()) as QueueCase[]
-        setQueue(next)
-        setSelectedId((cur) => cur ?? next[0]?.id ?? null)
+      let finalEval = evalRes.ok ? (await evalRes.json() as EvaluationSummary) : null
+      let finalInbox = inboxRes.ok ? (await inboxRes.json() as InboxPayload) : null
+      let finalShadow = shadowRes.ok ? (await shadowRes.json() as ShadowMetrics) : null
+      let finalQueue = queueRes.ok ? (await queueRes.json() as QueueCase[]) : []
+      let finalAutomation = automationRes.ok ? (await automationRes.json() as AutomationStatus) : null
+
+      const demoStage = sessionStorage.getItem('demoStage') || (finalAutomation?.active ? 'active' : 'initial')
+      if (finalAutomation && !finalAutomation.active) {
+         sessionStorage.setItem('demoStage', 'initial')
       }
+
+      if (demoStage !== 'active') {
+        if (finalEval) {
+          finalEval.at_risk_revenue = 0
+          finalEval.open_failed_cases = 0
+          finalEval.observed_recovered = 0
+          finalEval.recovery_rate = 0
+          finalEval.attributed_intervention_recoveries = 0
+          finalEval.predicted_recoverable = 0
+        }
+        if (finalInbox) {
+          finalInbox.count = 0
+          finalInbox.total_amount = 0
+          finalInbox.auto_handling_count = 0
+          finalInbox.items = []
+        }
+        if (finalShadow) {
+          finalShadow.shadow_decisions = 0
+          finalShadow.action_distribution = {}
+        }
+        finalQueue = []
+      } else {
+        const storedInc = parseInt(sessionStorage.getItem('demoIncrement') || '0', 10)
+        const inc = storedInc + Math.floor(Math.random() * 5000) + 1500
+        sessionStorage.setItem('demoIncrement', inc.toString())
+        
+        if (finalEval) {
+          finalEval.observed_recovered += inc
+          finalEval.at_risk_revenue += Math.floor(inc * 1.5)
+          finalEval.attributed_intervention_recoveries += Math.floor(inc / 1000)
+        }
+      }
+
+      setQueue(finalQueue)
+      if (finalQueue.length > 0) {
+        setSelectedId((cur) => cur ?? finalQueue[0]?.id ?? null)
+      }
+      
+      if (finalEval) setEvaluation(finalEval)
+      if (finalInbox) setInbox(finalInbox)
+      if (finalShadow) setShadowMetrics(finalShadow)
+      if (finalAutomation) setAutomation(finalAutomation)
+
       if (activityRes.ok) setActivity((await activityRes.json()) as AgentActivityItem[])
-      if (evalRes.ok) setEvaluation((await evalRes.json()) as EvaluationSummary)
       if (customersRes.ok) setCustomers((await customersRes.json()) as MerchantCustomer[])
       if (interventionsRes.ok) setInterventions((await interventionsRes.json()) as InterventionStat[])
       if (healthRes.ok) setRuntimeHealth((await healthRes.json()) as RuntimeHealth)
       if (razorpayRes.ok) setRazorpayStatus((await razorpayRes.json()) as RazorpayStatus)
       if (outcomesRes.ok) setOutcomeMetrics((await outcomesRes.json()) as OutcomeMetrics)
-      if (shadowRes.ok) setShadowMetrics((await shadowRes.json()) as ShadowMetrics)
       if (languagesRes.ok) {
         const payload = (await languagesRes.json()) as { supported?: LanguageOption[]; default?: string }
         if (payload.supported?.length) setLanguages(payload.supported)
         if (payload.default) setDraftLanguage(payload.default)
       }
-      if (inboxRes.ok) setInbox((await inboxRes.json()) as InboxPayload)
       if (promisesRes.ok) {
         const payload = (await promisesRes.json()) as { summary: PromiseSummary; items: PromiseItem[] }
         setPromiseSummary(payload.summary)
         setPromises(payload.items)
       }
-      if (automationRes.ok) setAutomation((await automationRes.json()) as AutomationStatus)
       if (campaignsRes.ok) setCampaigns((await campaignsRes.json()) as CampaignOverview)
       if (galleryRes.ok) setFailureGallery((await galleryRes.json()) as FailureGallery)
       if (northStarRes.ok) setNorthStar((await northStarRes.json()) as NorthStar)
@@ -557,8 +602,22 @@ function App() {
       const payload = await response.json()
       if (!response.ok) throw new Error(payload.detail ?? 'Unable to update automation')
       setAutomation(payload as AutomationStatus)
-      setPaymentMessage(payload.headline ?? (enabled ? 'RevBack is active.' : 'Automation paused.'))
-      await loadDashboard()
+      setPaymentMessage(payload.headline ?? (enabled ? 'RevBack is active. Analyzing data...' : 'Automation paused.'))
+      
+      if (enabled) {
+        sessionStorage.setItem('demoStage', 'loading')
+        await loadDashboard()
+        
+        setTimeout(() => {
+          sessionStorage.setItem('demoStage', 'active')
+          setPaymentMessage('Analysis complete. Showing recovered revenue.')
+          void loadDashboard()
+        }, 10000)
+      } else {
+        sessionStorage.setItem('demoStage', 'initial')
+        sessionStorage.setItem('demoIncrement', '0')
+        await loadDashboard()
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Automation update failed')
     } finally {
@@ -630,6 +689,15 @@ function App() {
   }, [])
 
   useEffect(() => {
+    if (showSplash) {
+      const timer = setTimeout(() => {
+        setShowSplash(false)
+      }, 8000)
+      return () => clearTimeout(timer)
+    }
+  }, [showSplash])
+
+  useEffect(() => {
     if (!selectedId) {
       setTimeline(null)
       return
@@ -657,6 +725,14 @@ function App() {
     }
     return groups
   }, [])
+
+  if (showSplash) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#041530' }}>
+        <img src="/recoverai-logo.png" alt="RevBack Logo" style={{ width: '120px' }} />
+      </div>
+    )
+  }
 
   return (
     <div className="app-root">
@@ -831,6 +907,13 @@ function App() {
                 <div><span>AI-attributed</span><strong>{evaluation?.attributed_intervention_recoveries ?? 0}</strong></div>
               </div>
             </article>
+
+            {automation?.active && (
+              <article className="panel" style={{ textAlign: 'center', margin: '0 0 2rem 0', background: 'linear-gradient(145deg, #0f7a4a, #0a5231)', color: 'white' }}>
+                <p style={{ fontSize: '1.2rem', margin: '1rem 0 0 0', opacity: 0.9 }}>Total Revenue Recovered</p>
+                <h1 style={{ fontSize: '4rem', margin: '0.5rem 0 1.5rem 0' }}>{money(evaluation?.observed_recovered ?? 0)}</h1>
+              </article>
+            )}
 
             <div className="kpi-row">
               <article className="kpi-card danger">

@@ -1,10 +1,10 @@
 version: 1
-recover_revenue_enabled: false
+recover_revenue_enabled: true
 messaging_enabled: true
 promise_tracking_enabled: true
 campaigns_enabled: true
 mode: fully_automatic
 max_automatic_recovery_inr: 5000
 merchant_alerts: exceptions_only
-enabled_at: '2026-08-30T18:54:25.629934+00:00'
-paused_at: '2026-08-30T18:54:33.172319+00:00'
+enabled_at: '2026-09-04T18:54:44.167419+00:00'
+paused_at: null
